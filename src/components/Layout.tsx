@@ -14,7 +14,7 @@ const Layout: React.FC<ContainerProps> = ({ children, className }) => {
      <div className={cn('',className)}>
         <Header/>
          {children}
-         <>Footer</>
+        
      </div>
   );
 };

@@ -10,6 +10,7 @@ interface ButtonProps {
   size?: 'sm' | 'md' | 'lg';
   color?: 'light' | 'dark';
   variant?: 'contained' | 'outlined';
+  target?: '_blank'| '_self';
 }
 
 const defaultProps: Partial<ButtonProps> = {
@@ -20,7 +21,7 @@ const defaultProps: Partial<ButtonProps> = {
 };
 
 
-const Button: React.FC<ButtonProps> = ({ children, className, href, onClick, size, color, variant }) => {
+const Button: React.FC<ButtonProps> = ({ children, className, href, onClick, size, color, variant, target }) => {
   const handleOnClick = () => {
     if (onClick) {
       onClick();
@@ -69,7 +70,7 @@ const Button: React.FC<ButtonProps> = ({ children, className, href, onClick, siz
   }
 
   defaultClasses = cn(defaultClasses, className);
-  return href ? <Link className={defaultClasses} href={href}>{children}</Link> :
+  return href ? <Link className={defaultClasses} target={target} href={href}>{children}</Link> :
     <button className={defaultClasses} onClick={handleOnClick}>
       {children}</button>;
 };
