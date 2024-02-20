@@ -49,21 +49,21 @@ const Freelance: PorjectProps[] = [
     link: "https://bythem.studio/",
     src: '/images/them.svg',
     role: "Full Stack Developer",
-    year: "Freelance, June, 2018"
+    year: "June, 2018"
   },
   {
     name: "Boodh",
     link: "https://www.boodh.org/",
     src: '/images/them.svg',
     role: "Full Stack Developer",
-    year: "Freelance, October, 2020"
+    year: "October, 2020"
   },
   {
     name: "Earthbound adventures",
     link: "https://incatrailhikes.com/",
     src: '/images/them.svg',
     role: "Full Stack Developer",
-    year: "Freelance, May, 2019"
+    year: "May, 2019"
   },
 ]
 
