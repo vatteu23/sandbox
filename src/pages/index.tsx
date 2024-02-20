@@ -115,7 +115,7 @@ export default function Home() {
         <Container className="py-12">
           <div className="grid grid-cols-12">
             <div className="col-span-12 sm:col-span-4 order-2 md:order-1">
-              <Shapes />
+            <img src="/images/port-b.png" className=" max-h-96 z-10 bottom-0" alt="Uday Vatti" />
             </div>
             <div className="col-span-12 sm:col-span-6 text-left flex items-center order-1 md:order-2" ref={component}>
 
