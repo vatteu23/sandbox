@@ -27,7 +27,7 @@ const Porjects: PorjectProps[] = [
     year: "Nov, 2021 - Present"
   },
   {
-    name: "Triple Crown Procucts",
+    name: "Triple Crown Products",
     link: "https://triplecrownproducts.com/",
     src: '/images/tcp.svg',
     role: "Full Stack Developer",
@@ -144,7 +144,7 @@ export default function Home() {
       </div>
       <Container className="py-12">
 
-        <Typography fontWeight="bold" variant="h5" className="text-left mb-6">
+        <Typography fontWeight="bold" variant="h5" className="text-left mb-4">
           ABOUT ME
         </Typography>
         <Typography variant="h6" fontWeight="normal" color="dark" className="text-left max-w-2xl">
@@ -156,7 +156,7 @@ export default function Home() {
 
       <Container className="py-12 md:py-24">
 
-        <Typography fontWeight="bold" variant="h5" className="text-left mb-6">
+        <Typography fontWeight="bold" variant="h5" className="text-left mb-4">
           EXPERIENCE
         </Typography>
         <div className="grid grid-cols-12 gap-6">
@@ -190,7 +190,7 @@ export default function Home() {
 
       <Container className="py-12 md:py-24">
 
-<Typography fontWeight="bold" variant="h5" className="text-left mb-6">
+<Typography fontWeight="bold" variant="h5" className="text-left mb-4">
   FREELANCE PROJECTS
 </Typography>
 <div className="grid grid-cols-12 gap-6">

@@ -8,9 +8,8 @@ import { gsap } from "gsap";
 
 export function Shapes() {
     return (
-        <div className="row-span-1 row-start-1 -mt-9 aspect-square  md:col-span-1 md:col-start-2 md:mt-0 relative">
-
-            <img src="/images/port-b.png" className="absolute max-h-96 z-10 bottom-0" alt="Uday Vatti" />
+        <div className="row-span-1 row-start-1 xs:-mt-9 aspect-square  md:col-span-1 md:col-start-2 md:mt-0 relative">
+            <img src="/images/port-b.png" className="absolute max-h-72 sm:max-h-96 z-10 bottom-0" alt="Uday Vatti" />
             <Canvas
                 className="z-0"
                 shadows
@@ -63,11 +62,7 @@ function Geometries() {
         },
     ];
 
-    const soundEffects = [
-        new Audio("/sounds/hit2.ogg"),
-        new Audio("/sounds/hit3.ogg"),
-        new Audio("/sounds/hit4.ogg"),
-    ];
+  
 
     const materials = [
         new THREE.MeshNormalMaterial(),
@@ -93,7 +88,6 @@ function Geometries() {
             key={JSON.stringify(position)} // Unique key
             position={position.map((p) => p * 2)}
             geometry={geometry}
-            soundEffects={soundEffects}
             materials={materials}
             r={r}
         />
@@ -113,14 +107,14 @@ function Geometry({ r, position, geometry, soundEffects, materials }) {
     function handleClick(e) {
         const mesh = e.object;
 
-        gsap.utils.random(soundEffects).play();
+        // gsap.utils.random(soundEffects).play();
 
         gsap.to(mesh.rotation, {
             x: `+=${gsap.utils.random(0, 2)}`,
             y: `+=${gsap.utils.random(0, 2)}`,
             z: `+=${gsap.utils.random(0, 2)}`,
             duration: 1.3,
-            ease: "elastic.out(1,0.3)",
+            ease: "elastic.out(1,1)",
             yoyo: true,
         });
 
@@ -143,7 +137,7 @@ function Geometry({ r, position, geometry, soundEffects, materials }) {
                 y: 0,
                 z: 0,
                 duration: gsap.utils.random(0.8, 1.2),
-                ease: "elastic.out(1,0.3)",
+                ease: "elastic.out(1,0.5)",
                 delay: gsap.utils.random(0, 0.5),
             });
         });
@@ -152,7 +146,7 @@ function Geometry({ r, position, geometry, soundEffects, materials }) {
 
     return (
         <group position={position} ref={meshRef}>
-            <Float speed={5 * r} rotationIntensity={6 * r} floatIntensity={5 * r}>
+            <Float speed={10 * r} rotationIntensity={6 * r} floatIntensity={5 * r}>
                 <mesh
                     geometry={geometry}
                     onClick={handleClick}
