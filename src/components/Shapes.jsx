@@ -8,7 +8,7 @@ import { gsap } from "gsap";
 
 export function Shapes() {
     return (
-        <div className="row-span-1 row-start-1 xs:-mt-9 aspect-square  md:col-span-1 md:col-start-2 md:mt-0 relative">
+        <div className="row-span-1 row-start-1 -mt-6 xs:-mt-9 aspect-square  md:col-span-1 md:col-start-2 md:mt-0 relative">
             <img src="/images/port-b.png" className="absolute max-h-72 sm:max-h-96 z-10 bottom-0" alt="Uday Vatti" />
             <Canvas
                 className="z-0"
