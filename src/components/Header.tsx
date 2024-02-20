@@ -11,7 +11,7 @@ interface ContainerProps {
 
 const Header: React.FC<ContainerProps> = ({ className, bgColor, lightText }) => {
   return (
-    <div className={cn('sticky top-0 bg-center bg-zinc-100 z-10', className)} >
+    <div className={cn('sticky top-0 bg-center bg-zinc-100 z-50', className)} >
       <Container className='py-4 flex flex-row justify-between'>
 
         <Button href='/' className='!pl-0'  color='light'>UV</Button>
