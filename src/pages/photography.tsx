@@ -1,9 +1,18 @@
 import Container from "@/components/Container";
 import Layout from "@/components/Layout";
 import Typography from "@/components/Typography";
-import Carousel, { Modal, ModalGateway } from "react-images";
 import React, { useCallback, useState } from "react";
-import Gallery from "react-photo-gallery-next";
+import { PhotoAlbum } from "react-photo-album";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+
+// import optional lightbox plugins
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
+import HeadWithMetas from "@/components/HeadWithMetas";
 
 type PhotographyProps = {
     photos: any[];
@@ -26,41 +35,29 @@ const Photography: React.FC<PhotographyProps> = (props: PhotographyProps) => {
         }));
     }, [photos]);
 
-    const [currentImage, setCurrentImage] = useState(0);
-    const [viewerIsOpen, setViewerIsOpen] = useState(false);
-
-    const openLightbox = useCallback((event, { photo, index }) => {
-        setCurrentImage(index);
-        setViewerIsOpen(true);
-    }, []);
-
-    const closeLightbox = () => {
-        setCurrentImage(0);
-        setViewerIsOpen(false);
-    };
+    const [index, setIndex] = useState(-1);
 
     return <Layout className="bg-zinc-100 min-h-screen">
+        <HeadWithMetas
+            title="Uday Vatti"
+            description="Uday Vatti is a web developer and a designer at Labelbox."
+            url="https://udayvatti.com"
+        />
         <Container className="py-12 ">
             <Typography variant="h3" wrapper="h1" className="mb-6">Framing Moments</Typography>
 
 
-            {gallery.length > 0 && <Gallery photos={gallery} onClick={openLightbox} />}
 
+            {gallery.length > 0 && <PhotoAlbum layout="columns" photos={gallery} spacing={5} onClick={({ index }) => setIndex(index)} />}
 
-            <ModalGateway>
-                {viewerIsOpen ? (
-                    <Modal onClose={closeLightbox}>
-                        <Carousel
-                            currentIndex={currentImage}
-                            views={gallery.map(x => ({
-                                ...x,
-                                srcset: x.srcSet,
-                                caption: x.title
-                            }))}
-                        />
-                    </Modal>
-                ) : null}
-            </ModalGateway>
+            <Lightbox
+                slides={gallery}
+                open={index >= 0}
+                index={index}
+                close={() => setIndex(-1)}
+                // enable optional lightbox plugins
+                plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
+            />
 
         </Container>
     </Layout>
