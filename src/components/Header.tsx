@@ -15,9 +15,12 @@ const Header: React.FC<ContainerProps> = ({ className, bgColor, lightText }) => 
       <Container className='py-4 flex flex-row justify-between'>
 
         <Button href='/' className='!pl-0'  color='light'>UV</Button>
+        <div className='flex gap-x-2 md:gap-x-4'>
+        <Button size='sm' variant='text' color='dark' href='/photography'>Photography</Button>
         <Button size='sm' color='dark' href='https://www.linkedin.com/in/vattiu/' target="_blank">
           Get in touch
         </Button>
+        </div>
       </Container>
     </div>
   );

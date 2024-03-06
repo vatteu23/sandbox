@@ -9,7 +9,7 @@ interface ButtonProps {
   onClick?: () => void;
   size?: 'sm' | 'md' | 'lg';
   color?: 'light' | 'dark';
-  variant?: 'contained' | 'outlined';
+  variant?: 'contained' | 'outlined' | 'text';
   target?: '_blank'| '_self';
 }
 
@@ -63,6 +63,18 @@ const Button: React.FC<ButtonProps> = ({ children, className, href, onClick, siz
         break;
       case 'dark':
         defaultClasses += ' border border-black text-black hover:border-black/80';
+        break;
+      default:
+        break;
+    }
+  }else if (variant === 'text') {
+
+    switch (color) {
+      case 'light':
+        defaultClasses += ' text-white hover:text-white/80';
+        break;
+      case 'dark':
+        defaultClasses += ' text-black hover:text-black/80';
         break;
       default:
         break;
