@@ -43,6 +43,7 @@ const Photography: React.FC<PhotographyProps> = (props: PhotographyProps) => {
         title="Uday Vatti"
         description="Uday Vatti is a web developer and a designer at Labelbox."
         url="https://udayvatti.com"
+        image="/images/uv-port.png"
       />
       <Container className="py-12 ">
         <Typography variant="h3" wrapper="h1" className="mb-6 text-orange-500">

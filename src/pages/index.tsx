@@ -117,6 +117,7 @@ export default function Home() {
         title="Uday Vatti"
         description="Uday Vatti is a web developer and a designer at Labelbox."
         url="https://udayvatti.com"
+        image="/images/uv-port.png"
       />
       <div className="relative h-[90vh] max-h-[1400px] bg-orange-500">
         <Container className="py-12 h-full flex justify-center items-center">
