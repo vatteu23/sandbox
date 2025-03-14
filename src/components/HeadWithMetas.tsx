@@ -8,9 +8,9 @@ interface HeadWithMetasProps extends MetaTags {
   description: string;
   image?: string;
   scripts?: Script[];
-    noIndex?: boolean;
-    canonical?: boolean;
-    url?: string;
+  noIndex?: boolean;
+  canonical?: boolean;
+  url?: string;
   children?: React.ReactNode;
 }
 
@@ -49,10 +49,6 @@ export const HeadWithMetas = ({
       <meta charSet="utf-8" />
       <title>{title}</title>
       <meta name="description" content={description} />
-      
-      <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin=""></link>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,600;0,700;1,100;1,200;1,300;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"></link>
 
       {noIndex && <meta name="googlebot" content="noindex" />}
 
@@ -64,20 +60,16 @@ export const HeadWithMetas = ({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       {url && <meta property="og:url" content={url} />}
-      {image && 
-        <meta property="og:image" content={image} />
-      }
+      {image && <meta property="og:image" content={image} />}
       <meta property="og:type" content="website" />
-      
+
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:site" content="@labelbox" />
       <meta name="twitter:creator" content="@labelbox" />
       {url && <meta name="twitter:url" content={url} />}
-      {image &&
-        <meta property="twitter:image" content={image} />
-      }
+      {image && <meta property="twitter:image" content={image} />}
 
       {canonical && <link rel="canonical" href={url} />}
 

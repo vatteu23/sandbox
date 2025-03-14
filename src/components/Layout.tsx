@@ -1,6 +1,7 @@
-import { cn } from '@/functions/cn';
-import React, { ReactNode } from 'react';
-import Header from './Header';
+import { cn } from "@/functions/cn";
+import React, { ReactNode } from "react";
+import Header from "./Header";
+import { Major_Mono_Display, Doto } from "next/font/google";
 
 interface ContainerProps {
   children: ReactNode;
@@ -9,13 +10,24 @@ interface ContainerProps {
   lightText?: boolean;
 }
 
+const majorMonoDisplay = Major_Mono_Display({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-major-mono-display",
+});
+
+const doto = Doto({
+  subsets: ["latin"],
+  weight: ["800"],
+  variable: "--font-doto",
+});
+
 const Layout: React.FC<ContainerProps> = ({ children, className }) => {
   return (
-     <div className={cn('',className)}>
-        <Header/>
-         {children}
-        
-     </div>
+    <div className={cn(majorMonoDisplay.className, className)}>
+      <Header />
+      {children}
+    </div>
   );
 };
 

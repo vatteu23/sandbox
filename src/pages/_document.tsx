@@ -8,12 +8,17 @@ export default function Document() {
         <Main />
         <NextScript />
 
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVGZ798K"
-          height="0" width="0" style={{
-            display: 'none',
-            visibility: 'hidden'
-          }}></iframe></noscript>
-
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NVGZ798K"
+            height="0"
+            width="0"
+            style={{
+              display: "none",
+              visibility: "hidden",
+            }}
+          ></iframe>
+        </noscript>
       </body>
     </Html>
   );

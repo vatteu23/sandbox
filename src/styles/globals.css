@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100&family=IBM+Plex+Sans&family=Kode+Mono:wght@400..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,9 +17,9 @@
   }
 }
 
-body {
+/* body {
   font-family: "Kode Mono", monospace;
-}
+} */
 
 @layer utilities {
   .text-balance {
