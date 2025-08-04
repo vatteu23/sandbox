@@ -8,6 +8,7 @@ import { gsap } from "gsap";
 import {
   EyeIcon,
   ArrowTopRightOnSquareIcon,
+  XMarkIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -39,7 +40,8 @@ const Porjects: PorjectProps[] = [
     achievements: [
       "Migrated entire labelbox.com from Material UI to Tailwind CSS, improving performance and maintainability",
       "Built complex CMS structures enabling marketing team to autonomously update content with zero developer dependency",
-      "Created high-performance SSR pages using Next.js with GSAP and Framer Motion animations",
+      "Created high-performance pages using Next.js App Router with hybrid static/dynamic rendering",
+      "Implemented advanced animations using GSAP and Framer Motion in client components",
       "Developed alignerr.com from ground up using custom Sanity CMS, delivering full-stack solution",
       "Built internal evals product with 2-person team, creating model performance visualization tools",
       "Implemented multi-modal data visualization supporting video, audio, text, and image formats",
@@ -600,10 +602,18 @@ export default function Home() {
       {/* Project Detail Modal */}
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         {selectedProject && (
-          <div>
+          <div className="relative">
             {/* Project Header */}
-            <div className="sticky top-0 p-8 py-6 border-b border-stone-100 bg-stone-50/30 backdrop-blur-2xl">
-              <div className="flex flex-col md:flex-row gap-y-3 items-start justify-between">
+            <div className="sticky top-0 p-8 py-6 border-b border-stone-100 bg-stone-300/30 backdrop-blur-2xl ">
+              <div className="absolute top-4 right-2">
+                <button
+                  onClick={closeModal}
+                  className="bg-stone-100 text-stone-600 px-2 rounded-lg hover:bg-stone-200 transition-colors font-medium"
+                >
+                  <XMarkIcon className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="flex flex-col md:flex-row gap-y-3 items-start justify-between md:mt-8">
                 <div>
                   <Typography
                     variant="h3"

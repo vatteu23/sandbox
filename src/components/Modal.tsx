@@ -39,7 +39,7 @@ const Modal: React.FC<ModalProps> = ({ children, isOpen, onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Main content with scrollbar */}
-        <div className="flex-1 overflow-y-auto ">
+        <div className="flex-1 overflow-y-auto">
           {/* Content */}
           <div className="">{children}</div>
         </div>
