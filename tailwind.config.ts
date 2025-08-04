@@ -8,10 +8,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      extend: {
-        fontFamily: {
-         'kodemono': ["Kode Mono", "monospace"],
-        },
+      fontFamily: {
+        sans: ["var(--font-primary)", "system-ui", "sans-serif"],
+        primary: ["var(--font-primary)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
+        display: ["var(--font-display)", "monospace"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

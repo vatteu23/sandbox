@@ -1,20 +1,51 @@
 import { cn } from "@/functions/cn";
+import { useEffect } from "react";
 
 type ModalProps = {
-    isOpen: boolean;
-    onClose: () => void;
-    children: React.ReactNode;
-}
+  isOpen: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+};
+
 const Modal: React.FC<ModalProps> = ({ children, isOpen, onClose }) => {
-    return (
-        <div className={cn('fixed inset-0 bg-black/50 z-50', isOpen ? 'block' : 'hidden')}>
-            <div className={cn('bg-white p-4 rounded-lg w-1/2 mx-auto my-12')}>
-                <button onClick={onClose} className={cn('absolute top-2 right-2')}>
-                    X
-                </button>
-                {children}
-            </div>
+  // Handle escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div
+      className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="bg-stone-50 w-full max-w-4xl max-h-[90vh] shadow-2xl relative flex overflow-hidden rounded-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Main content with scrollbar */}
+        <div className="flex-1 overflow-y-auto ">
+          {/* Content */}
+          <div className="">{children}</div>
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
+
 export default Modal;

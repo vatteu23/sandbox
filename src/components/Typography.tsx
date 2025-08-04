@@ -1,5 +1,6 @@
 import { cn } from "@/functions/cn";
 import React, { ReactNode } from "react";
+import { FontFamily, fontClasses } from "@/config/fonts";
 interface TypographyProps {
   variant: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "small";
   className?: string;
@@ -7,6 +8,7 @@ interface TypographyProps {
   fontWeight?: "light" | "normal" | "bold" | "semibold" | "extrabold";
   wrapper?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "small";
   color?: "dark" | "light";
+  fontFamily?: FontFamily;
 }
 
 const Typography: React.FC<TypographyProps> = ({
@@ -16,6 +18,7 @@ const Typography: React.FC<TypographyProps> = ({
   fontWeight,
   wrapper,
   color,
+  fontFamily,
 }) => {
   const Tag = wrapper || variant;
 
@@ -78,6 +81,13 @@ const Typography: React.FC<TypographyProps> = ({
       break;
     default:
       break;
+  }
+
+  if (fontFamily && fontClasses[fontFamily]) {
+    defaultClasses += ` ${fontClasses[fontFamily]}`;
+  } else {
+    // Use default font (primary)
+    defaultClasses += " font-primary";
   }
 
   const mergedClasses = cn(defaultClasses, className);
