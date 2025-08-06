@@ -408,6 +408,7 @@ export default function Home() {
               variant="h6"
               className="text-gray-600 max-w-2xl mx-auto"
               fontFamily="primary"
+              fontWeight="light"
             >
               Building digital products and experiences across various
               industries
@@ -492,6 +493,7 @@ export default function Home() {
               variant="h6"
               className="text-neutral-600 max-w-2xl mx-auto"
               fontFamily="primary"
+              fontWeight="light"
             >
               Selected client work and independent projects
             </Typography>
@@ -567,7 +569,7 @@ export default function Home() {
           <div className="text-center max-w-3xl mx-auto">
             <Typography
               variant="h2"
-              fontWeight="bold"
+              fontWeight="light"
               className="text-stone-100 mb-6"
               fontFamily="primary"
             >
@@ -575,8 +577,9 @@ export default function Home() {
             </Typography>
             <Typography
               variant="h6"
-              className="text-stone-400 mb-8 leading-relaxed"
+              className="text-stone-200 mb-8 leading-relaxed"
               fontFamily="primary"
+              fontWeight="light"
             >
               Interested in collaborating on your next project? I'd love to hear
               about your ideas and help bring them to life.

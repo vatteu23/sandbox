@@ -67,6 +67,15 @@ const Header: React.FC<ContainerProps> = ({
               size="sm"
               variant="text"
               color="dark"
+              href="/about"
+              className="text-neutral-600 hover:text-neutral-900 hover:bg-stone-300 transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium"
+            >
+              About
+            </Button>
+            <Button
+              size="sm"
+              variant="text"
+              color="dark"
               href="/photography"
               className="text-neutral-600 hover:text-neutral-900 hover:bg-stone-300 transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium"
             >
@@ -103,6 +112,13 @@ const Header: React.FC<ContainerProps> = ({
               {/* Content */}
               <div className="relative px-4 py-4">
                 <div className="flex flex-col gap-y-2">
+                  <Button
+                    size="sm"
+                    href="/about"
+                    className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all duration-300 ease-in-out px-4 py-2 rounded-full font-medium w-full text-left"
+                  >
+                    About
+                  </Button>
                   <Button
                     size="sm"
                     variant="text"

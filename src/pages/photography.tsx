@@ -65,7 +65,7 @@ const Photography: React.FC<PhotographyProps> = (props: PhotographyProps) => {
               Framing Moments
             </Typography>
             <Typography
-              variant="h3"
+              variant="h5"
               fontWeight="normal"
               className="mb-12 text-gray-700 max-w-2xl leading-loose"
               fontFamily="primary"
