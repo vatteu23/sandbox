@@ -38,12 +38,12 @@ const Porjects: PorjectProps[] = [
     description:
       "Leading frontend development across multiple products including the main marketing website, internal evaluation tools, and customer-facing platforms for AI data labeling used by Fortune 500 companies.",
     achievements: [
+      "Built Labelbox Evaluation Studio product with 2-person team, creating model performance visualization tools. Read about it in the <a href='https://labelbox.com/blog/introducing-labelbox-evaluation-studio-drive-agi-advancements-with-real-time-feedback-on-model-performance/' target='_blank' rel='noopener noreferrer' style='color: #3b82f6; transition: all 0.2s ease-in-out; padding: 0 0.25rem; font-weight: 500; display: inline-block; border-bottom: 2px solid #e5e7eb; text-decoration: none;'>product launch blog</a>",
       "Migrated entire labelbox.com from Material UI to Tailwind CSS, improving performance and maintainability",
       "Built complex CMS structures enabling marketing team to autonomously update content with zero developer dependency",
       "Created high-performance pages using Next.js App Router with hybrid static/dynamic rendering",
       "Implemented advanced animations using GSAP and Framer Motion in client components",
       "Developed alignerr.com from ground up using custom Sanity CMS, delivering full-stack solution",
-      "Built internal evals product with 2-person team, creating model performance visualization tools",
       "Implemented multi-modal data visualization supporting video, audio, text, and image formats",
       "Maintained GTM implementation and ensured SEO optimization across all projects",
     ],
@@ -692,7 +692,9 @@ export default function Home() {
                           className="text-gray-700"
                           fontFamily="primary"
                         >
-                          {achievement}
+                          <span
+                            dangerouslySetInnerHTML={{ __html: achievement }}
+                          />
                         </Typography>
                       </div>
                     ))}
