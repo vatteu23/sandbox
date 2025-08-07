@@ -117,26 +117,20 @@ const Porjects: PorjectProps[] = [
     role: "Web Developer",
     year: "June, 2016 - May, 2017",
     description:
-      "Developed data visualization tools and web applications for political research and public policy analysis at Northern Illinois University.",
+      "Core developer for data visualization tools supporting the 60by25 education initiative at Northern Illinois University, focused on tracking progress towards nationwide 60% graduation rate goal by 2025.",
     achievements: [
-      "Created interactive dashboards for election data analysis",
-      "Built responsive websites viewed by 50,000+ researchers annually",
-      "Developed custom CMS for policy research publications",
-      "Improved site performance by 60% through optimization",
+      "Developed interactive dashboards visualizing student graduation rates across different age groups and demographics",
+      "Implemented complex data analysis tools using D3.js and C# MVC architecture",
+      "Built responsive visualization platform accessed by education researchers and policy makers",
+      "Created comprehensive data filtering system for multi-dimensional analysis of educational metrics",
     ],
-    technologies: [
-      "JavaScript",
-      "D3.js",
-      "PHP",
-      "MySQL",
-      "WordPress",
-      "Bootstrap",
-    ],
-    teamSize: "Team of 2 developers with academic researchers",
+    technologies: ["D3.js", "C#", "SQL", "MVC", "JavaScript", "Bootstrap"],
+    teamSize:
+      "Team of 2 developers collaborating with researchers and data analysts",
     highlights: [
-      "Visualized complex political and economic datasets",
-      "Collaborated with PhD researchers on data presentation",
-      "Built tools used by government agencies and academic institutions",
+      "Visualized educational datasets for the 60by25 initiative tracking graduation rates",
+      "Collaborated with researchers to create intuitive data exploration tools",
+      "Built analysis platform used by education stakeholders and government agencies",
     ],
   },
 ];
@@ -157,7 +151,7 @@ const Freelance: PorjectProps[] = [
     ],
     technologies: [
       "React",
-      "Gatsby",
+      "Firebase",
       "Contentful",
       "GSAP",
       "Styled Components",
@@ -169,31 +163,11 @@ const Freelance: PorjectProps[] = [
     ],
   },
   {
-    name: "Boodh",
-    link: "https://www.boodh.org/",
-    src: "/images/them.svg",
-    role: "Full Stack Developer",
-    year: "October, 2020",
-    description:
-      "Created digital platform for nonprofit organization focused on education and community development in underserved regions.",
-    achievements: [
-      "Built donation platform processing $100K+ annually",
-      "Created volunteer management system used by 500+ volunteers",
-      "Designed multilingual interface supporting 3 languages",
-    ],
-    technologies: ["Next.js", "Stripe", "Airtable", "Vercel", "Tailwind CSS"],
-    highlights: [
-      "Integrated payment processing and donor management",
-      "Built admin dashboard for program tracking",
-      "Optimized for low-bandwidth internet connections",
-    ],
-  },
-  {
     name: "Earthbound Adventures",
     link: "https://incatrailhikes.com/",
     src: "/images/them.svg",
     role: "Full Stack Developer",
-    year: "May, 2019",
+    year: "May, 2017",
     description:
       "Developed booking platform and marketing website for adventure tourism company offering hiking expeditions in Peru.",
     achievements: [
@@ -201,7 +175,7 @@ const Freelance: PorjectProps[] = [
       "Created interactive itinerary builder for custom trips",
       "Implemented multi-currency support for international customers",
     ],
-    technologies: ["Vue.js", "Node.js", "MongoDB", "Stripe", "Mapbox"],
+    technologies: ["React", "Firebase"],
     highlights: [
       "Real-time availability and pricing system",
       "Integration with local tour operator APIs",
@@ -212,31 +186,10 @@ const Freelance: PorjectProps[] = [
 
 export default function Home() {
   const component = useRef<any>(null);
-  const [activeTab, setActiveTab] = useState<TabType>("about");
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [generatedContent, setGeneratedContent] = useState("");
   const [selectedProject, setSelectedProject] = useState<PorjectProps | null>(
     null
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Clear predefined content with proper formatted text
-  const aboutContent =
-    "Web developer. Photographer. Car enthusiast. I craft clean, user-friendly web experiences and capture timeless portraits. Passionate about creating something special? <link>Let's chat</link>";
-
-  const experienceContent =
-    "Over 6 years of professional experience in web development, working with companies like Labelbox, Triple Crown Products, and the Center for Governmental Studies. Specialized in React, Next.js, and modern frontend technologies. <link>Ask for details</link>";
-
-  const projectsContent =
-    "Worked on diverse projects from e-commerce platforms to data annotation tools. Created innovative solutions for clients including Them Studios, Boodh, and Earthbound Adventures. Focused on user-friendly interfaces and efficient code.";
-
-  // Simplify the experience details content to avoid any potential formatting issues
-  const detailedContent =
-    "Over 6 years of professional experience in web development:\n\n" +
-    "• Labelbox (2021-Present): Developed UI components for AI data labeling platform\n" +
-    "• Triple Crown Products (2017-2021): Led e-commerce site redesign, increasing conversion by 32%\n" +
-    "• Center for Governmental Studies (2016-2017): Created data visualization dashboards\n\n" +
-    "Technical skills include React, TypeScript, Next.js, Node.js, and modern CSS frameworks.";
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -264,45 +217,6 @@ export default function Home() {
     }, component);
     return () => ctx.revert();
   }, []);
-
-  // Effect for typing animation - simplified for reliability
-  useEffect(() => {
-    // First, determine which content to show based on active tab
-    const contentToShow =
-      activeTab === "about"
-        ? aboutContent
-        : activeTab === "experience"
-        ? experienceContent
-        : projectsContent;
-
-    // Reset content and set generating state
-    setGeneratedContent("");
-    setIsGenerating(true);
-
-    // Create a timer ID for cleanup
-    let timerId: NodeJS.Timeout;
-    let currentPosition = 0;
-
-    // Function to add the next character
-    const addNextChar = () => {
-      if (currentPosition < contentToShow.length) {
-        setGeneratedContent(contentToShow.substring(0, currentPosition + 1));
-        currentPosition++;
-        timerId = setTimeout(addNextChar, 20);
-      } else {
-        setIsGenerating(false);
-      }
-    };
-
-    // Start the typing animation
-    addNextChar();
-
-    // Cleanup function
-    return () => {
-      if (timerId) clearTimeout(timerId);
-      setIsGenerating(false);
-    };
-  }, [activeTab, aboutContent, experienceContent, projectsContent]);
 
   const renderLetters = (text: string) => {
     return text.split("").map((letter, index) => {
