@@ -33,9 +33,9 @@ const Header: React.FC<ContainerProps> = ({
     <div className="flex justify-center sticky top-0 z-50">
       <div
         className={cn(
-          "w-full sm:w-auto inline-flex items-center transition-all duration-300 rounded-full my-6",
+          "w-full sm:w-auto inline-flex items-center transition-all duration-300 rounded-full my-3 md:my-6",
           scrolled
-            ? "bg-stone-50/30 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-saturate-150 translate-y-1 px-4 sm:px-6 border border-stone-300"
+            ? "bg-stone-50/30 backdrop-blur-xl  backdrop-saturate-150 translate-y-1 px-4 sm:px-6 shadow-2xl w-[90%] sm:w-auto"
             : "bg-transparent translate-y-0 px-4 sm:px-8",
           className
         )}

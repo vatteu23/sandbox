@@ -26,8 +26,6 @@ type PorjectProps = {
   highlights?: string[];
 };
 
-type TabType = "about" | "experience" | "projects";
-
 const Porjects: PorjectProps[] = [
   {
     name: "Labelbox",
@@ -36,7 +34,7 @@ const Porjects: PorjectProps[] = [
     role: "Sr. Web Developer and Designer",
     year: "Nov, 2021 - Present",
     description:
-      "Leading frontend development across multiple products including the main marketing website, internal evaluation tools, and customer-facing platforms for AI data labeling used by Fortune 500 companies.",
+      "Led full-stack development across multiple products, including the main marketing website and customer platforms for AI data labeling used by Fortune 500 companies.",
     achievements: [
       "Built Labelbox Evaluation Studio product with 2-person team, creating model performance visualization tools. Read about it in the <a href='https://labelbox.com/blog/introducing-labelbox-evaluation-studio-drive-agi-advancements-with-real-time-feedback-on-model-performance/' target='_blank' rel='noopener noreferrer' style='color: #3b82f6; transition: all 0.2s ease-in-out; padding: 0 0.25rem; font-weight: 500; display: inline-block; border-bottom: 2px solid #e5e7eb; text-decoration: none;'>product launch blog</a>",
       "Migrated entire labelbox.com from Material UI to Tailwind CSS, improving performance and maintainability",
@@ -76,7 +74,7 @@ const Porjects: PorjectProps[] = [
     role: "Full Stack Developer",
     year: "July, 2017 - Oct, 2021",
     description:
-      "Led full-stack development of e-commerce platforms and internal systems using C# .NET, .NET Core API, and SQL, while successfully migrating parts of the website to React with Tailwind CSS. Focused on performance optimization, SEO enhancement, and creating maintainable solutions for sales and marketing teams.",
+      "Led full-stack development of e-commerce platforms and internal systems, migrating parts of the website to React with Tailwind CSS. Focused on performance optimization, SEO enhancement, and creating maintainable solutions for marketing team.",
     achievements: [
       "Developed custom webstores and e-commerce UIs with a reusable framework for different customers",
       "Created complex stored procedures for efficient data management and reporting",
@@ -117,12 +115,12 @@ const Porjects: PorjectProps[] = [
     role: "Web Developer",
     year: "June, 2016 - May, 2017",
     description:
-      "Core developer for data visualization tools supporting the 60by25 education initiative at Northern Illinois University, focused on tracking progress towards nationwide 60% graduation rate goal by 2025.",
+      "Core developer for interactive data visualization tools, collaborating with researchers and policymakers.",
     achievements: [
-      "Developed interactive dashboards visualizing student graduation rates across different age groups and demographics",
       "Implemented complex data analysis tools using D3.js and C# MVC architecture",
-      "Built responsive visualization platform accessed by education researchers and policy makers",
-      "Created comprehensive data filtering system for multi-dimensional analysis of educational metrics",
+      "Built a responsive platform that visualized student graduation rates and other educational metrics",
+      "Created interactive dashboards for data exploration and analysis",
+      "Developed comprehensive filtering system for multi-dimensional data analysis",
     ],
     technologies: ["D3.js", "C#", "SQL", "MVC", "JavaScript", "Bootstrap"],
     teamSize:
@@ -510,6 +508,13 @@ export default function Home() {
                 className="border border-stone-600 text-white px-8 py-4 rounded-lg font-medium hover:border-stone-500 hover:bg-stone-800 transition-all duration-200 inline-block"
               >
                 View photography
+              </Link>
+              <Link
+                href="/resume-august-2025.pdf"
+                target="_blank"
+                className="border border-stone-600 text-white px-8 py-4 rounded-lg font-medium hover:border-stone-500 hover:bg-stone-800 transition-all duration-200 inline-block"
+              >
+                View resume
               </Link>
             </div>
           </div>
