@@ -498,7 +498,8 @@ export default function Home() {
             </Typography>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="mailto:hello@udayvatti.com"
+                target="_blank"
+                href="https://www.linkedin.com/in/vattiu/"
                 className="bg-stone-50 text-neutral-900 px-8 py-4 rounded-lg font-medium hover:bg-stone-300 transition-all duration-200 inline-block"
               >
                 Get in touch

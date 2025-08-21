@@ -2,6 +2,7 @@ import { cn } from "@/functions/cn";
 import React, { useEffect, useState } from "react";
 import Button from "./Button";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/router";
 
 interface ContainerProps {
   className?: string;
@@ -14,8 +15,13 @@ const Header: React.FC<ContainerProps> = ({
   bgColor,
   lightText,
 }) => {
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const isActive = (path: string) => {
+    return router.pathname === path;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +41,7 @@ const Header: React.FC<ContainerProps> = ({
         className={cn(
           "w-full sm:w-auto inline-flex items-center transition-all duration-300 rounded-full my-3 md:my-6",
           scrolled
-            ? "bg-stone-50/30 backdrop-blur-xl  backdrop-saturate-150 translate-y-1 px-4 sm:px-6 shadow-2xl w-[90%] sm:w-auto"
+            ? "bg-stone-50 border border-stone-300 translate-y-1 px-4 sm:px-6 shadow-2xl w-[90%] sm:w-auto"
             : "bg-transparent translate-y-0 px-4 sm:px-8",
           className
         )}
@@ -43,7 +49,12 @@ const Header: React.FC<ContainerProps> = ({
         <nav className="flex flex-row justify-between items-center transition-all duration-300 py-3 gap-x-4 sm:gap-x-8 w-full sm:w-auto">
           <Button
             href="/"
-            className="text-xl font-medium hover:bg-stone-300 px-3 py-1.5 rounded-full transition-all duration-300 ease-in-out"
+            className={cn(
+              "text-xl font-medium hover:bg-stone-300 px-3 py-1.5 rounded-full transition-all duration-300 ease-in-out",
+              isActive("/")
+                ? "text-neutral-900 bg-stone-300"
+                : "text-neutral-600 hover:text-neutral-900 hover:bg-stone-300"
+            )}
             color="light"
           >
             UV
@@ -68,7 +79,12 @@ const Header: React.FC<ContainerProps> = ({
               variant="text"
               color="dark"
               href="/about"
-              className="text-neutral-600 hover:text-neutral-900 hover:bg-stone-300 transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium"
+              className={cn(
+                "transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium",
+                isActive("/about")
+                  ? "text-neutral-900 bg-stone-300"
+                  : "text-neutral-600 hover:text-neutral-900 hover:bg-stone-300"
+              )}
             >
               About
             </Button>
@@ -77,7 +93,12 @@ const Header: React.FC<ContainerProps> = ({
               variant="text"
               color="dark"
               href="/photography"
-              className="text-neutral-600 hover:text-neutral-900 hover:bg-stone-300 transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium"
+              className={cn(
+                "transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium",
+                isActive("/photography")
+                  ? "text-neutral-900 bg-stone-300"
+                  : "text-neutral-600 hover:text-neutral-900 hover:bg-stone-300"
+              )}
             >
               Photography
             </Button>
@@ -115,7 +136,12 @@ const Header: React.FC<ContainerProps> = ({
                   <Button
                     size="sm"
                     href="/about"
-                    className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all duration-300 ease-in-out px-4 py-2 rounded-full font-medium w-full text-left"
+                    className={cn(
+                      "transition-all duration-300 ease-in-out px-4 py-2 rounded-full font-medium w-full text-left",
+                      isActive("/about")
+                        ? "text-gray-900 bg-gray-100"
+                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                    )}
                   >
                     About
                   </Button>
@@ -124,7 +150,12 @@ const Header: React.FC<ContainerProps> = ({
                     variant="text"
                     color="dark"
                     href="/photography"
-                    className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all duration-300 ease-in-out px-4 py-2 rounded-full font-medium w-full text-left"
+                    className={cn(
+                      "transition-all duration-300 ease-in-out px-4 py-2 rounded-full font-medium w-full text-left",
+                      isActive("/photography")
+                        ? "text-gray-900 bg-gray-100"
+                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                    )}
                   >
                     Photography
                   </Button>
