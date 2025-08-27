@@ -12,6 +12,7 @@ interface HeadWithMetasProps extends MetaTags {
   canonical?: boolean;
   url?: string;
   children?: React.ReactNode;
+  themeColor?: string;
 }
 
 const InBody = ({ children }) => ReactDOM.createPortal(children, document.body);
@@ -43,12 +44,14 @@ export const HeadWithMetas = ({
   noIndex,
   children,
   canonical,
+  themeColor = "#6b21a8", // Tailwind purple-800
 }: HeadWithMetasProps) => {
   return (
     <Head>
       <meta charSet="utf-8" />
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta name="theme-color" content={themeColor} />
 
       {noIndex && <meta name="googlebot" content="noindex" />}
 
