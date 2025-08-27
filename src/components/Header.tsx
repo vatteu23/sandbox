@@ -66,9 +66,9 @@ const Header: React.FC<ContainerProps> = ({
             className="sm:hidden p-2 rounded-full hover:bg-purple-200 transition-all duration-300"
           >
             {isMenuOpen ? (
-              <XMarkIcon className="h-6 w-6 text-gray-600" />
+              <XMarkIcon className="h-6 w-6 text-purple-600" />
             ) : (
-              <Bars3Icon className="h-6 w-6 text-gray-600" />
+              <Bars3Icon className="h-6 w-6 text-purple-600" />
             )}
           </button>
 
@@ -124,7 +124,7 @@ const Header: React.FC<ContainerProps> = ({
           >
             <div className="relative">
               {/* Backdrop blur overlay */}
-              <div className="absolute inset-0 -z-10 bg-stone-50/95 rounded-3xl border border-stone-300 shadow-lg" />
+              <div className="absolute inset-0 -z-10 bg-purple-50 rounded-3xl border border-purple-200 shadow-lg" />
               <div
                 className="absolute inset-0 -z-10 backdrop-blur-xl rounded-3xl"
                 aria-hidden="true"
@@ -139,8 +139,8 @@ const Header: React.FC<ContainerProps> = ({
                     className={cn(
                       "transition-all duration-300 ease-in-out px-4 py-2 rounded-full font-medium w-full text-left",
                       isActive("/about")
-                        ? "text-gray-900 bg-gray-100"
-                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                        ? "text-purple-800 bg-purple-100"
+                        : "text-purple-600 hover:text-purple-900 hover:bg-purple-100"
                     )}
                   >
                     About
@@ -153,8 +153,8 @@ const Header: React.FC<ContainerProps> = ({
                     className={cn(
                       "transition-all duration-300 ease-in-out px-4 py-2 rounded-full font-medium w-full text-left",
                       isActive("/photography")
-                        ? "text-gray-900 bg-gray-100"
-                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                        ? "text-purple-800 bg-purple-100"
+                        : "text-purple-600 hover:text-purple-900 hover:bg-purple-100"
                     )}
                   >
                     Photography
@@ -164,7 +164,7 @@ const Header: React.FC<ContainerProps> = ({
                     color="dark"
                     href="https://www.linkedin.com/in/vattiu/"
                     target="_blank"
-                    className="text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 ease-in-out px-4 py-2 rounded-full font-medium w-full text-left"
+                    className="text-purple-900 hover:bg-purple-800 hover:text-purple-200 transition-all duration-300 ease-in-out px-4 py-2 rounded-full font-medium w-full text-left"
                   >
                     Get in touch
                   </Button>
