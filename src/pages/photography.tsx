@@ -13,6 +13,7 @@ import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import HeadWithMetas from "@/components/HeadWithMetas";
+import Link from "next/link";
 
 type PhotographyProps = {
   photos: any[];
@@ -38,7 +39,7 @@ const Photography: React.FC<PhotographyProps> = (props: PhotographyProps) => {
   const [index, setIndex] = useState(-1);
 
   return (
-    <Layout className="bg-stone-100 min-h-screen">
+    <Layout className="bg-purple-50 min-h-screen">
       <HeadWithMetas
         title="Photography | Uday Vatti"
         description="A collection of moments captured through my lens. Photography portfolio by Uday Vatti."
@@ -46,19 +47,19 @@ const Photography: React.FC<PhotographyProps> = (props: PhotographyProps) => {
         image="/images/uv-port.png"
       />
       <Container>
-        <div className="py-20 md:py-32">
+        <div className="pt-20 md:pt-32 pb-12">
           <div className="max-w-4xl">
             <Typography
               variant="h5"
               fontWeight="semibold"
-              className="mb-6 text-gray-600 tracking-wide uppercase"
+              className="mb-6 text-purple-600 tracking-wide uppercase"
               fontFamily="mono"
             >
               Photography
             </Typography>
             <Typography
               variant="h1"
-              className="!leading-tight mb-8 text-gray-900"
+              className="!leading-tight mb-8 text-purple-800"
               fontWeight="bold"
               fontFamily="display"
             >
@@ -67,7 +68,7 @@ const Photography: React.FC<PhotographyProps> = (props: PhotographyProps) => {
             <Typography
               variant="h5"
               fontWeight="normal"
-              className="mb-12 text-gray-700 max-w-2xl leading-loose"
+              className="mb-12 text-purple-600 max-w-2xl leading-loose"
               fontFamily="primary"
             >
               Capturing life's fleeting moments through the lens, one frame at a
@@ -75,7 +76,7 @@ const Photography: React.FC<PhotographyProps> = (props: PhotographyProps) => {
             </Typography>
           </div>
         </div>
-        <div className="pb-20">
+        <div className="pb-20 ">
           {gallery.length > 0 && (
             <PhotoAlbum
               layout="columns"
@@ -86,7 +87,7 @@ const Photography: React.FC<PhotographyProps> = (props: PhotographyProps) => {
                 if (containerWidth < 1024) return 2;
                 return 3;
               }}
-              className="mt-12"
+              // className="mt-12"
               onClick={({ index }) => setIndex(index)}
             />
           )}
@@ -101,6 +102,53 @@ const Photography: React.FC<PhotographyProps> = (props: PhotographyProps) => {
           />
         </div>
       </Container>
+
+      {/* Figma-style CTA section */}
+      <div className="py-20 bg-purple-900">
+        <Container>
+          <div className="text-center max-w-3xl mx-auto">
+            <Typography
+              variant="h2"
+              fontWeight="light"
+              className="text-purple-200 mb-6"
+              fontFamily="primary"
+            >
+              Let's work together
+            </Typography>
+            <Typography
+              variant="h6"
+              className="text-purple-100 mb-8 leading-relaxed"
+              fontFamily="primary"
+              fontWeight="light"
+            >
+              Interested in collaborating on your next project? I'd love to hear
+              about your ideas and help bring them to life.
+            </Typography>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                target="_blank"
+                href="https://www.linkedin.com/in/vattiu/"
+                className="bg-purple-50 text-purple-800 px-8 py-4 rounded-lg font-medium hover:bg-purple-200  transition-all duration-300 inline-block"
+              >
+                Get in touch
+              </Link>
+              <Link
+                href="/photography"
+                className="border border-purple-200 text-white px-8 py-4 rounded-lg font-medium  hover:bg-purple-200 hover:text-purple-800 transition-all duration-300 inline-block"
+              >
+                View photography
+              </Link>
+              <Link
+                href="/resume-august-2025.pdf"
+                target="_blank"
+                className="border border-purple-200 text-white px-8 py-4 rounded-lg font-medium hover:bg-purple-200 hover:text-purple-800 transition-all duration-300 inline-block"
+              >
+                View resume
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </div>
     </Layout>
   );
 };

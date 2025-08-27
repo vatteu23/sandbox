@@ -36,7 +36,7 @@ const Porjects: PorjectProps[] = [
     description:
       "Led full-stack development across multiple products, including the main marketing website and customer platforms for AI data labeling used by Fortune 500 companies.",
     achievements: [
-      "Built Labelbox Evaluation Studio product with 2-person team, creating model performance visualization tools. Read about it in the <a href='https://labelbox.com/blog/introducing-labelbox-evaluation-studio-drive-agi-advancements-with-real-time-feedback-on-model-performance/' target='_blank' rel='noopener noreferrer' style='color: #3b82f6; transition: all 0.2s ease-in-out; padding: 0 0.25rem; font-weight: 500; display: inline-block; border-bottom: 2px solid #e5e7eb; text-decoration: none;'>product launch blog</a>",
+      "Built Labelbox Evaluation Studio product with 2-person team, creating model performance visualization tools. Read about it in the <a href='https://labelbox.com/blog/introducing-labelbox-evaluation-studio-drive-agi-advancements-with-real-time-feedback-on-model-performance/' target='_blank' rel='noopener noreferrer' style='color: #800080; transition: all 0.2s ease-in-out; padding: 0 0.25rem; font-weight: 500; display: inline-block; border-bottom: 2px solid #e5e7eb; text-decoration: none;'>product launch blog</a>",
       "Migrated entire labelbox.com from Material UI to Tailwind CSS, improving performance and maintainability",
       "Built complex CMS structures enabling marketing team to autonomously update content with zero developer dependency",
       "Created high-performance pages using Next.js App Router with hybrid static/dynamic rendering",
@@ -245,7 +245,7 @@ export default function Home() {
   };
 
   return (
-    <Layout className="bg-stone-100 min-h-screen">
+    <Layout className="bg-purple-50 min-h-screen">
       <HeadWithMetas
         title="Uday Vatti"
         description="Uday Vatti is a web developer and a designer at Labelbox."
@@ -258,14 +258,14 @@ export default function Home() {
             <Typography
               variant="h5"
               fontWeight="semibold"
-              className="mb-6 text-gray-600 tracking-wide uppercase"
+              className="mb-6 text-purple-600 tracking-wide uppercase"
               fontFamily="mono"
             >
               Hello, I'm
             </Typography>
             <Typography
               variant="h1"
-              className="!leading-tight mb-8 text-gray-900 text-5xl md:text-6xl lg:text-7xl"
+              className="!leading-tight mb-8 text-purple-800 text-5xl md:text-6xl lg:text-7xl"
               fontWeight="bold"
               fontFamily="display"
             >
@@ -274,12 +274,12 @@ export default function Home() {
             <Typography
               variant="h3"
               fontWeight="normal"
-              className="mb-12 text-gray-700 max-w-2xl mx-auto leading-loose text-lg md:text-2xl"
+              className="mb-12 text-purple-600 max-w-2xl mx-auto leading-loose text-lg md:text-2xl"
               fontFamily="primary"
             >
               Sr. Web Developer and Designer crafting digital experiences at{" "}
               <Link
-                className=" text-gray-900 transition-all duration-200 ease-in-out px-4 py-1 font-medium inline-block mx-1 border-b-2 border-gray-200 hover:border-gray-500"
+                className=" text-purple-800 transition-all duration-200 ease-in-out px-4 py-1 font-medium inline-block mx-1 border-b-2 border-purple-200 hover:border-purple-500"
                 href="https://www.labelbox.com/"
               >
                 Labelbox
@@ -288,16 +288,16 @@ export default function Home() {
 
             {/* Figma-style skill tags */}
             <div className="flex flex-wrap justify-center gap-3 mb-12">
-              <span className="px-4 py-2 bg-stone-300/50 rounded-full text-xs md:text-sm font-medium text-neutral-700 hover:bg-stone-200 transition-colors font-mono">
+              <span className="px-4 py-2 bg-purple-800 rounded-full text-xs md:text-sm font-medium text-purple-200 hover:bg-purple-800 transition-colors font-mono">
                 React & Next.js
               </span>
-              <span className="px-4 py-2 bg-stone-300/50 rounded-full text-xs md:text-sm font-medium text-neutral-700 hover:bg-stone-200 transition-colors font-mono">
+              <span className="px-4 py-2 bg-purple-800 rounded-full text-xs md:text-sm font-medium text-purple-200 hover:bg-purple-800 transition-colors font-mono">
                 UI/UX Design
               </span>
-              <span className="px-4 py-2 bg-stone-300/50 rounded-full text-xs md:text-sm font-medium text-neutral-700 hover:bg-stone-200 transition-colors font-mono">
+              <span className="px-4 py-2 bg-purple-800 rounded-full text-xs md:text-sm font-medium text-purple-200 hover:bg-purple-800 transition-colors font-mono">
                 TypeScript
               </span>
-              <span className="px-4 py-2 bg-stone-300/50 rounded-full text-xs md:text-sm font-medium text-neutral-700 hover:bg-stone-200 transition-colors font-mono">
+              <span className="px-4 py-2 bg-purple-800 rounded-full text-xs md:text-sm font-medium text-purple-200 hover:bg-purple-800 transition-colors font-mono">
                 Design Systems
               </span>
             </div>
@@ -305,20 +305,21 @@ export default function Home() {
         </Container>
       </div>
 
-      <div className="py-20 bg-stone-200">
+      <div className="py-20 bg-purple-100">
         <Container>
           <div className="text-center mb-16">
             <Typography
-              fontWeight="light"
-              variant="h2"
-              className="text-gray-900 mb-4"
-              fontFamily="primary"
+              variant="h5"
+              fontWeight="semibold"
+              className="mb-6 text-purple-600 tracking-wide uppercase"
+              fontFamily="mono"
             >
               Professional Experience
             </Typography>
+
             <Typography
               variant="h6"
-              className="text-gray-600 max-w-2xl mx-auto"
+              className="text-purple-600 max-w-2xl mx-auto"
               fontFamily="primary"
               fontWeight="light"
             >
@@ -331,7 +332,7 @@ export default function Home() {
               return (
                 <div
                   onClick={() => openProjectModal(project)}
-                  className="group cursor-pointer bg-stone-50 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 ease-out border border-stone-100 hover:border-stone-200"
+                  className="group cursor-pointer bg-purple-50 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 ease-out border border-purple-200 "
                   key={index}
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -339,7 +340,7 @@ export default function Home() {
                       <Typography
                         variant="h4"
                         fontWeight="normal"
-                        className="text-neutral-900 mb-2 group-hover:text-neutral-700 transition-colors"
+                        className="text-purple-800 mb-2 group-hover:text-purple-800/90 transition-colors"
                         fontFamily="primary"
                       >
                         {project.name}
@@ -347,14 +348,14 @@ export default function Home() {
                       <Typography
                         variant="h6"
                         fontWeight="normal"
-                        className="text-neutral-600 mb-3"
+                        className="text-purple-700 mb-3"
                         fontFamily="primary"
                       >
                         {project.role}
                       </Typography>
                       <Typography
                         variant="p"
-                        className="text-neutral-500 text-sm mb-2"
+                        className="text-purple-600 text-sm mb-2"
                         fontFamily="primary"
                       >
                         {project.year}
@@ -362,7 +363,7 @@ export default function Home() {
                       {project.description && (
                         <Typography
                           variant="p"
-                          className="text-neutral-600 text-sm line-clamp-2"
+                          className="text-purple-600 text-sm line-clamp-2"
                           fontFamily="primary"
                         >
                           {project.description}
@@ -370,17 +371,17 @@ export default function Home() {
                       )}
                     </div>
                     <div className="flex-shrink-0 flex gap-2">
-                      <div className="w-10 h-10 bg-stone-100 rounded-full flex items-center justify-center group-hover:bg-stone-200 transition-all duration-300 transform group-hover:scale-105">
-                        <EyeIcon className="w-5 h-5 text-stone-600 group-hover:text-stone-700" />
+                      <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center group-hover:bg-purple-800 transition-all duration-300 transform group-hover:scale-105">
+                        <EyeIcon className="w-5 h-5 text-purple-600 group-hover:text-purple-200" />
                       </div>
                       <div
                         onClick={(e) => {
                           e.stopPropagation();
                           handleUrlClick(project.link);
                         }}
-                        className="w-10 h-10 bg-stone-100 rounded-full flex items-center justify-center hover:bg-stone-200 transition-all duration-300 transform hover:scale-105 hover:rotate-12"
+                        className="w-10 h-10  bg-purple-100 rounded-full flex items-center justify-center hover:bg-purple-800 text-purple-600 hover:text-purple-200 transition-all duration-300 transform hover:scale-105 hover:rotate-12"
                       >
-                        <ArrowTopRightOnSquareIcon className="w-5 h-5 text-stone-600 hover:text-stone-700" />
+                        <ArrowTopRightOnSquareIcon className="w-5 h-5 " />
                       </div>
                     </div>
                   </div>
@@ -390,20 +391,20 @@ export default function Home() {
           </div>
         </Container>
       </div>
-      <div className="py-20 bg-stone-100">
+      <div className="py-20 bg-purple-50">
         <Container>
           <div className="text-center mb-16">
             <Typography
-              fontWeight="light"
-              variant="h2"
-              className="text-neutral-900 mb-4"
-              fontFamily="primary"
+              variant="h5"
+              fontWeight="semibold"
+              className="mb-6 text-purple-600 tracking-wide uppercase"
+              fontFamily="mono"
             >
               Freelance Projects
             </Typography>
             <Typography
               variant="h6"
-              className="text-neutral-600 max-w-2xl mx-auto"
+              className="text-purple-600 max-w-2xl mx-auto"
               fontFamily="primary"
               fontWeight="light"
             >
@@ -415,7 +416,7 @@ export default function Home() {
               return (
                 <div
                   onClick={() => openProjectModal(project)}
-                  className="group cursor-pointer bg-stone-200 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 ease-out border border-stone-100 hover:border-stone-200 "
+                  className="group cursor-pointer bg-purple-100 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 ease-out border border-purple-200 "
                   key={index}
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -423,7 +424,7 @@ export default function Home() {
                       <Typography
                         variant="h4"
                         fontWeight="normal"
-                        className="text-neutral-900 mb-2 group-hover:text-neutral-700 transition-colors"
+                        className="text-purple-800 mb-2 group-hover:text-purple-800/90 transition-colors"
                         fontFamily="primary"
                       >
                         {project.name}
@@ -431,14 +432,14 @@ export default function Home() {
                       <Typography
                         variant="h6"
                         fontWeight="normal"
-                        className="text-neutral-600 mb-3"
+                        className="text-purple-600 mb-3"
                         fontFamily="primary"
                       >
                         {project.role}
                       </Typography>
                       <Typography
                         variant="p"
-                        className="text-neutral-500 text-sm mb-2"
+                        className="text-purple-600 text-sm mb-2"
                         fontFamily="primary"
                       >
                         {project.year}
@@ -446,7 +447,7 @@ export default function Home() {
                       {project.description && (
                         <Typography
                           variant="p"
-                          className="text-neutral-600 text-sm line-clamp-2"
+                          className="text-purple-600 text-sm line-clamp-2"
                           fontFamily="primary"
                         >
                           {project.description}
@@ -454,17 +455,17 @@ export default function Home() {
                       )}
                     </div>
                     <div className="flex-shrink-0 flex gap-2">
-                      <div className="w-10 h-10 bg-stone-100 rounded-full flex items-center justify-center group-hover:bg-stone-50 transition-all duration-300 transform group-hover:scale-105 border border-stone-200">
-                        <EyeIcon className="w-5 h-5 text-stone-600 group-hover:text-stone-700" />
+                      <div className="w-10 h-10 bg-purple-50 rounded-full flex items-center justify-center group-hover:bg-purple-800 transition-all duration-300 transform group-hover:scale-105 border border-purple-200">
+                        <EyeIcon className="w-5 h-5 text-purple-600 group-hover:text-purple-200" />
                       </div>
                       <div
                         onClick={(e) => {
                           e.stopPropagation();
                           handleUrlClick(project.link);
                         }}
-                        className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:rotate-12 border border-gray-200"
+                        className="w-10 h-10 bg-purple-50 rounded-full flex   items-center justify-center hover:bg-purple-800 text-purple-600 hover:text-purple-200 transition-all duration-300 transform hover:scale-105 hover:rotate-12 border border-purple-200"
                       >
-                        <ArrowTopRightOnSquareIcon className="w-5 h-5 text-gray-600 hover:text-gray-700" />
+                        <ArrowTopRightOnSquareIcon className="w-5 h-5 " />
                       </div>
                     </div>
                   </div>
@@ -476,20 +477,20 @@ export default function Home() {
       </div>
 
       {/* Figma-style CTA section */}
-      <div className="py-20 bg-neutral-900">
+      <div className="py-20 bg-purple-900">
         <Container>
           <div className="text-center max-w-3xl mx-auto">
             <Typography
               variant="h2"
               fontWeight="light"
-              className="text-stone-100 mb-6"
+              className="text-purple-200 mb-6"
               fontFamily="primary"
             >
               Let's work together
             </Typography>
             <Typography
               variant="h6"
-              className="text-stone-200 mb-8 leading-relaxed"
+              className="text-purple-100 mb-8 leading-relaxed"
               fontFamily="primary"
               fontWeight="light"
             >
@@ -500,20 +501,20 @@ export default function Home() {
               <Link
                 target="_blank"
                 href="https://www.linkedin.com/in/vattiu/"
-                className="bg-stone-50 text-neutral-900 px-8 py-4 rounded-lg font-medium hover:bg-stone-300 transition-all duration-200 inline-block"
+                className="bg-purple-50 text-purple-800 px-8 py-4 rounded-lg font-medium hover:bg-purple-200  transition-all duration-300 inline-block"
               >
                 Get in touch
               </Link>
               <Link
                 href="/photography"
-                className="border border-stone-600 text-white px-8 py-4 rounded-lg font-medium hover:border-stone-500 hover:bg-stone-800 transition-all duration-200 inline-block"
+                className="border border-purple-200 text-white px-8 py-4 rounded-lg font-medium  hover:bg-purple-200 hover:text-purple-800 transition-all duration-300 inline-block"
               >
                 View photography
               </Link>
               <Link
                 href="/resume-august-2025.pdf"
                 target="_blank"
-                className="border border-stone-600 text-white px-8 py-4 rounded-lg font-medium hover:border-stone-500 hover:bg-stone-800 transition-all duration-200 inline-block"
+                className="border border-purple-200 text-white px-8 py-4 rounded-lg font-medium hover:bg-purple-200 hover:text-purple-800 transition-all duration-300 inline-block"
               >
                 View resume
               </Link>
@@ -527,11 +528,11 @@ export default function Home() {
         {selectedProject && (
           <div className="relative">
             {/* Project Header */}
-            <div className="sticky top-0 p-8 py-6 border-b border-stone-100 bg-stone-300/30 backdrop-blur-2xl ">
+            <div className="sticky top-0 p-8 py-6 border-b border-purple-200 bg-purple-50/30 backdrop-blur-2xl ">
               <div className="absolute top-4 right-2">
                 <button
                   onClick={closeModal}
-                  className="bg-stone-100 text-stone-600 px-2 rounded-lg hover:bg-stone-200 transition-colors font-medium"
+                  className="bg-purple-100 text-purple-600 px-2 rounded-lg hover:bg-purple-200 transition-colors font-medium"
                 >
                   <XMarkIcon className="w-5 h-5" />
                 </button>
@@ -541,21 +542,21 @@ export default function Home() {
                   <Typography
                     variant="h3"
                     fontWeight="bold"
-                    className="text-neutral-900 mb-2"
+                    className="text-purple-800 mb-2"
                     fontFamily="primary"
                   >
                     {selectedProject.name}
                   </Typography>
                   <Typography
                     variant="h6"
-                    className="text-neutral-600 mb-2"
+                    className="text-purple-600 mb-2"
                     fontFamily="primary"
                   >
                     {selectedProject.role}
                   </Typography>
                   <Typography
                     variant="p"
-                    className="text-neutral-500"
+                    className="text-purple-600"
                     fontFamily="primary"
                   >
                     {selectedProject.year}
@@ -564,7 +565,7 @@ export default function Home() {
                 <div className="flex gap-2">
                   <button
                     onClick={() => handleUrlClick(selectedProject.link)}
-                    className="bg-neutral-900 text-stone-100 px-6 py-2 rounded-lg hover:bg-neutral-800 transition-colors font-medium"
+                    className="bg-purple-800 text-purple-200 px-6 py-2 rounded-lg hover:bg-purple-800/90 transition-colors font-medium"
                   >
                     Visit Website ↗
                   </button>
@@ -578,14 +579,14 @@ export default function Home() {
                 <Typography
                   variant="h6"
                   fontWeight="bold"
-                  className="text-gray-900 mb-3"
+                  className="text-purple-800 mb-3"
                   fontFamily="primary"
                 >
                   Overview
                 </Typography>
                 <Typography
                   variant="p"
-                  className="text-gray-700 leading-relaxed"
+                  className="text-purple-600 leading-relaxed"
                   fontFamily="primary"
                 >
                   {selectedProject.description}
@@ -598,7 +599,7 @@ export default function Home() {
                   <Typography
                     variant="h6"
                     fontWeight="bold"
-                    className="text-neutral-900 mb-4"
+                    className="text-purple-800 mb-4"
                     fontFamily="primary"
                   >
                     Key Achievements
@@ -606,10 +607,10 @@ export default function Home() {
                   <div className="grid gap-3">
                     {selectedProject.achievements.map((achievement, index) => (
                       <div key={index} className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-gray-400 rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-2 h-2 bg-purple-800 rounded-full mt-2 flex-shrink-0"></div>
                         <Typography
                           variant="p"
-                          className="text-gray-700"
+                          className="text-purple-600"
                           fontFamily="primary"
                         >
                           <span
@@ -628,7 +629,7 @@ export default function Home() {
                   <Typography
                     variant="h6"
                     fontWeight="bold"
-                    className="text-gray-900 mb-4"
+                    className="text-purple-800 mb-4"
                     fontFamily="primary"
                   >
                     Technologies Used
@@ -637,7 +638,7 @@ export default function Home() {
                     {selectedProject.technologies.map((tech, index) => (
                       <span
                         key={index}
-                        className="px-3 py-1 bg-stone-300/50 rounded-full text-sm text-neutral-700 font-medium font-mono"
+                        className="px-3 py-1 bg-purple-300/50 rounded-full text-sm text-purple-600 font-medium font-mono"
                       >
                         {tech}
                       </span>
@@ -652,14 +653,14 @@ export default function Home() {
                   <Typography
                     variant="h6"
                     fontWeight="bold"
-                    className="text-gray-900 mb-2"
+                    className="text-purple-800 mb-2"
                     fontFamily="primary"
                   >
                     Team Collaboration
                   </Typography>
                   <Typography
                     variant="p"
-                    className="text-gray-700"
+                    className="text-purple-600"
                     fontFamily="primary"
                   >
                     {selectedProject.teamSize}
@@ -673,7 +674,7 @@ export default function Home() {
                   <Typography
                     variant="h6"
                     fontWeight="bold"
-                    className="text-gray-900 mb-4"
+                    className="text-purple-800 mb-4"
                     fontFamily="primary"
                   >
                     Project Highlights
@@ -681,10 +682,10 @@ export default function Home() {
                   <div className="grid gap-3">
                     {selectedProject.highlights.map((highlight, index) => (
                       <div key={index} className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-2 h-2 bg-purple-800 rounded-full mt-2 flex-shrink-0"></div>
                         <Typography
                           variant="p"
-                          className="text-gray-700"
+                          className="text-purple-600"
                           fontFamily="primary"
                         >
                           {highlight}

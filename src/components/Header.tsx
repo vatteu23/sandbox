@@ -41,7 +41,7 @@ const Header: React.FC<ContainerProps> = ({
         className={cn(
           "w-full sm:w-auto inline-flex items-center transition-all duration-300 rounded-full my-3 md:my-6",
           scrolled
-            ? "bg-stone-50 border border-stone-300 translate-y-1 px-4 sm:px-6 shadow-2xl w-[90%] sm:w-auto"
+            ? "bg-purple-50 border border-purple-200 translate-y-1 px-4 sm:px-6 shadow-2xl w-[90%] sm:w-auto"
             : "bg-transparent translate-y-0 px-4 sm:px-8",
           className
         )}
@@ -50,10 +50,10 @@ const Header: React.FC<ContainerProps> = ({
           <Button
             href="/"
             className={cn(
-              "text-xl font-medium hover:bg-stone-300 px-3 py-1.5 rounded-full transition-all duration-300 ease-in-out",
+              "text-xl font-medium  px-3 py-1.5 rounded-full transition-all duration-300 ease-in-out",
               isActive("/")
-                ? "text-neutral-900 bg-stone-300"
-                : "text-neutral-600 hover:text-neutral-900 hover:bg-stone-300"
+                ? "text-purple-200 bg-purple-800"
+                : "text-purple-600 hover:text-purple-800 hover:bg-purple-200"
             )}
             color="light"
           >
@@ -63,7 +63,7 @@ const Header: React.FC<ContainerProps> = ({
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="sm:hidden p-2 rounded-full hover:bg-stone-300 transition-all duration-300"
+            className="sm:hidden p-2 rounded-full hover:bg-purple-200 transition-all duration-300"
           >
             {isMenuOpen ? (
               <XMarkIcon className="h-6 w-6 text-gray-600" />
@@ -82,8 +82,8 @@ const Header: React.FC<ContainerProps> = ({
               className={cn(
                 "transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium",
                 isActive("/about")
-                  ? "text-neutral-900 bg-stone-300"
-                  : "text-neutral-600 hover:text-neutral-900 hover:bg-stone-300"
+                  ? "text-purple-200 bg-purple-800 hover:text-purple-200"
+                  : "!text-purple-600  hover:bg-purple-200"
               )}
             >
               About
@@ -94,10 +94,10 @@ const Header: React.FC<ContainerProps> = ({
               color="dark"
               href="/photography"
               className={cn(
-                "transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium",
+                "transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium ",
                 isActive("/photography")
-                  ? "text-neutral-900 bg-stone-300"
-                  : "text-neutral-600 hover:text-neutral-900 hover:bg-stone-300"
+                  ? "text-purple-200 bg-purple-800 hover:text-purple-200"
+                  : "!text-purple-600  hover:bg-purple-200"
               )}
             >
               Photography
@@ -107,7 +107,7 @@ const Header: React.FC<ContainerProps> = ({
               color="dark"
               href="https://www.linkedin.com/in/vattiu/"
               target="_blank"
-              className="text-neutral-900 hover:bg-neutral-900 hover:text-white transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium"
+              className="text-purple-900 hover:bg-neutral-900 hover:text-white transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium"
             >
               Get in touch
             </Button>

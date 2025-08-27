@@ -6,7 +6,7 @@ import HeadWithMetas from "@/components/HeadWithMetas";
 
 const About = () => {
   return (
-    <Layout className="bg-stone-100 min-h-screen">
+    <Layout className="bg-purple-50 min-h-screen">
       <HeadWithMetas
         title="About | Uday Vatti"
         description="Senior Web Developer & Designer crafting performant, accessible digital experiences with React, Next.js, and TypeScript"
@@ -21,14 +21,14 @@ const About = () => {
               <Typography
                 variant="h5"
                 fontWeight="semibold"
-                className="mb-6 text-gray-600 tracking-wide uppercase"
+                className="mb-6 text-purple-600 tracking-wide uppercase"
                 fontFamily="mono"
               >
                 Nice to meet you
               </Typography>
               <Typography
                 variant="h3"
-                className="!leading-tight mb-8 text-gray-900"
+                className="!leading-tight mb-8 text-purple-800"
                 fontWeight="bold"
                 fontFamily="display"
               >
@@ -38,7 +38,7 @@ const About = () => {
               <Typography
                 variant="p"
                 fontWeight="normal"
-                className="text-lg text-gray-700 leading-relaxed mb-4"
+                className="text-lg text-purple-600 leading-relaxed mb-4"
                 fontFamily="primary"
               >
                 With 9+ years of experience, I specialize in React, Next.js, and
@@ -48,7 +48,7 @@ const About = () => {
               <a
                 href="/resume-august-2025.pdf"
                 target="_blank"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-stone-200 text-gray-900 rounded-lg hover:bg-stone-300 transition-all duration-200 mb-8 font-medium"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-purple-800 text-purple-200 rounded-lg hover:bg-purple-800/90 transition-all duration-200 mb-8 font-medium"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -70,27 +70,27 @@ const About = () => {
                 <div>
                   <Typography
                     variant="h6"
-                    className="mb-4 text-gray-900"
+                    className="mb-4 text-purple-800"
                     fontWeight="semibold"
                     fontFamily="display"
                   >
                     What I Do
                   </Typography>
-                  <ul className="space-y-3 text-gray-700">
+                  <ul className="space-y-3 text-purple-600">
                     <li className="flex items-start">
-                      <span className="block w-2 h-2 mt-2 mr-3 bg-gray-400 rounded-full"></span>
+                      <span className="block w-2 h-2 mt-2 mr-3 bg-purple-800 rounded-full"></span>
                       <Typography variant="p" className="text-base">
                         UI/UX design in Figma and design systems
                       </Typography>
                     </li>
                     <li className="flex items-start">
-                      <span className="block w-2 h-2 mt-2 mr-3 bg-gray-400 rounded-full"></span>
+                      <span className="block w-2 h-2 mt-2 mr-3 bg-purple-800 rounded-full"></span>
                       <Typography variant="p" className="text-base">
                         Component architecture and development
                       </Typography>
                     </li>
                     <li className="flex items-start">
-                      <span className="block w-2 h-2 mt-2 mr-3 bg-gray-400 rounded-full"></span>
+                      <span className="block w-2 h-2 mt-2 mr-3 bg-purple-800 rounded-full"></span>
                       <Typography variant="p" className="text-base">
                         Performance optimization and monitoring
                       </Typography>
@@ -100,27 +100,27 @@ const About = () => {
                 <div>
                   <Typography
                     variant="h6"
-                    className="mb-4 text-gray-900"
+                    className="mb-4 text-purple-800"
                     fontWeight="semibold"
                     fontFamily="display"
                   >
                     Recent Projects
                   </Typography>
-                  <ul className="space-y-3 text-gray-700">
+                  <ul className="space-y-3 text-purple-600">
                     <li className="flex items-start">
-                      <span className="block w-2 h-2 mt-2 mr-3 bg-gray-400 rounded-full"></span>
+                      <span className="block w-2 h-2 mt-2 mr-3 bg-purple-800 rounded-full"></span>
                       <Typography variant="p" className="text-base">
                         Labelbox Evaluation Studio
                       </Typography>
                     </li>
                     <li className="flex items-start">
-                      <span className="block w-2 h-2 mt-2 mr-3 bg-gray-400 rounded-full"></span>
+                      <span className="block w-2 h-2 mt-2 mr-3 bg-purple-800 rounded-full"></span>
                       <Typography variant="p" className="text-base">
                         Next.js App Router implementation
                       </Typography>
                     </li>
                     <li className="flex items-start">
-                      <span className="block w-2 h-2 mt-2 mr-3 bg-gray-400 rounded-full"></span>
+                      <span className="block w-2 h-2 mt-2 mr-3 bg-purple-800 rounded-full"></span>
                       <Typography variant="p" className="text-base">
                         Design system with Figma and Tailwind
                       </Typography>
@@ -134,7 +134,7 @@ const About = () => {
             <div className="mb-16">
               <Typography
                 variant="h4"
-                className="mb-6 text-gray-900"
+                className="mb-6 text-purple-800"
                 fontWeight="semibold"
                 fontFamily="display"
               >
@@ -143,7 +143,7 @@ const About = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <Typography
                   variant="p"
-                  className="text-base text-gray-700 leading-relaxed"
+                  className="text-base text-purple-600 leading-relaxed"
                   fontFamily="primary"
                 >
                   I'm deeply passionate about cars — from analyzing the
@@ -154,7 +154,7 @@ const About = () => {
                 </Typography>
                 <Typography
                   variant="p"
-                  className="text-base text-gray-700 leading-relaxed"
+                  className="text-base text-purple-600 leading-relaxed"
                   fontFamily="primary"
                 >
                   Photography is my creative outlet — I love capturing light,
@@ -165,10 +165,10 @@ const About = () => {
             </div>
 
             {/* Contact */}
-            <div className="border-t border-gray-200 pt-8">
+            <div className="border-t border-purple-200 pt-8">
               <Typography
                 variant="p"
-                className="text-xl text-gray-900 leading-relaxed"
+                className="text-xl text-purple-600 leading-relaxed"
                 fontFamily="primary"
               >
                 I believe the best digital experiences are built with a blend of
@@ -178,7 +178,7 @@ const About = () => {
               </Typography>
               <a
                 href="mailto:hello@udayvatti.com"
-                className="inline-block mt-8 text-gray-900 border-b-2 border-gray-900 pb-1 hover:opacity-80 transition-opacity"
+                className="inline-block mt-8 text-purple-800 hover:text-purple-800/90 border-b-2 border-purple-800 pb-1 hover:opacity-80 transition-opacity"
               >
                 Let's Talk
               </a>
