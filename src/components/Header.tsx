@@ -107,7 +107,7 @@ const Header: React.FC<ContainerProps> = ({
               color="dark"
               href="https://www.linkedin.com/in/vattiu/"
               target="_blank"
-              className="text-purple-900 hover:bg-neutral-900 hover:text-white transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium"
+              className="text-purple-900 border border-purple-50 hover:border-purple-900  transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium"
             >
               Get in touch
             </Button>

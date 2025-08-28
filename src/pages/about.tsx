@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import Typography from "@/components/Typography";
 import React from "react";
 import HeadWithMetas from "@/components/HeadWithMetas";
+import Footer from "@/components/Footer";
 
 const About = () => {
   return (
@@ -13,7 +14,7 @@ const About = () => {
         url="https://udayvatti.com/about"
         image="/images/uv-port.png"
       />
-      <Container>
+      <Container className="">
         <div className="py-20 md:py-32">
           <div className="max-w-4xl">
             {/* Introduction */}
@@ -48,7 +49,7 @@ const About = () => {
               <a
                 href="/resume-august-2025.pdf"
                 target="_blank"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-purple-800 text-purple-200 rounded-lg hover:bg-purple-800/90 transition-all duration-200 mb-8 font-medium"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-purple-800 text-purple-200 rounded-lg hover:rounded-3xl hover:bg-purple-800/90 transition-all duration-300 ease-in-out mb-8 font-medium"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +68,7 @@ const About = () => {
                 View Resume
               </a>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
+                <div className="">
                   <Typography
                     variant="h6"
                     className="mb-4 text-purple-800"
@@ -186,6 +187,7 @@ const About = () => {
           </div>
         </div>
       </Container>
+      <Footer />
     </Layout>
   );
 };

@@ -12,6 +12,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import Footer from "@/components/Footer";
 
 type PorjectProps = {
   name: string;
@@ -332,7 +333,7 @@ export default function Home() {
               return (
                 <div
                   onClick={() => openProjectModal(project)}
-                  className="group cursor-pointer bg-purple-50 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 ease-out border border-purple-200 "
+                  className="group cursor-pointer bg-purple-50 p-8 rounded-xl hover:rounded-3xl hover:shadow-xl transition-all duration-300 ease-in-out border border-purple-200 "
                   key={index}
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -416,7 +417,7 @@ export default function Home() {
               return (
                 <div
                   onClick={() => openProjectModal(project)}
-                  className="group cursor-pointer bg-purple-100 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 ease-out border border-purple-200 "
+                  className="group cursor-pointer bg-purple-100 p-8 rounded-xl hover:rounded-3xl hover:shadow-xl transition-all duration-300  ease-in-out border border-purple-200 "
                   key={index}
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -476,52 +477,7 @@ export default function Home() {
         </Container>
       </div>
 
-      {/* Figma-style CTA section */}
-      <div className="py-20 bg-purple-900">
-        <Container>
-          <div className="text-center max-w-3xl mx-auto">
-            <Typography
-              variant="h2"
-              fontWeight="light"
-              className="text-purple-200 mb-6"
-              fontFamily="primary"
-            >
-              Let's work together
-            </Typography>
-            <Typography
-              variant="h6"
-              className="text-purple-100 mb-8 leading-relaxed"
-              fontFamily="primary"
-              fontWeight="light"
-            >
-              Interested in collaborating on your next project? I'd love to hear
-              about your ideas and help bring them to life.
-            </Typography>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                target="_blank"
-                href="https://www.linkedin.com/in/vattiu/"
-                className="bg-purple-50 text-purple-800 px-8 py-4 rounded-lg font-medium hover:bg-purple-200  transition-all duration-300 inline-block"
-              >
-                Get in touch
-              </Link>
-              <Link
-                href="/photography"
-                className="border border-purple-200 text-white px-8 py-4 rounded-lg font-medium  hover:bg-purple-200 hover:text-purple-800 transition-all duration-300 inline-block"
-              >
-                View photography
-              </Link>
-              <Link
-                href="/resume-august-2025.pdf"
-                target="_blank"
-                className="border border-purple-200 text-white px-8 py-4 rounded-lg font-medium hover:bg-purple-200 hover:text-purple-800 transition-all duration-300 inline-block"
-              >
-                View resume
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </div>
+      <Footer />
 
       {/* Project Detail Modal */}
       <Modal isOpen={isModalOpen} onClose={closeModal}>
@@ -565,7 +521,7 @@ export default function Home() {
                 <div className="flex gap-2">
                   <button
                     onClick={() => handleUrlClick(selectedProject.link)}
-                    className="bg-purple-800 text-purple-200 px-6 py-2 rounded-lg hover:bg-purple-800/90 transition-colors font-medium"
+                    className="bg-purple-800 text-purple-200 px-6 py-2 rounded-lg hover:rounded-3xl hover:bg-purple-800/90 transition-all duration-300 ease-in-out font-medium"
                   >
                     Visit Website ↗
                   </button>
@@ -638,7 +594,7 @@ export default function Home() {
                     {selectedProject.technologies.map((tech, index) => (
                       <span
                         key={index}
-                        className="px-3 py-1 bg-purple-300/50 rounded-full text-sm text-purple-600 font-medium font-mono"
+                        className="px-3 py-1 bg-purple-800 rounded-full text-sm text-purple-200 font-medium font-mono"
                       >
                         {tech}
                       </span>
