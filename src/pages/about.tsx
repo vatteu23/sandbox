@@ -4,6 +4,8 @@ import Typography from "@/components/Typography";
 import React from "react";
 import HeadWithMetas from "@/components/HeadWithMetas";
 import Footer from "@/components/Footer";
+import Link from "next/link";
+import { FiMapPin } from "react-icons/fi";
 
 const About = () => {
   return (
@@ -15,8 +17,64 @@ const About = () => {
         image="/images/uv-port.png"
       />
       <Container className="">
-        <div className="py-20 md:py-32">
-          <div className="max-w-4xl">
+        <div className="py-20 md:py-32 flex flex-col md:flex-row gap-y-12 md:gap-x-6 lg:gap-12">
+          <div className="w-full md:w-1/3 lg:w-1/4 h-fit  rounded-xl hover:rounded-3xl transition-all duration-300 ease-in-out  overflow-hidden group">
+            <div className="bg-purple-100 mb-1">
+              <div className="rounded-xl overflow-hidden">
+                <div className="h-28 bg-purple-200"></div>
+                <img
+                  src="/images/picofme-4.png"
+                  alt="Uday Vatti"
+                  className="rounded-full max-w-36 mr-auto ml-4 -mt-24 rotate-12 group-hover:rotate-0 transition-all duration-300 ease-in-out"
+                />
+              </div>
+              <div className="p-4">
+                <Typography
+                  variant="h5"
+                  fontWeight="semibold"
+                  className="mb-3 text-purple-600 tracking-wide "
+                  fontFamily="mono"
+                >
+                  Uday Vatti
+                </Typography>
+                <Typography variant="p" className="text-purple-600">
+                  Sr. Web Developer and Designer at{" "}
+                  <Link
+                    href="https://www.labelbox.com/"
+                    className="text-purple-800 hover:text-purple-800/90 transition-all duration-300 ease-in-out hover:underline"
+                  >
+                    Labelbox
+                  </Link>
+                </Typography>
+              </div>
+            </div>
+
+            <div className="p-4 bg-purple-100 mb-1">
+              <Typography
+                variant="p"
+                className="text-purple-600 flex items-center gap-2"
+              >
+                <FiMapPin className="w-4 h-4" /> San Francisco, CA
+              </Typography>
+            </div>
+            <div className="p-4 flex flex-wrap flex-row gap-4 bg-purple-100">
+              <Link
+                href="mailto:vuday23@gmail.com"
+                className="text-purple-600 hover:text-purple-800 transition-all duration-300 ease-in-out hover:underline font-mono"
+              >
+                Email
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/vattiu/"
+                target="_blank"
+                className="text-purple-600 hover:text-purple-800 transition-all duration-300 ease-in-out hover:underline font-mono"
+              >
+                LinkedIn
+              </Link>
+            </div>
+          </div>
+
+          <div className="md:w-2/3 lg:w-3/4 max-w-4xl">
             {/* Introduction */}
             <div className="mb-16">
               <Typography
