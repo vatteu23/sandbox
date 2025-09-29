@@ -14,7 +14,8 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Footer from "@/components/Footer";
 
-type PorjectProps = {
+export type PorjectProps = {
+  id: string;
   name: string;
   link: string;
   src: string;
@@ -27,8 +28,9 @@ type PorjectProps = {
   highlights?: string[];
 };
 
-const Porjects: PorjectProps[] = [
+export const Porjects: PorjectProps[] = [
   {
+    id: "labelbox",
     name: "Labelbox",
     link: "https://www.labelbox.com/",
     src: "/images/lb.svg",
@@ -69,6 +71,7 @@ const Porjects: PorjectProps[] = [
     ],
   },
   {
+    id: "tcp",
     name: "Triple Crown Products",
     link: "https://triplecrownproducts.com/",
     src: "/images/tcp.svg",
@@ -110,6 +113,7 @@ const Porjects: PorjectProps[] = [
     ],
   },
   {
+    id: "cgs",
     name: "Center for Governmental Studies",
     link: "https://www.cgs.niu.edu/",
     src: "/images/niu.svg",
@@ -134,8 +138,9 @@ const Porjects: PorjectProps[] = [
   },
 ];
 
-const Freelance: PorjectProps[] = [
+export const Freelance: PorjectProps[] = [
   {
+    id: "them-design-studios",
     name: "Them Design Studios",
     link: "https://themdesignstudios.com/",
     src: "/images/them.svg",
@@ -162,6 +167,7 @@ const Freelance: PorjectProps[] = [
     ],
   },
   {
+    id: "earthbound-adventures",
     name: "Earthbound Adventures",
     link: "https://incatrailhikes.com/",
     src: "/images/them.svg",
@@ -182,7 +188,14 @@ const Freelance: PorjectProps[] = [
     ],
   },
 ];
-
+export const handleUrlClick = (url: string, newTab = true) => {
+  if (newTab) {
+    window.open(url, "_blank");
+  } else {
+    window.location.href = url;
+  }
+  window.open(url, "_blank");
+};
 export default function Home() {
   const component = useRef<any>(null);
   const [selectedProject, setSelectedProject] = useState<PorjectProps | null>(
@@ -229,10 +242,6 @@ export default function Home() {
         </span>
       );
     });
-  };
-
-  const handleUrlClick = (url: string) => {
-    window.open(url, "_blank");
   };
 
   const openProjectModal = (project: PorjectProps) => {
@@ -332,7 +341,7 @@ export default function Home() {
             {Porjects.map((project: PorjectProps, index: number) => {
               return (
                 <div
-                  onClick={() => openProjectModal(project)}
+                  onClick={() => handleUrlClick(`/work/${project.id}`, false)}
                   className="group cursor-pointer bg-purple-50 p-8 rounded-xl hover:rounded-3xl hover:shadow-xl transition-all duration-300 ease-in-out border border-purple-200 "
                   key={index}
                 >
@@ -416,7 +425,7 @@ export default function Home() {
             {Freelance.map((project: PorjectProps, index: number) => {
               return (
                 <div
-                  onClick={() => openProjectModal(project)}
+                  onClick={() => handleUrlClick(`/work/${project.id}`, false)}
                   className="group cursor-pointer bg-purple-100 p-8 rounded-xl hover:rounded-3xl hover:shadow-xl transition-all duration-300  ease-in-out border border-purple-200 "
                   key={index}
                 >
