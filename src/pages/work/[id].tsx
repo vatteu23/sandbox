@@ -7,6 +7,9 @@ import Typography from "@/components/Typography";
 import Container from "@/components/Container";
 import HeadWithMetas from "@/components/HeadWithMetas";
 import Footer from "@/components/Footer";
+import { FiCalendar } from "react-icons/fi";
+import Link from "next/link";
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 
 const Work = ({ work }: { work: PorjectProps | null }) => {
   if (!work) {
@@ -21,164 +24,162 @@ const Work = ({ work }: { work: PorjectProps | null }) => {
         image="/images/uv-port.png"
       />
       <Container className=" py-20">
-        {/* Project Header */}
-        <div className=" p-8 py-6 border-b border-purple-200 bg-purple-50/30 backdrop-blur-2xl ">
-          <div className="flex flex-col md:flex-row gap-y-3 items-start justify-between md:mt-8">
+       
+        <div className="flex flex-col md:flex-row gap-y-12 md:gap-x-6 lg:gap-12 relative">
+          <div className="md:sticky md:top-[90px] w-full md:w-1/3 lg:w-1/4 h-fit  rounded-xl hover:rounded-3xl transition-all duration-300 ease-in-out  overflow-hidden group">
+            <div className="bg-purple-100 mb-1">
+            
+              <div className="p-4">
+                <Typography
+                  variant="h3"
+                  fontWeight="semibold"
+                  className="mb-3 text-purple-600 tracking-wide  "
+                  fontFamily="mono"
+                >
+                    {work.name}
+                </Typography>
+                <Typography variant="p" className="text-purple-600">
+                  {work.role}
+                
+                </Typography>
+              </div>
+            </div>
+
+            <div className="p-4 bg-purple-100 mb-1">
+              <Typography
+                variant="p"
+                className="text-purple-600 flex items-center gap-2"
+              >
+                <FiCalendar className="w-4 h-4" /> {work.year}
+              </Typography>
+            </div>
+            <Link className="group flex p-4  items-center justify-start gap-4 bg-purple-800 hover:bg-purple-800/90 transition-all duration-300 ease-in-out hover:rounded-[40px] text-purple-200" href={work.link} target="_blank">
+            Visit Website <ArrowTopRightOnSquareIcon className="w-5 h-5 " />
+            </Link>
+          </div>
+          <div className="md:w-2/3 lg:w-3/4 max-w-2xl space-y-8 py-4">
+            {/* Description */}
             <div>
               <Typography
-                variant="h3"
-                fontWeight="light"
-                className="text-purple-800 mb-2 font-mono uppercase tracking-tighter"
-                fontFamily="primary"
-              >
-                {work.name}
-              </Typography>
-              <Typography
                 variant="h6"
-                className="text-purple-600 mb-2"
+                fontWeight="bold"
+                className="text-purple-800 mb-3"
                 fontFamily="primary"
               >
-                {work.role}
+                Overview
               </Typography>
               <Typography
                 variant="p"
-                className="text-purple-600"
+                className="text-purple-600 leading-relaxed"
                 fontFamily="primary"
               >
-                {work.year}
+                {work.description}
               </Typography>
             </div>
-            <div className="flex gap-2">
-              <button
-                onClick={() => handleUrlClick(work.link)}
-                className="bg-purple-800 text-purple-200 px-6 py-2 rounded-lg hover:rounded-3xl hover:bg-purple-800/90 transition-all duration-300 ease-in-out font-medium"
-              >
-                Visit Website ↗
-              </button>
-            </div>
-          </div>
-        </div>
 
-        <div className="space-y-8 mt-6 p-8">
-          {/* Description */}
-          <div>
-            <Typography
-              variant="h6"
-              fontWeight="bold"
-              className="text-purple-800 mb-3"
-              fontFamily="primary"
-            >
-              Overview
-            </Typography>
-            <Typography
-              variant="p"
-              className="text-purple-600 leading-relaxed"
-              fontFamily="primary"
-            >
-              {work.description}
-            </Typography>
-          </div>
+            {/* Key Achievements */}
+            {work.achievements && (
+              <div>
+                <Typography
+                  variant="h6"
+                  fontWeight="bold"
+                  className="text-purple-800 mb-4"
+                  fontFamily="primary"
+                >
+                  Key Achievements
+                </Typography>
+                <div className="grid gap-3">
+                  {work.achievements.map((achievement, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-purple-800 rounded-full mt-2 flex-shrink-0"></div>
+                      <Typography
+                        variant="p"
+                        className="text-purple-600"
+                        fontFamily="primary"
+                      >
+                        <span
+                          dangerouslySetInnerHTML={{ __html: achievement }}
+                        />
+                      </Typography>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
-          {/* Key Achievements */}
-          {work.achievements && (
-            <div>
-              <Typography
-                variant="h6"
-                fontWeight="bold"
-                className="text-purple-800 mb-4"
-                fontFamily="primary"
-              >
-                Key Achievements
-              </Typography>
-              <div className="grid gap-3">
-                {work.achievements.map((achievement, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-purple-800 rounded-full mt-2 flex-shrink-0"></div>
-                    <Typography
-                      variant="p"
-                      className="text-purple-600"
-                      fontFamily="primary"
+            {/* Technologies */}
+            {work.technologies && (
+              <div>
+                <Typography
+                  variant="h6"
+                  fontWeight="bold"
+                  className="text-purple-800 mb-4"
+                  fontFamily="primary"
+                >
+                  Technologies Used
+                </Typography>
+                <div className="flex flex-wrap gap-2">
+                  {work.technologies.map((tech, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1 bg-purple-800 rounded-full text-sm text-purple-200 font-medium font-mono"
                     >
-                      <span dangerouslySetInnerHTML={{ __html: achievement }} />
-                    </Typography>
-                  </div>
-                ))}
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Technologies */}
-          {work.technologies && (
-            <div>
-              <Typography
-                variant="h6"
-                fontWeight="bold"
-                className="text-purple-800 mb-4"
-                fontFamily="primary"
-              >
-                Technologies Used
-              </Typography>
-              <div className="flex flex-wrap gap-2">
-                {work.technologies.map((tech, index) => (
-                  <span
-                    key={index}
-                    className="px-3 py-1 bg-purple-800 rounded-full text-sm text-purple-200 font-medium font-mono"
-                  >
-                    {tech}
-                  </span>
-                ))}
+            {/* Team Size */}
+            {work.teamSize && (
+              <div>
+                <Typography
+                  variant="h6"
+                  fontWeight="bold"
+                  className="text-purple-800 mb-2"
+                  fontFamily="primary"
+                >
+                  Team Collaboration
+                </Typography>
+                <Typography
+                  variant="p"
+                  className="text-purple-600"
+                  fontFamily="primary"
+                >
+                  {work.teamSize}
+                </Typography>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Team Size */}
-          {work.teamSize && (
-            <div>
-              <Typography
-                variant="h6"
-                fontWeight="bold"
-                className="text-purple-800 mb-2"
-                fontFamily="primary"
-              >
-                Team Collaboration
-              </Typography>
-              <Typography
-                variant="p"
-                className="text-purple-600"
-                fontFamily="primary"
-              >
-                {work.teamSize}
-              </Typography>
-            </div>
-          )}
-
-          {/* Project Highlights */}
-          {work.highlights && (
-            <div>
-              <Typography
-                variant="h6"
-                fontWeight="bold"
-                className="text-purple-800 mb-4"
-                fontFamily="primary"
-              >
-                Project Highlights
-              </Typography>
-              <div className="grid gap-3">
-                {work.highlights.map((highlight, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-purple-800 rounded-full mt-2 flex-shrink-0"></div>
-                    <Typography
-                      variant="p"
-                      className="text-purple-600"
-                      fontFamily="primary"
-                    >
-                      {highlight}
-                    </Typography>
-                  </div>
-                ))}
+            {/* Project Highlights */}
+            {work.highlights && (
+              <div>
+                <Typography
+                  variant="h6"
+                  fontWeight="bold"
+                  className="text-purple-800 mb-4"
+                  fontFamily="primary"
+                >
+                  Project Highlights
+                </Typography>
+                <div className="grid gap-3">
+                  {work.highlights.map((highlight, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-purple-800 rounded-full mt-2 flex-shrink-0"></div>
+                      <Typography
+                        variant="p"
+                        className="text-purple-600"
+                        fontFamily="primary"
+                      >
+                        {highlight}
+                      </Typography>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </Container>
       <Footer />

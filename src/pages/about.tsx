@@ -18,7 +18,7 @@ const About = () => {
       />
       <Container className="">
         <div className="py-20 md:py-32 flex flex-col md:flex-row gap-y-12 md:gap-x-6 lg:gap-12">
-          <div className="w-full md:w-1/3 lg:w-1/4 h-fit  rounded-xl hover:rounded-3xl transition-all duration-300 ease-in-out  overflow-hidden group">
+          <div className="md:sticky md:top-[90px] w-full md:w-1/3 lg:w-1/4 h-fit  rounded-xl hover:rounded-3xl transition-all duration-300 ease-in-out  overflow-hidden group">
             <div className="bg-purple-100 mb-1">
               <div className="rounded-xl overflow-hidden">
                 <div className="h-28 bg-purple-200"></div>
