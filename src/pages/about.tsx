@@ -105,7 +105,7 @@ const About = () => {
                 websites and evaluation studio.
               </Typography>
               <a
-                href="/resume-august-2025.pdf"
+                href="/resume.pdf"
                 target="_blank"
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-purple-800 text-purple-200 rounded-lg hover:rounded-3xl hover:bg-purple-800/90 transition-all duration-300 ease-in-out mb-8 font-medium"
               >
@@ -236,7 +236,7 @@ const About = () => {
                 bring it to life.
               </Typography>
               <a
-                href="mailto:hello@udayvatti.com"
+                href="mailto:vuday23@gmail.com"
                 className="inline-block mt-8 text-purple-800 hover:text-purple-800/90 border-b-2 border-purple-800 pb-1 hover:opacity-80 transition-opacity"
               >
                 Let's Talk

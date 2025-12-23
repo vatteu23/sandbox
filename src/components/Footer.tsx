@@ -54,7 +54,7 @@ const Footer: React.FC<ContainerProps> = ({
                 View photography
               </Link>
               <Link
-                href="/resume-august-2025.pdf"
+                href="/resume.pdf"
                 target="_blank"
                 className="border border-purple-200 text-white px-8 py-3 rounded-lg font-medium hover:bg-purple-200 hover:text-purple-800 ease-in-out hover:rounded-3xl transition-all duration-300 inline-block"
               >
