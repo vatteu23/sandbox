@@ -28,8 +28,9 @@ const Photography: React.FC<PhotographyProps> = (props: PhotographyProps) => {
   React.useEffect(() => {
     setGallery(
       photos.map((photo) => {
+        console.log(photo);
         return {
-          src: photo.urls.regular,
+          src: photo.urls.full,
           width: photo.width,
           height: photo.height,
         };
