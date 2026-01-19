@@ -13,6 +13,7 @@ import {
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Footer from "@/components/Footer";
+import Eyebrow from "@/components/Eyebrow";
 
 export type PorjectProps = {
   id: string;
@@ -198,10 +199,6 @@ export const handleUrlClick = (url: string, newTab = true) => {
 };
 export default function Home() {
   const component = useRef<any>(null);
-  const [selectedProject, setSelectedProject] = useState<PorjectProps | null>(
-    null
-  );
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -244,18 +241,10 @@ export default function Home() {
     });
   };
 
-  const openProjectModal = (project: PorjectProps) => {
-    setSelectedProject(project);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedProject(null);
-  };
+ 
 
   return (
-    <Layout className="bg-purple-50 min-h-screen">
+    <Layout className="bg-neutral-950 min-h-screen">
       <HeadWithMetas
         title="Uday Vatti"
         description="Uday Vatti is a web developer and a designer at Labelbox."
@@ -265,17 +254,12 @@ export default function Home() {
       <div className="py-20 md:py-32">
         <Container>
           <div className="text-center max-w-4xl mx-auto" ref={component}>
-            <Typography
-              variant="h5"
-              fontWeight="semibold"
-              className="mb-6 text-purple-600 tracking-wide uppercase"
-              fontFamily="mono"
-            >
-              Hello, I'm
-            </Typography>
+          <Eyebrow>
+            Hello, I'm
+          </Eyebrow>
             <Typography
               variant="h1"
-              className="!leading-tight mb-8 text-purple-800 text-5xl md:text-6xl lg:text-7xl"
+              className="!leading-tight mb-8 text-purple-300 text-5xl md:text-6xl lg:text-7xl"
               fontWeight="bold"
               fontFamily="display"
             >
@@ -284,12 +268,12 @@ export default function Home() {
             <Typography
               variant="h3"
               fontWeight="normal"
-              className="mb-12 text-purple-600 max-w-2xl mx-auto leading-loose text-lg md:text-2xl"
+              className="mb-12 text-purple-200 max-w-2xl mx-auto leading-loose text-lg md:text-2xl"
               fontFamily="primary"
             >
               Sr. Web Developer and Designer crafting digital experiences at{" "}
               <Link
-                className=" text-purple-800 transition-all duration-200 ease-in-out px-4 py-1 font-medium inline-block mx-1 border-b-2 border-purple-200 hover:border-purple-500"
+                className=" text-purple-300 hover:text-purple-200 transition-all duration-200 ease-in-out px-4 py-1 font-medium inline-block mx-1 border-b-2 border-purple-200 hover:border-purple-500"
                 href="https://www.labelbox.com/"
               >
                 Labelbox
@@ -315,21 +299,17 @@ export default function Home() {
         </Container>
       </div>
 
-      <div className="py-20 bg-purple-100">
-        <Container>
+      <div className="">
+        <Container className="py-20 border-t-2 border-purple-300">
           <div className="text-center mb-16">
-            <Typography
-              variant="h5"
-              fontWeight="semibold"
-              className="mb-6 text-purple-600 tracking-wide uppercase"
-              fontFamily="mono"
-            >
+            <Eyebrow>
               Professional Experience
-            </Typography>
+            </Eyebrow>
+
 
             <Typography
               variant="h6"
-              className="text-purple-600 max-w-2xl mx-auto"
+              className="text-purple-300 max-w-2xl mx-auto"
               fontFamily="primary"
               fontWeight="light"
             >
@@ -342,7 +322,7 @@ export default function Home() {
               return (
                 <div
                   onClick={() => handleUrlClick(`/work/${project.id}`, false)}
-                  className="group cursor-pointer bg-purple-50 p-8 rounded-xl hover:rounded-3xl hover:shadow-xl transition-all duration-300 ease-in-out border border-purple-200 "
+                  className="group cursor-pointer border-purple-300 p-8 rounded-xl hover:rounded-3xl hover:shadow-xl transition-all duration-300 ease-in-out border-2 "
                   key={index}
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -350,7 +330,7 @@ export default function Home() {
                       <Typography
                         variant="h4"
                         fontWeight="normal"
-                        className="text-purple-800 mb-2 group-hover:text-purple-800/90 transition-colors"
+                        className="text-purple-300 mb-2 group-hover:text-purple-200 transition-colors"
                         fontFamily="primary"
                       >
                         {project.name}
@@ -358,14 +338,14 @@ export default function Home() {
                       <Typography
                         variant="h6"
                         fontWeight="normal"
-                        className="text-purple-700 mb-3"
+                        className="text-purple-200 mb-3"
                         fontFamily="primary"
                       >
                         {project.role}
                       </Typography>
                       <Typography
                         variant="p"
-                        className="text-purple-600 text-sm mb-2"
+                        className="text-purple-200 text-sm mb-2"
                         fontFamily="primary"
                       >
                         {project.year}
@@ -373,7 +353,7 @@ export default function Home() {
                       {project.description && (
                         <Typography
                           variant="p"
-                          className="text-purple-600 text-sm line-clamp-2"
+                          className="text-purple-200 text-sm line-clamp-2"
                           fontFamily="primary"
                         >
                           {project.description}
@@ -401,20 +381,15 @@ export default function Home() {
           </div>
         </Container>
       </div>
-      <div className="py-20 bg-purple-50">
-        <Container>
+      <div className="">
+        <Container className="py-20 border-t-2 border-purple-300">
           <div className="text-center mb-16">
-            <Typography
-              variant="h5"
-              fontWeight="semibold"
-              className="mb-6 text-purple-600 tracking-wide uppercase"
-              fontFamily="mono"
-            >
+            <Eyebrow>
               Freelance Projects
-            </Typography>
+            </Eyebrow>
             <Typography
               variant="h6"
-              className="text-purple-600 max-w-2xl mx-auto"
+              className="text-purple-300 max-w-2xl mx-auto"
               fontFamily="primary"
               fontWeight="light"
             >
@@ -426,7 +401,7 @@ export default function Home() {
               return (
                 <div
                   onClick={() => handleUrlClick(`/work/${project.id}`, false)}
-                  className="group cursor-pointer bg-purple-100 p-8 rounded-xl hover:rounded-3xl hover:shadow-xl transition-all duration-300  ease-in-out border border-purple-200 "
+                  className="group cursor-pointer border-purple-300 p-8 rounded-xl hover:rounded-3xl hover:shadow-xl transition-all duration-300  ease-in-out border-2 "
                   key={index}
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -434,7 +409,7 @@ export default function Home() {
                       <Typography
                         variant="h4"
                         fontWeight="normal"
-                        className="text-purple-800 mb-2 group-hover:text-purple-800/90 transition-colors"
+                        className="text-purple-300 mb-2 group-hover:text-purple-200 transition-colors"
                         fontFamily="primary"
                       >
                         {project.name}
@@ -442,14 +417,14 @@ export default function Home() {
                       <Typography
                         variant="h6"
                         fontWeight="normal"
-                        className="text-purple-600 mb-3"
+                        className="text-purple-200 mb-3"
                         fontFamily="primary"
                       >
                         {project.role}
                       </Typography>
                       <Typography
                         variant="p"
-                        className="text-purple-600 text-sm mb-2"
+                        className="text-purple-200 text-sm mb-2"
                         fontFamily="primary"
                       >
                         {project.year}
@@ -457,7 +432,7 @@ export default function Home() {
                       {project.description && (
                         <Typography
                           variant="p"
-                          className="text-purple-600 text-sm line-clamp-2"
+                          className="text-purple-200 text-sm line-clamp-2"
                           fontFamily="primary"
                         >
                           {project.description}
@@ -488,182 +463,7 @@ export default function Home() {
 
       <Footer />
 
-      {/* Project Detail Modal */}
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        {selectedProject && (
-          <div className="relative">
-            {/* Project Header */}
-            <div className="sticky top-0 p-8 py-6 border-b border-purple-200 bg-purple-50/30 backdrop-blur-2xl ">
-              <div className="absolute top-4 right-2">
-                <button
-                  onClick={closeModal}
-                  className="bg-purple-100 text-purple-600 px-2 rounded-lg hover:bg-purple-200 transition-colors font-medium"
-                >
-                  <XMarkIcon className="w-5 h-5" />
-                </button>
-              </div>
-              <div className="flex flex-col md:flex-row gap-y-3 items-start justify-between md:mt-8">
-                <div>
-                  <Typography
-                    variant="h3"
-                    fontWeight="bold"
-                    className="text-purple-800 mb-2"
-                    fontFamily="primary"
-                  >
-                    {selectedProject.name}
-                  </Typography>
-                  <Typography
-                    variant="h6"
-                    className="text-purple-600 mb-2"
-                    fontFamily="primary"
-                  >
-                    {selectedProject.role}
-                  </Typography>
-                  <Typography
-                    variant="p"
-                    className="text-purple-600"
-                    fontFamily="primary"
-                  >
-                    {selectedProject.year}
-                  </Typography>
-                </div>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => handleUrlClick(selectedProject.link)}
-                    className="bg-purple-800 text-purple-200 px-6 py-2 rounded-lg hover:rounded-3xl hover:bg-purple-800/90 transition-all duration-300 ease-in-out font-medium"
-                  >
-                    Visit Website ↗
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-8 mt-6 p-8">
-              {/* Description */}
-              <div>
-                <Typography
-                  variant="h6"
-                  fontWeight="bold"
-                  className="text-purple-800 mb-3"
-                  fontFamily="primary"
-                >
-                  Overview
-                </Typography>
-                <Typography
-                  variant="p"
-                  className="text-purple-600 leading-relaxed"
-                  fontFamily="primary"
-                >
-                  {selectedProject.description}
-                </Typography>
-              </div>
-
-              {/* Key Achievements */}
-              {selectedProject.achievements && (
-                <div>
-                  <Typography
-                    variant="h6"
-                    fontWeight="bold"
-                    className="text-purple-800 mb-4"
-                    fontFamily="primary"
-                  >
-                    Key Achievements
-                  </Typography>
-                  <div className="grid gap-3">
-                    {selectedProject.achievements.map((achievement, index) => (
-                      <div key={index} className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-purple-800 rounded-full mt-2 flex-shrink-0"></div>
-                        <Typography
-                          variant="p"
-                          className="text-purple-600"
-                          fontFamily="primary"
-                        >
-                          <span
-                            dangerouslySetInnerHTML={{ __html: achievement }}
-                          />
-                        </Typography>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Technologies */}
-              {selectedProject.technologies && (
-                <div>
-                  <Typography
-                    variant="h6"
-                    fontWeight="bold"
-                    className="text-purple-800 mb-4"
-                    fontFamily="primary"
-                  >
-                    Technologies Used
-                  </Typography>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.technologies.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="px-3 py-1 bg-purple-800 rounded-full text-sm text-purple-200 font-medium font-mono"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Team Size */}
-              {selectedProject.teamSize && (
-                <div>
-                  <Typography
-                    variant="h6"
-                    fontWeight="bold"
-                    className="text-purple-800 mb-2"
-                    fontFamily="primary"
-                  >
-                    Team Collaboration
-                  </Typography>
-                  <Typography
-                    variant="p"
-                    className="text-purple-600"
-                    fontFamily="primary"
-                  >
-                    {selectedProject.teamSize}
-                  </Typography>
-                </div>
-              )}
-
-              {/* Project Highlights */}
-              {selectedProject.highlights && (
-                <div>
-                  <Typography
-                    variant="h6"
-                    fontWeight="bold"
-                    className="text-purple-800 mb-4"
-                    fontFamily="primary"
-                  >
-                    Project Highlights
-                  </Typography>
-                  <div className="grid gap-3">
-                    {selectedProject.highlights.map((highlight, index) => (
-                      <div key={index} className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-purple-800 rounded-full mt-2 flex-shrink-0"></div>
-                        <Typography
-                          variant="p"
-                          className="text-purple-600"
-                          fontFamily="primary"
-                        >
-                          {highlight}
-                        </Typography>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-      </Modal>
+  
     </Layout>
   );
 }

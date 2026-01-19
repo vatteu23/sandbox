@@ -15,6 +15,7 @@ import "yet-another-react-lightbox/plugins/thumbnails.css";
 import HeadWithMetas from "@/components/HeadWithMetas";
 
 import Footer from "@/components/Footer";
+import Eyebrow from "@/components/Eyebrow";
 
 type PhotographyProps = {
   photos: any[];
@@ -41,7 +42,7 @@ const Photography: React.FC<PhotographyProps> = (props: PhotographyProps) => {
   const [index, setIndex] = useState(-1);
 
   return (
-    <Layout className="bg-purple-50 min-h-screen">
+    <Layout className="bg-neutral-950 min-h-screen">
       <HeadWithMetas
         title="Photography | Uday Vatti"
         description="A collection of moments captured through my lens. Photography portfolio by Uday Vatti."
@@ -51,17 +52,12 @@ const Photography: React.FC<PhotographyProps> = (props: PhotographyProps) => {
       <Container>
         <div className="pt-20 md:pt-32 pb-12">
           <div className="max-w-4xl">
-            <Typography
-              variant="h5"
-              fontWeight="semibold"
-              className="mb-6 text-purple-600 tracking-wide uppercase"
-              fontFamily="mono"
-            >
-              Photography
-            </Typography>
+           <Eyebrow>
+            Photography
+           </Eyebrow>
             <Typography
               variant="h1"
-              className="!leading-tight mb-8 text-purple-800"
+              className="!leading-tight mb-8 text-purple-300"
               fontWeight="bold"
               fontFamily="display"
             >
@@ -70,7 +66,7 @@ const Photography: React.FC<PhotographyProps> = (props: PhotographyProps) => {
             <Typography
               variant="h5"
               fontWeight="normal"
-              className="mb-12 text-purple-600 max-w-2xl leading-loose"
+              className="mb-12 text-purple-200 max-w-2xl leading-loose"
               fontFamily="primary"
             >
               Capturing life's fleeting moments through the lens, one frame at a

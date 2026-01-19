@@ -19,8 +19,8 @@ const Footer: React.FC<ContainerProps> = ({
   return (
     <div>
       {/* Figma-style CTA section */}
-      <div className="py-20 bg-purple-900">
-        <Container>
+      <div className=" bg-neutral-950">
+        <Container className="py-20 border-t-2 border-purple-300">
           <div className="text-center max-w-3xl mx-auto">
             <Typography
               variant="h2"
@@ -32,7 +32,7 @@ const Footer: React.FC<ContainerProps> = ({
             </Typography>
             <Typography
               variant="h6"
-              className="text-purple-100 mb-8 leading-relaxed"
+              className="text-purple-300 mb-8 leading-relaxed"
               fontFamily="primary"
               fontWeight="light"
             >
@@ -43,20 +43,20 @@ const Footer: React.FC<ContainerProps> = ({
               <Link
                 target="_blank"
                 href="https://www.linkedin.com/in/vattiu/"
-                className="bg-purple-50 text-purple-800 px-8 py-3 rounded-lg font-medium hover:bg-purple-200  transition-all duration-300 ease-in-out hover:rounded-3xl inline-block"
+                className="bg-purple-800 text-purple-50 px-8 py-3 rounded-lg font-medium hover:bg-purple-300 hover:text-purple-800  transition-all duration-300 ease-in-out hover:rounded-3xl inline-block"
               >
                 Get in touch
               </Link>
               <Link
                 href="/photography"
-                className="border border-purple-200 text-white px-8 py-3 rounded-lg font-medium  hover:bg-purple-200 hover:text-purple-800 ease-in-out hover:rounded-3xl transition-all duration-300 inline-block"
+                className="border border-purple-300 text-purple-200 px-8 py-3 rounded-lg font-medium  hover:bg-purple-200 hover:text-purple-800 ease-in-out hover:rounded-3xl transition-all duration-300 inline-block"
               >
                 View photography
               </Link>
               <Link
                 href="/resume.pdf"
                 target="_blank"
-                className="border border-purple-200 text-white px-8 py-3 rounded-lg font-medium hover:bg-purple-200 hover:text-purple-800 ease-in-out hover:rounded-3xl transition-all duration-300 inline-block"
+                className="border border-purple-300 text-purple-200 px-8 py-3 rounded-lg font-medium hover:bg-purple-200 hover:text-purple-800 ease-in-out hover:rounded-3xl transition-all duration-300 inline-block"
               >
                 View resume
               </Link>

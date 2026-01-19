@@ -41,7 +41,7 @@ const Header: React.FC<ContainerProps> = ({
         className={cn(
           "w-full sm:w-auto inline-flex items-center transition-all duration-300 rounded-full my-3 md:my-6",
           scrolled
-            ? "bg-purple-50 border border-purple-200 translate-y-1 px-4 sm:px-6 shadow-2xl w-[90%] sm:w-auto"
+            ? "bg-purple-300 border border-purple-300 translate-y-1 px-4 sm:px-6 shadow-2xl w-[90%] sm:w-auto"
             : "bg-transparent translate-y-0 px-4 sm:px-8",
           className
         )}
@@ -52,8 +52,9 @@ const Header: React.FC<ContainerProps> = ({
             className={cn(
               "text-xl font-medium  px-3 py-1.5 rounded-full transition-all duration-300 ease-in-out",
               isActive("/")
-                ? "text-purple-200 bg-purple-800"
-                : "text-purple-600 hover:text-purple-800 hover:bg-purple-200"
+                ? "text-purple-200 bg-purple-800":
+              scrolled ? "text-purple-600 hover:text-purple-800 hover:bg-purple-200"
+                : "text-purple-200 hover:text-purple-800 hover:bg-purple-200"
             )}
             color="light"
           >
@@ -66,9 +67,13 @@ const Header: React.FC<ContainerProps> = ({
             className="sm:hidden p-2 rounded-full hover:bg-purple-200 transition-all duration-300"
           >
             {isMenuOpen ? (
-              <XMarkIcon className="h-6 w-6 text-purple-600" />
+              <XMarkIcon className={
+                cn("h-6 w-6 ",
+                scrolled ? "text-purple-800" : "text-purple-300 ")
+              } />
             ) : (
-              <Bars3Icon className="h-6 w-6 text-purple-600" />
+              <Bars3Icon className={cn("h-6 w-6 ",
+                scrolled ? "text-purple-800" : "text-purple-300 ")} />
             )}
           </button>
 
@@ -77,14 +82,16 @@ const Header: React.FC<ContainerProps> = ({
             <Button
               size="sm"
               variant="text"
-              color="dark"
+              color="light"
               href="/about"
               className={cn(
                 "transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium",
                 isActive("/about")
-                  ? "text-purple-200 bg-purple-800 hover:text-purple-200"
-                  : "!text-purple-600  hover:bg-purple-200"
+                  ? "text-purple-200 bg-purple-800 hover:text-purple-200":
+              scrolled ? "text-purple-600 hover:text-purple-800 hover:bg-purple-200"
+                  : "text-purple-200  hover:bg-purple-200 hover:text-purple-800"
               )}
+
             >
               About
             </Button>
@@ -96,8 +103,9 @@ const Header: React.FC<ContainerProps> = ({
               className={cn(
                 "transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium ",
                 isActive("/photography")
-                  ? "text-purple-200 bg-purple-800 hover:text-purple-200"
-                  : "!text-purple-600  hover:bg-purple-200"
+                 ? "text-purple-200 bg-purple-800 hover:text-purple-200":
+              scrolled ? "text-purple-600 hover:text-purple-800 hover:bg-purple-200"
+                  : "text-purple-200  hover:bg-purple-200 hover:text-purple-800"
               )}
             >
               Photography
@@ -107,7 +115,10 @@ const Header: React.FC<ContainerProps> = ({
               color="dark"
               href="https://www.linkedin.com/in/vattiu/"
               target="_blank"
-              className="text-purple-900 border border-purple-50 hover:border-purple-900  transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium"
+              className={cn("  transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium",
+                  !scrolled ?"bg-purple-300 text-purple-950 border border-purple-300 hover:border-purple-900":
+                  "text-purple-950 border border-purple-950 hover:bg-purple-200"
+              )}
             >
               Get in touch
             </Button>
@@ -116,7 +127,8 @@ const Header: React.FC<ContainerProps> = ({
           {/* Mobile menu */}
           <div
             className={cn(
-              "fixed inset-x-0 top-[calc(100%+0.5rem)] mx-4 sm:hidden",
+              "fixed inset-x-0 top-[calc(100%+0.5rem)] sm:hidden",
+              !scrolled ? "mx-4" : "mx-0",
               isMenuOpen
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 -translate-y-4 pointer-events-none"
@@ -124,7 +136,7 @@ const Header: React.FC<ContainerProps> = ({
           >
             <div className="relative">
               {/* Backdrop blur overlay */}
-              <div className="absolute inset-0 -z-10 bg-purple-50 rounded-3xl border border-purple-200 shadow-lg" />
+              <div className="absolute inset-0 -z-10 bg-purple-300 rounded-3xl border border-purple-200 shadow-lg" />
               <div
                 className="absolute inset-0 -z-10 backdrop-blur-xl rounded-3xl"
                 aria-hidden="true"

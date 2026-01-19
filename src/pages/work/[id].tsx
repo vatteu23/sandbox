@@ -1,7 +1,5 @@
-import { useParams } from "next/navigation";
-import { Freelance, handleUrlClick, PorjectProps, Porjects } from "..";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import parse from 'html-react-parser';
+import { Freelance,  PorjectProps, Porjects } from "..";
 import Layout from "@/components/Layout";
 import Typography from "@/components/Typography";
 import Container from "@/components/Container";
@@ -10,13 +8,14 @@ import Footer from "@/components/Footer";
 import { FiCalendar } from "react-icons/fi";
 import Link from "next/link";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
+import Eyebrow from "@/components/Eyebrow";
 
 const Work = ({ work }: { work: PorjectProps | null }) => {
   if (!work) {
     return <div>Work not found</div>;
   }
   return (
-    <Layout className="bg-purple-50 min-h-screen">
+    <Layout className="bg-neutral-950 min-h-screen">
       <HeadWithMetas
         title={work.name + " | " + work.role}
         description={work.role || "Web Developer and Designer"}
@@ -60,17 +59,12 @@ const Work = ({ work }: { work: PorjectProps | null }) => {
           <div className="md:w-2/3 lg:w-3/4 max-w-2xl space-y-8 py-4">
             {/* Description */}
             <div>
-              <Typography
-                variant="h6"
-                fontWeight="bold"
-                className="text-purple-800 mb-3"
-                fontFamily="primary"
-              >
-                Overview
-              </Typography>
+             <Eyebrow>
+              Overview
+             </Eyebrow>
               <Typography
                 variant="p"
-                className="text-purple-600 leading-relaxed"
+                className="text-purple-200 leading-relaxed"
                 fontFamily="primary"
               >
                 {work.description}
@@ -83,7 +77,7 @@ const Work = ({ work }: { work: PorjectProps | null }) => {
                 <Typography
                   variant="h6"
                   fontWeight="bold"
-                  className="text-purple-800 mb-4"
+                  className="text-purple-300 mb-4"
                   fontFamily="primary"
                 >
                   Key Achievements
@@ -91,15 +85,13 @@ const Work = ({ work }: { work: PorjectProps | null }) => {
                 <div className="grid gap-3">
                   {work.achievements.map((achievement, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-purple-800 rounded-full mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-purple-300 rounded-full mt-2 flex-shrink-0"></div>
                       <Typography
                         variant="p"
-                        className="text-purple-600"
+                        className="text-purple-200"
                         fontFamily="primary"
                       >
-                        <span
-                          dangerouslySetInnerHTML={{ __html: achievement }}
-                        />
+                        {parse(achievement)}
                       </Typography>
                     </div>
                   ))}
@@ -113,7 +105,7 @@ const Work = ({ work }: { work: PorjectProps | null }) => {
                 <Typography
                   variant="h6"
                   fontWeight="bold"
-                  className="text-purple-800 mb-4"
+                  className="text-purple-300 mb-4"
                   fontFamily="primary"
                 >
                   Technologies Used
@@ -122,7 +114,7 @@ const Work = ({ work }: { work: PorjectProps | null }) => {
                   {work.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-purple-800 rounded-full text-sm text-purple-200 font-medium font-mono"
+                      className="px-3 py-1 bg-purple-800 rounded-full text-sm text-purple-50 font-medium font-mono"
                     >
                       {tech}
                     </span>
@@ -137,14 +129,14 @@ const Work = ({ work }: { work: PorjectProps | null }) => {
                 <Typography
                   variant="h6"
                   fontWeight="bold"
-                  className="text-purple-800 mb-2"
+                  className="text-purple-300 mb-2"
                   fontFamily="primary"
                 >
                   Team Collaboration
                 </Typography>
                 <Typography
                   variant="p"
-                  className="text-purple-600"
+                  className="text-purple-200"
                   fontFamily="primary"
                 >
                   {work.teamSize}
@@ -158,7 +150,7 @@ const Work = ({ work }: { work: PorjectProps | null }) => {
                 <Typography
                   variant="h6"
                   fontWeight="bold"
-                  className="text-purple-800 mb-4"
+                  className="text-purple-300 mb-4"
                   fontFamily="primary"
                 >
                   Project Highlights
@@ -166,10 +158,10 @@ const Work = ({ work }: { work: PorjectProps | null }) => {
                 <div className="grid gap-3">
                   {work.highlights.map((highlight, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-purple-800 rounded-full mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-purple-300 rounded-full mt-2 flex-shrink-0"></div>
                       <Typography
                         variant="p"
-                        className="text-purple-600"
+                        className="text-purple-200"
                         fontFamily="primary"
                       >
                         {highlight}
