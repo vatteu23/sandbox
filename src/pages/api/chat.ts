@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { portfolioContext } from "@/components/AskUdayModal";
+import { portfolioContext } from "@/data/portfolioContext";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
