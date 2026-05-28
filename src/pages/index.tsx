@@ -2,18 +2,11 @@
 import Container from "@/components/Container";
 import HeadWithMetas from "@/components/HeadWithMetas";
 import Layout from "@/components/Layout";
-import Modal from "@/components/Modal";
-import Typography from "@/components/Typography";
 import { gsap } from "gsap";
-import {
-  EyeIcon,
-  ArrowTopRightOnSquareIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Footer from "@/components/Footer";
-import Eyebrow from "@/components/Eyebrow";
+import ProjectRow from "@/components/ProjectRow";
 
 export type PorjectProps = {
   id: string;
@@ -27,6 +20,7 @@ export type PorjectProps = {
   technologies?: string[];
   teamSize?: string;
   highlights?: string[];
+  metric?: string;
 };
 
 export const Porjects: PorjectProps[] = [
@@ -35,18 +29,20 @@ export const Porjects: PorjectProps[] = [
     name: "Labelbox",
     link: "https://www.labelbox.com/",
     src: "/images/lb.svg",
-    role: "Sr. Web Developer and Designer",
-    year: "Nov, 2021 - Present",
+    role: "Sr. Design Engineer",
+    year: "2021 – Present",
+    metric: "End-to-end ownership · concept to launch",
     description:
-      "Led full-stack development across multiple products, including the main marketing website and customer platforms for AI data labeling used by Fortune 500 companies.",
+      "Led design and full-stack development across labelbox.com, alignerr.com, and internal evaluation tooling. Built the gap between Figma and production — from component libraries and motion systems to cloud data pipelines.",
     achievements: [
-      "Built Labelbox Evaluation Studio product with 2-person team, creating model performance visualization tools. Read about it in the <a href='https://labelbox.com/blog/introducing-labelbox-evaluation-studio-drive-agi-advancements-with-real-time-feedback-on-model-performance/' target='_blank' rel='noopener noreferrer' style='color: #800080; transition: all 0.2s ease-in-out; padding: 0 0.25rem; font-weight: 500; display: inline-block; border-bottom: 2px solid #e5e7eb; text-decoration: none;'>product launch blog</a>",
-      "Migrated entire labelbox.com from Material UI to Tailwind CSS, improving performance and maintainability",
-      "Built complex CMS structures enabling marketing team to autonomously update content with zero developer dependency",
-      "Created high-performance pages using Next.js App Router with hybrid static/dynamic rendering",
-      "Implemented advanced animations using GSAP and Framer Motion in client components",
-      "Developed alignerr.com from ground up using custom Sanity CMS, delivering full-stack solution",
-      "Implemented multi-modal data visualization supporting video, audio, text, and image formats",
+      "Built Labelbox Evaluation Studio product with 2-person team, creating model performance visualization tools. Read about it in the <a href='https://labelbox.com/blog/introducing-labelbox-evaluation-studio-drive-agi-advancements-with-real-time-feedback-on-model-performance/' target='_blank' rel='noopener noreferrer' style='text-decoration: underline; font-weight: 500;'>product launch blog</a>",
+      "Led Storybook adoption for design system documentation, establishing shared component library across product teams",
+      "Migrated labelbox.com from Material UI to Tailwind CSS, defining token-based theming and reusable design primitives",
+      "Built centralized auth and authorization gateway published as private npm SDK, eliminating redundant auth across internal products",
+      "Developed alignerr.com from ground up using custom Sanity CMS — sole engineer from concept to production deployment",
+      "Implemented GSAP and Framer Motion animation systems across marketing and product pages",
+      "Engineered GCS auto-scan service for automated data discovery, establishing the standard production ingestion pattern",
+      "Built security issue tracker for DevOps/SecOps team from scratch",
       "Maintained GTM implementation and ensured SEO optimization across all projects",
     ],
     technologies: [
@@ -57,18 +53,21 @@ export const Porjects: PorjectProps[] = [
       "Sanity CMS",
       "GSAP",
       "Framer Motion",
+      "Figma",
+      "Storybook",
+      "GCP",
+      "BigQuery",
       "Google Tag Manager",
       "GraphQL",
-      "Figma",
     ],
     teamSize:
-      "Cross-functional teams varying from 2-12 members (designers, engineers, PMs, marketing)",
+      "Cross-functional teams varying from 2–12 members (designers, engineers, PMs, marketing)",
     highlights: [
-      "Full-stack ownership of labelbox.com and alignerr.com websites",
+      "Full-stack ownership of labelbox.com and alignerr.com",
       "Created data visualization tools for ML model performance comparison",
+      "Led Figma-to-code design system workflow across product teams",
       "Established rapid prototyping workflow from concept to production deployment",
-      "Collaborated across design, product, and marketing teams to align on business goals",
-      "Built SEO-first architecture resulting in improved organic traffic and conversion",
+      "Built SEO-first architecture improving organic traffic and conversion",
     ],
   },
   {
@@ -77,19 +76,17 @@ export const Porjects: PorjectProps[] = [
     link: "https://triplecrownproducts.com/",
     src: "/images/tcp.svg",
     role: "Full Stack Developer",
-    year: "July, 2017 - Oct, 2021",
+    year: "2017 – 2021",
     description:
-      "Led full-stack development of e-commerce platforms and internal systems, migrating parts of the website to React with Tailwind CSS. Focused on performance optimization, SEO enhancement, and creating maintainable solutions for marketing team.",
+      "Led full-stack development and UI design for e-commerce platforms, migrating legacy systems to React with Tailwind CSS. Focused on performance optimization, SEO, and building tools that empowered the marketing team.",
+    metric: "40% faster · 60% more organic traffic",
     achievements: [
-      "Developed custom webstores and e-commerce UIs with a reusable framework for different customers",
-      "Created complex stored procedures for efficient data management and reporting",
-      "Built a custom CMS enabling scheduled content releases and future feature deployments",
+      "Developed custom webstores and e-commerce UIs with a reusable component framework",
       "Improved website performance by 40% through optimization and caching strategies",
       "Enhanced SEO rankings resulting in 60% increase in organic traffic",
-      "Implemented automated content management tools for marketing team autonomy",
+      "Built a custom CMS enabling scheduled content releases and future feature deployments",
+      "Created marketing materials and website assets using Corel Draw for brand consistency",
       "Created sales dashboard with real-time analytics and reporting features",
-      "Created marketing materials and website assets using Corel Draw for enhanced brand consistency",
-      "Collaborated with designers to enhance marketing website and user experience",
       "Implemented .NET Core APIs to support modern web architecture",
     ],
     technologies: [
@@ -105,12 +102,11 @@ export const Porjects: PorjectProps[] = [
     ],
     teamSize: "Full-stack developer working with design and marketing teams",
     highlights: [
+      "40% performance improvement through optimization and caching",
+      "60% increase in organic traffic from SEO enhancements",
       "Built framework for rapid custom webstore development",
-      "Implemented content scheduling system for future releases",
-      "Achieved significant performance and SEO improvements",
-      "Empowered marketing team with automated content tools",
-      "Seamlessly integrated legacy and modern tech stacks",
-      "Enhanced developer and admin workflow with CMS tools",
+      "Content scheduling system for future releases",
+      "Enhanced developer and admin workflow with custom CMS tools",
     ],
   },
   {
@@ -119,21 +115,21 @@ export const Porjects: PorjectProps[] = [
     link: "https://www.cgs.niu.edu/",
     src: "/images/niu.svg",
     role: "Web Developer",
-    year: "June, 2016 - May, 2017",
+    year: "2016 – 2017",
     description:
-      "Core developer for interactive data visualization tools, collaborating with researchers and policymakers.",
+      "Core developer for interactive data visualization tools, collaborating with researchers and policymakers to make complex educational metrics explorable and accessible.",
     achievements: [
-      "Implemented complex data analysis tools using D3.js and C# MVC architecture",
-      "Built a responsive platform that visualized student graduation rates and other educational metrics",
-      "Created interactive dashboards for data exploration and analysis",
-      "Developed comprehensive filtering system for multi-dimensional data analysis",
+      "Designed and built interactive visualization tools using D3.js and C# MVC architecture",
+      "Built a responsive platform visualizing student graduation rates for the 60by25 initiative",
+      "Created interactive dashboards for multi-dimensional data exploration",
+      "Developed comprehensive filtering system for complex educational datasets",
     ],
     technologies: ["D3.js", "C#", "SQL", "MVC", "JavaScript", "Bootstrap"],
     teamSize:
       "Team of 2 developers collaborating with researchers and data analysts",
     highlights: [
       "Visualized educational datasets for the 60by25 initiative tracking graduation rates",
-      "Collaborated with researchers to create intuitive data exploration tools",
+      "Collaborated with researchers to build intuitive data exploration tools",
       "Built analysis platform used by education stakeholders and government agencies",
     ],
   },
@@ -145,14 +141,16 @@ export const Freelance: PorjectProps[] = [
     name: "Them Design Studios",
     link: "https://themdesignstudios.com/",
     src: "/images/them.svg",
-    role: "Full Stack Developer",
-    year: "June, 2018",
+    role: "Design Engineer",
+    year: "2018",
     description:
-      "Built modern web presence for creative agency specializing in brand identity and digital experiences for startups.",
+      "Built a modern web presence for a creative agency specializing in brand identity and digital experiences for startups.",
+    metric: "200% more inquiries · 95+ Lighthouse",
     achievements: [
       "Delivered responsive portfolio site increasing inquiries by 200%",
       "Implemented custom CMS for easy content management",
       "Optimized performance achieving 95+ Lighthouse scores",
+      "Designed custom animations and micro-interactions with GSAP",
     ],
     technologies: [
       "React",
@@ -160,11 +158,12 @@ export const Freelance: PorjectProps[] = [
       "Contentful",
       "GSAP",
       "Styled Components",
+      "Tailwind CSS",
     ],
     highlights: [
-      "Collaborative design-development process",
-      "Custom animations and micro-interactions",
-      "Mobile-first responsive design",
+      "Collaborative design-development process from concept to launch",
+      "Custom GSAP animations and micro-interactions",
+      "Mobile-first responsive design with 95+ Lighthouse scores",
     ],
   },
   {
@@ -173,9 +172,10 @@ export const Freelance: PorjectProps[] = [
     link: "https://incatrailhikes.com/",
     src: "/images/them.svg",
     role: "Full Stack Developer",
-    year: "May, 2017",
+    year: "2017",
     description:
       "Developed booking platform and marketing website for adventure tourism company offering hiking expeditions in Peru.",
+    metric: "85% booking conversion increase",
     achievements: [
       "Built booking system increasing conversions by 85%",
       "Created interactive itinerary builder for custom trips",
@@ -189,281 +189,132 @@ export const Freelance: PorjectProps[] = [
     ],
   },
 ];
-export const handleUrlClick = (url: string, newTab = true) => {
-  if (newTab) {
-    window.open(url, "_blank");
-  } else {
-    window.location.href = url;
-  }
-  window.open(url, "_blank");
-};
+
 export default function Home() {
-  const component = useRef<any>(null);
+  const component = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       const t1 = gsap.timeline();
       t1.fromTo(
         ".name-anim",
-        {
-          x: -80,
-          opacity: 0,
-          rotate: -10,
-        },
+        { x: -60, opacity: 0, rotate: -8 },
         {
           x: 0,
           opacity: 1,
           rotate: 0,
-          ease: "elastic.out(1,0.7)",
-          duration: 1,
+          ease: "back.out(1.4)",
+          duration: 0.9,
           transformOrigin: "top",
-          stagger: {
-            each: 0.1,
-            from: "random",
-          },
-        }
+          stagger: { each: 0.08, from: "random" },
+        },
       );
     }, component);
     return () => ctx.revert();
   }, []);
 
-  const renderLetters = (text: string) => {
-    return text.split("").map((letter, index) => {
-      return (
-        <span
-          key={index}
-          className={`inline-block name-anim name-anim-${index}`}
-        >
-          {" "}
-          {letter}
-        </span>
-      );
-    });
-  };
-
- 
+  const renderLetters = (text: string) =>
+    text.split("").map((letter, index) => (
+      <span key={index} className={`inline-block name-anim name-anim-${index}`}>
+        {letter}
+      </span>
+    ));
 
   return (
-    <Layout className="bg-neutral-950 min-h-screen">
+    <Layout className="bg-white dark:bg-neutral-950 min-h-screen">
       <HeadWithMetas
-        title="Uday Vatti"
-        description="Uday Vatti is a web developer and a designer at Labelbox."
+        title="Uday Vatti — Design Engineer"
+        description="Design Engineer building the gap between Figma and production. 9+ years crafting design systems, motion, and full-stack platforms at Labelbox."
         url="https://udayvatti.com"
         image="/images/uv-port.png"
       />
-      <div className="py-20 md:py-32">
+
+      {/* Hero */}
+      <div className="pt-32 pb-40">
         <Container>
-          <div className="text-center max-w-4xl mx-auto" ref={component}>
-          <Eyebrow>
-            Hello, I'm
-          </Eyebrow>
-            <Typography
-              variant="h1"
-              className="!leading-tight mb-8 text-purple-300 text-5xl md:text-6xl lg:text-7xl"
-              fontWeight="bold"
-              fontFamily="display"
+          <div ref={component}>
+            <p className="text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-8">
+              Design Engineer · San Francisco
+            </p>
+            <h1
+              className="font-display leading-[0.92] tracking-tight text-neutral-900 dark:text-neutral-100 mb-10"
+              style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
             >
-              {renderLetters(`Uday`)} {renderLetters(`Vatti`)}
-            </Typography>
-            <Typography
-              variant="h3"
-              fontWeight="normal"
-              className="mb-12 text-purple-200 max-w-2xl mx-auto leading-loose text-lg md:text-2xl"
-              fontFamily="primary"
-            >
-              Sr. Web Developer and Designer crafting digital experiences at{" "}
-              <Link
-                className=" text-purple-300 hover:text-purple-200 transition-all duration-200 ease-in-out px-4 py-1 font-medium inline-block mx-1 border-b-2 border-purple-200 hover:border-purple-500"
+              {renderLetters("Uday")} {renderLetters("Vatti")}
+            </h1>
+            <p className="text-lg text-neutral-600 dark:text-neutral-300 max-w-md leading-relaxed mb-12">
+              Nine years designing and building for the web. Currently at{" "}
+              <a
                 href="https://www.labelbox.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-900 dark:text-neutral-100 border-b border-neutral-400 dark:border-neutral-600 hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors duration-200"
               >
                 Labelbox
+              </a>
+              .
+            </p>
+            <div className="flex flex-wrap gap-7">
+              <Link
+                href="/work"
+                className="text-sm font-medium text-neutral-900 dark:text-neutral-100 hover:opacity-50 transition-opacity"
+              >
+                Work →
               </Link>
-            </Typography>
-
-            {/* Figma-style skill tags */}
-            <div className="flex flex-wrap justify-center gap-3 mb-12">
-              <span className="px-4 py-2 bg-purple-800 rounded-full text-xs md:text-sm font-medium text-purple-200 hover:bg-purple-800 transition-colors font-mono">
-                React & Next.js
-              </span>
-              <span className="px-4 py-2 bg-purple-800 rounded-full text-xs md:text-sm font-medium text-purple-200 hover:bg-purple-800 transition-colors font-mono">
-                UI/UX Design
-              </span>
-              <span className="px-4 py-2 bg-purple-800 rounded-full text-xs md:text-sm font-medium text-purple-200 hover:bg-purple-800 transition-colors font-mono">
-                TypeScript
-              </span>
-              <span className="px-4 py-2 bg-purple-800 rounded-full text-xs md:text-sm font-medium text-purple-200 hover:bg-purple-800 transition-colors font-mono">
-                Design Systems
-              </span>
+              <Link
+                href="/about"
+                className="text-sm font-medium text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+              >
+                About →
+              </Link>
+              <a
+                href="https://www.linkedin.com/in/vattiu/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-mono text-neutral-400 dark:text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+              >
+                Get in touch →
+              </a>
             </div>
           </div>
         </Container>
       </div>
 
-      <div className="">
-        <Container className="py-20 border-t-2 border-purple-300">
-          <div className="text-center mb-16">
-            <Eyebrow>
-              Professional Experience
-            </Eyebrow>
-
-
-            <Typography
-              variant="h6"
-              className="text-purple-300 max-w-2xl mx-auto"
-              fontFamily="primary"
-              fontWeight="light"
-            >
-              Building digital products and experiences across various
-              industries
-            </Typography>
+      {/* Work */}
+      <div className="border-t border-neutral-100 dark:border-neutral-900">
+        <Container className="py-24">
+          <div className="flex items-center gap-4 mb-12">
+            <span className="text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-widest">
+              Work
+            </span>
+            <div className="flex-1 h-px bg-neutral-100 dark:bg-neutral-800" />
           </div>
-          <div className="grid md:grid-cols-1 gap-6 max-w-4xl mx-auto">
-            {Porjects.map((project: PorjectProps, index: number) => {
-              return (
-                <div
-                  onClick={() => handleUrlClick(`/work/${project.id}`, false)}
-                  className="group cursor-pointer border-purple-300 p-8 rounded-xl hover:rounded-3xl hover:shadow-xl transition-all duration-300 ease-in-out border-2 "
-                  key={index}
-                >
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div className="flex-1">
-                      <Typography
-                        variant="h4"
-                        fontWeight="normal"
-                        className="text-purple-300 mb-2 group-hover:text-purple-200 transition-colors"
-                        fontFamily="primary"
-                      >
-                        {project.name}
-                      </Typography>
-                      <Typography
-                        variant="h6"
-                        fontWeight="normal"
-                        className="text-purple-200 mb-3"
-                        fontFamily="primary"
-                      >
-                        {project.role}
-                      </Typography>
-                      <Typography
-                        variant="p"
-                        className="text-purple-200 text-sm mb-2"
-                        fontFamily="primary"
-                      >
-                        {project.year}
-                      </Typography>
-                      {project.description && (
-                        <Typography
-                          variant="p"
-                          className="text-purple-200 text-sm line-clamp-2"
-                          fontFamily="primary"
-                        >
-                          {project.description}
-                        </Typography>
-                      )}
-                    </div>
-                    <div className="flex-shrink-0 flex gap-2">
-                      <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center group-hover:bg-purple-800 transition-all duration-300 transform group-hover:scale-105">
-                        <EyeIcon className="w-5 h-5 text-purple-600 group-hover:text-purple-200" />
-                      </div>
-                      <div
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleUrlClick(project.link);
-                        }}
-                        className="w-10 h-10  bg-purple-100 rounded-full flex items-center justify-center hover:bg-purple-800 text-purple-600 hover:text-purple-200 transition-all duration-300 transform hover:scale-105 hover:rotate-12"
-                      >
-                        <ArrowTopRightOnSquareIcon className="w-5 h-5 " />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+          <div className="max-w-4xl">
+            {Porjects.map((project, i) => (
+              <ProjectRow key={project.id} project={project} index={i} />
+            ))}
           </div>
         </Container>
       </div>
-      <div className="">
-        <Container className="py-20 border-t-2 border-purple-300">
-          <div className="text-center mb-16">
-            <Eyebrow>
-              Freelance Projects
-            </Eyebrow>
-            <Typography
-              variant="h6"
-              className="text-purple-300 max-w-2xl mx-auto"
-              fontFamily="primary"
-              fontWeight="light"
-            >
-              Selected client work and independent projects
-            </Typography>
+
+      {/* Freelance */}
+      <div className="border-t border-neutral-100 dark:border-neutral-900">
+        <Container className="py-24">
+          <div className="flex items-center gap-4 mb-12">
+            <span className="text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-widest">
+              Freelance
+            </span>
+            <div className="flex-1 h-px bg-neutral-100 dark:bg-neutral-800" />
           </div>
-          <div className="grid md:grid-cols-1 gap-6 max-w-4xl mx-auto">
-            {Freelance.map((project: PorjectProps, index: number) => {
-              return (
-                <div
-                  onClick={() => handleUrlClick(`/work/${project.id}`, false)}
-                  className="group cursor-pointer border-purple-300 p-8 rounded-xl hover:rounded-3xl hover:shadow-xl transition-all duration-300  ease-in-out border-2 "
-                  key={index}
-                >
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div className="flex-1">
-                      <Typography
-                        variant="h4"
-                        fontWeight="normal"
-                        className="text-purple-300 mb-2 group-hover:text-purple-200 transition-colors"
-                        fontFamily="primary"
-                      >
-                        {project.name}
-                      </Typography>
-                      <Typography
-                        variant="h6"
-                        fontWeight="normal"
-                        className="text-purple-200 mb-3"
-                        fontFamily="primary"
-                      >
-                        {project.role}
-                      </Typography>
-                      <Typography
-                        variant="p"
-                        className="text-purple-200 text-sm mb-2"
-                        fontFamily="primary"
-                      >
-                        {project.year}
-                      </Typography>
-                      {project.description && (
-                        <Typography
-                          variant="p"
-                          className="text-purple-200 text-sm line-clamp-2"
-                          fontFamily="primary"
-                        >
-                          {project.description}
-                        </Typography>
-                      )}
-                    </div>
-                    <div className="flex-shrink-0 flex gap-2">
-                      <div className="w-10 h-10 bg-purple-50 rounded-full flex items-center justify-center group-hover:bg-purple-800 transition-all duration-300 transform group-hover:scale-105 border border-purple-200">
-                        <EyeIcon className="w-5 h-5 text-purple-600 group-hover:text-purple-200" />
-                      </div>
-                      <div
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleUrlClick(project.link);
-                        }}
-                        className="w-10 h-10 bg-purple-50 rounded-full flex   items-center justify-center hover:bg-purple-800 text-purple-600 hover:text-purple-200 transition-all duration-300 transform hover:scale-105 hover:rotate-12 border border-purple-200"
-                      >
-                        <ArrowTopRightOnSquareIcon className="w-5 h-5 " />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+          <div className="max-w-4xl">
+            {Freelance.map((project, i) => (
+              <ProjectRow key={project.id} project={project} index={i} />
+            ))}
           </div>
         </Container>
       </div>
 
       <Footer />
-
-  
     </Layout>
   );
 }

@@ -1,91 +1,74 @@
 import Container from "@/components/Container";
 import Layout from "@/components/Layout";
-import Typography from "@/components/Typography";
 import React, { useState } from "react";
 import { PhotoAlbum } from "react-photo-album";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
-// import optional lightbox plugins
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import HeadWithMetas from "@/components/HeadWithMetas";
-
 import Footer from "@/components/Footer";
-import Eyebrow from "@/components/Eyebrow";
 
 type PhotographyProps = {
   photos: any[];
 };
 
-const Photography: React.FC<PhotographyProps> = (props: PhotographyProps) => {
-  const { photos } = props;
-
+const Photography: React.FC<PhotographyProps> = ({ photos }) => {
   const [gallery, setGallery] = React.useState<any[]>([]);
 
   React.useEffect(() => {
     setGallery(
-      photos.map((photo) => {
-        console.log(photo);
-        return {
-          src: photo.urls.full,
-          width: photo.width,
-          height: photo.height,
-        };
-      })
+      photos.map((photo) => ({
+        src: photo.urls.regular,
+        width: photo.width,
+        height: photo.height,
+        alt: photo.alt_description || "Photo by Uday Vatti",
+      })),
     );
   }, [photos]);
 
   const [index, setIndex] = useState(-1);
 
   return (
-    <Layout className="bg-neutral-950 min-h-screen">
+    <Layout className="bg-white dark:bg-neutral-950 min-h-screen">
       <HeadWithMetas
         title="Photography | Uday Vatti"
-        description="A collection of moments captured through my lens. Photography portfolio by Uday Vatti."
+        description="A collection of moments captured through my lens — cars, cities, and light. Photography by Uday Vatti."
         url="https://udayvatti.com/photography"
         image="/images/uv-port.png"
       />
       <Container>
-        <div className="pt-20 md:pt-32 pb-12">
+        <div className="pt-32 pb-12 md:pt-40">
           <div className="max-w-4xl">
-           <Eyebrow>
-            Photography
-           </Eyebrow>
-            <Typography
-              variant="h1"
-              className="!leading-tight mb-8 text-purple-300"
-              fontWeight="bold"
-              fontFamily="display"
+            <p className="text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-8">
+              Photography
+            </p>
+            <h1
+              className="font-display leading-[0.92] tracking-tight text-neutral-900 dark:text-neutral-100 mb-8"
+              style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
             >
               Framing Moments
-            </Typography>
-            <Typography
-              variant="h5"
-              fontWeight="normal"
-              className="mb-12 text-purple-200 max-w-2xl leading-loose"
-              fontFamily="primary"
-            >
-              Capturing life's fleeting moments through the lens, one frame at a
-              time
-            </Typography>
+            </h1>
+            <p className="text-lg text-neutral-600 dark:text-neutral-300 max-w-md leading-relaxed mb-2">
+              Photography is my way of slowing down.
+            </p>
           </div>
         </div>
-        <div className="pb-20 ">
+        <div className="pb-20">
           {gallery.length > 0 && (
             <PhotoAlbum
               layout="columns"
               photos={gallery}
-              spacing={12}
+              spacing={10}
               columns={(containerWidth) => {
                 if (containerWidth < 640) return 1;
                 if (containerWidth < 1024) return 2;
                 return 3;
               }}
-              // className="mt-12"
               onClick={({ index }) => setIndex(index)}
             />
           )}
@@ -95,7 +78,6 @@ const Photography: React.FC<PhotographyProps> = (props: PhotographyProps) => {
             open={index >= 0}
             index={index}
             close={() => setIndex(-1)}
-            // enable optional lightbox plugins
             plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
           />
         </div>
@@ -107,21 +89,25 @@ const Photography: React.FC<PhotographyProps> = (props: PhotographyProps) => {
 };
 
 export async function getStaticProps() {
-  // Fetch photos from Unsplash API
-  const res = await fetch(
-    "https://api.unsplash.com/users/vatteu23/photos?per_page=10",
-    {
-      headers: {
-        Authorization: "Client-ID xpIrXtl19hTth19Cl3Jq2urUKymQiTI_BtM617npZMY",
+  const apiKey = process.env.UNSPLASH_API_KEY;
+  try {
+    const res = await fetch(
+      "https://api.unsplash.com/users/vatteu23/photos?per_page=20",
+      {
+        headers: {
+          Authorization: `Client-ID ${apiKey}`,
+        },
       },
-    }
-  );
-  const photos = await res.json();
-  return {
-    props: {
-      photos: photos,
-    },
-  };
+    );
+    const photos = await res.json();
+    return {
+      props: {
+        photos: Array.isArray(photos) ? photos : [],
+      },
+    };
+  } catch {
+    return { props: { photos: [] } };
+  }
 }
 
 export default Photography;

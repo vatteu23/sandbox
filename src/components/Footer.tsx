@@ -1,70 +1,62 @@
-import { cn } from "@/functions/cn";
 import React from "react";
-import Container from "./Container";
-import Button from "./Button";
-import Typography from "./Typography";
 import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 
-interface ContainerProps {
-  className?: string;
-  bgColor?: string;
-  lightText?: boolean;
-}
+const Footer: React.FC = () => {
+  const year = new Date().getFullYear();
 
-const Footer: React.FC<ContainerProps> = ({
-  className,
-  bgColor,
-  lightText,
-}) => {
   return (
-    <div>
-      {/* Figma-style CTA section */}
-      <div className=" bg-neutral-950">
-        <Container className="py-20 border-t-2 border-purple-300">
-          <div className="text-center max-w-3xl mx-auto">
-            <Typography
-              variant="h2"
-              fontWeight="light"
-              className="text-purple-200 mb-6"
-              fontFamily="primary"
+    <footer className="bg-white dark:bg-neutral-950 border-t border-neutral-100 dark:border-neutral-900">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
+        <p className="text-[clamp(2rem,5vw,4rem)] font-display leading-tight tracking-tight text-neutral-900 dark:text-neutral-100 mb-10 max-w-xl">
+          Let's work together.
+        </p>
+
+        <a
+          href="mailto:vuday23@gmail.com"
+          className="inline-flex items-center gap-2 text-lg font-mono text-neutral-900 dark:text-neutral-100 border-b border-neutral-300 dark:border-neutral-700 pb-0.5 hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors duration-200 mb-16"
+        >
+          vuday23@gmail.com
+          <span className="text-neutral-400 dark:text-neutral-500" aria-hidden="true">↗</span>
+        </a>
+
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <div className="flex items-center gap-6">
+            <Link
+              href="/work"
+              className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
             >
-              Let's work together
-            </Typography>
-            <Typography
-              variant="h6"
-              className="text-purple-300 mb-8 leading-relaxed"
-              fontFamily="primary"
-              fontWeight="light"
+              Work
+            </Link>
+            <Link
+              href="/about"
+              className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
             >
-              Interested in collaborating on your next project? I'd love to hear
-              about your ideas and help bring them to life.
-            </Typography>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                target="_blank"
-                href="https://www.linkedin.com/in/vattiu/"
-                className="bg-purple-800 text-purple-50 px-8 py-3 rounded-lg font-medium hover:bg-purple-300 hover:text-purple-800  transition-all duration-300 ease-in-out hover:rounded-3xl inline-block"
-              >
-                Get in touch
-              </Link>
-              <Link
-                href="/photography"
-                className="border border-purple-300 text-purple-200 px-8 py-3 rounded-lg font-medium  hover:bg-purple-200 hover:text-purple-800 ease-in-out hover:rounded-3xl transition-all duration-300 inline-block"
-              >
-                View photography
-              </Link>
-              <Link
-                href="/resume.pdf"
-                target="_blank"
-                className="border border-purple-300 text-purple-200 px-8 py-3 rounded-lg font-medium hover:bg-purple-200 hover:text-purple-800 ease-in-out hover:rounded-3xl transition-all duration-300 inline-block"
-              >
-                View resume
-              </Link>
-            </div>
+              About
+            </Link>
+            <Link
+              href="/photography"
+              className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+            >
+              Photography
+            </Link>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+            >
+              Resume
+            </a>
           </div>
-        </Container>
+          <div className="flex items-center gap-6">
+            <ThemeToggle />
+            <p className="text-xs font-mono text-neutral-400 dark:text-neutral-600">
+              © {year} Uday Vatti
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

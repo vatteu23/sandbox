@@ -10,7 +10,7 @@ type ChatMessageProps = {
 };
 
 /**
- * Individual chat message bubble component
+ * Individual chat message component — editorial style, no bubbles for assistant
  */
 export const ChatMessage: React.FC<ChatMessageProps> = ({
   message,
@@ -19,29 +19,21 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
 }) => {
   const isUser = message.role === "user";
 
-  return (
-    <div
-      className={cn(
-        "flex animate-slide-in-up",
-        isUser ? "justify-end" : "justify-start"
-      )}
-    >
-      {!isUser && (
-        <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center mr-2 flex-shrink-0 mt-1">
-          <span className="text-white font-semibold text-xs font-display">UV</span>
+  if (isUser) {
+    return (
+      <div className="flex justify-end animate-slide-in-up">
+        <div className="max-w-[75%] bg-neutral-900 border border-neutral-800 rounded-lg px-4 py-2.5">
+          <p className="text-sm text-neutral-200 whitespace-pre-wrap leading-relaxed">{message.content}</p>
         </div>
-      )}
-      <div
-        className={cn(
-          "max-w-[80%] rounded-2xl px-4 py-3",
-          isUser
-            ? "bg-purple-600 text-white"
-            : "bg-purple-500/10 text-purple-100 border border-purple-500/20"
-        )}
-      >
-        {isUser ? (
-          <p className="text-sm whitespace-pre-wrap">{message.content}</p>
-        ) : isTyping ? (
+      </div>
+    );
+  }
+
+  return (
+    <div className={cn("flex items-start gap-3 animate-slide-in-up")}>
+      <span className="font-display text-xs text-neutral-500 flex-shrink-0 mt-0.5 w-5 text-right">UV</span>
+      <div className="border-l border-neutral-800 pl-4 flex-1">
+        {isTyping ? (
           <TypingText content={message.content} onComplete={onTypingComplete} />
         ) : (
           <RenderedMessage content={message.content} />

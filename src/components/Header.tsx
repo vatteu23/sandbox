@@ -1,192 +1,185 @@
 import { cn } from "@/functions/cn";
 import React, { useEffect, useState } from "react";
-import Button from "./Button";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 
-interface ContainerProps {
-  className?: string;
-  bgColor?: string;
-  lightText?: boolean;
-}
+const NAV_LINKS = [
+  { href: "/work", label: "Work" },
+  { href: "/about", label: "About" },
+  { href: "/photography", label: "Photography" },
+];
 
-const Header: React.FC<ContainerProps> = ({
-  className,
-  bgColor,
-  lightText,
-}) => {
+const Header: React.FC = () => {
   const router = useRouter();
-  const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  const isActive = (path: string) => {
-    return router.pathname === path;
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
+  // Trigger stagger animation after overlay mounts
+  useEffect(() => {
+    if (isMenuOpen) {
+      const t = setTimeout(() => setIsAnimating(true), 20);
+      return () => clearTimeout(t);
+    } else {
+      setIsAnimating(false);
+    }
+  }, [isMenuOpen]);
+
+  const openMenu = () => setIsMenuOpen(true);
+  const closeMenu = () => {
+    setIsAnimating(false);
+    setTimeout(() => setIsMenuOpen(false), 400);
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-    };
+  const isActive = (path: string) =>
+    router.pathname === path || router.pathname.startsWith(path + "/");
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [scrolled]);
+  const navLinkClass = (path: string) =>
+    cn(
+      "text-sm font-medium transition-colors duration-200 pb-px",
+      isActive(path)
+        ? "text-neutral-900 dark:text-neutral-100 underline underline-offset-4 decoration-neutral-900 dark:decoration-neutral-100"
+        : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100"
+    );
 
   return (
-    <div className="flex justify-center sticky top-0 z-50">
-      <div
-        className={cn(
-          "w-full sm:w-auto inline-flex items-center transition-all duration-300 rounded-full my-3 md:my-6",
-          scrolled
-            ? "bg-purple-300 border border-purple-300 translate-y-1 px-4 sm:px-6 shadow-2xl w-[90%] sm:w-auto"
-            : "bg-transparent translate-y-0 px-4 sm:px-8",
-          className
-        )}
-      >
-        <nav className="flex flex-row justify-between items-center transition-all duration-300 py-3 gap-x-4 sm:gap-x-8 w-full sm:w-auto">
-          <Button
-            href="/"
-            className={cn(
-              "text-xl font-medium  px-3 py-1.5 rounded-full transition-all duration-300 ease-in-out",
-              isActive("/")
-                ? "text-purple-200 bg-purple-800":
-              scrolled ? "text-purple-600 hover:text-purple-800 hover:bg-purple-200"
-                : "text-purple-200 hover:text-purple-800 hover:bg-purple-200"
-            )}
-            color="light"
-          >
-            UV
-          </Button>
-
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="sm:hidden p-2 rounded-full hover:bg-purple-200 transition-all duration-300"
-          >
-            {isMenuOpen ? (
-              <XMarkIcon className={
-                cn("h-6 w-6 ",
-                scrolled ? "text-purple-800" : "text-purple-300 ")
-              } />
-            ) : (
-              <Bars3Icon className={cn("h-6 w-6 ",
-                scrolled ? "text-purple-800" : "text-purple-300 ")} />
-            )}
-          </button>
-
-          {/* Desktop navigation */}
-          <div className="hidden sm:flex gap-x-4 md:gap-x-6">
-            <Button
-              size="sm"
-              variant="text"
-              color="light"
-              href="/about"
-              className={cn(
-                "transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium",
-                isActive("/about")
-                  ? "text-purple-200 bg-purple-800 hover:text-purple-200":
-              scrolled ? "text-purple-600 hover:text-purple-800 hover:bg-purple-200"
-                  : "text-purple-200  hover:bg-purple-200 hover:text-purple-800"
-              )}
-
+    <>
+      <header className="sticky top-0 z-40 bg-white/95 dark:bg-neutral-950/95 backdrop-blur-sm border-b border-neutral-100 dark:border-neutral-900">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <nav className="flex items-center justify-between h-14">
+            <Link
+              href="/"
+              className="font-display text-xl text-neutral-900 dark:text-neutral-100 tracking-tight hover:opacity-60 transition-opacity"
             >
-              About
-            </Button>
-            <Button
-              size="sm"
-              variant="text"
-              color="dark"
-              href="/photography"
-              className={cn(
-                "transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium ",
-                isActive("/photography")
-                 ? "text-purple-200 bg-purple-800 hover:text-purple-200":
-              scrolled ? "text-purple-600 hover:text-purple-800 hover:bg-purple-200"
-                  : "text-purple-200  hover:bg-purple-200 hover:text-purple-800"
-              )}
+              UV
+            </Link>
+
+            {/* Mobile: only Menu button */}
+            <div className="sm:hidden">
+              <button
+                onClick={openMenu}
+                aria-label="Open menu"
+                aria-expanded={isMenuOpen}
+                className="text-xs font-mono text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors uppercase tracking-widest px-1 py-1.5"
+              >
+                Menu
+              </button>
+            </div>
+
+            {/* Desktop navigation */}
+            <div className="hidden sm:flex items-center gap-7">
+              {NAV_LINKS.map((link) => (
+                <Link key={link.href} href={link.href} className={navLinkClass(link.href)}>
+                  {link.label}
+                </Link>
+              ))}
+              <a
+                href="https://www.linkedin.com/in/vattiu/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+              >
+                Get in touch
+              </a>
+              <ThemeToggle />
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      {/* Full-screen mobile menu overlay */}
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 z-50 flex flex-col bg-white dark:bg-neutral-950 sm:hidden"
+          style={{
+            opacity: isAnimating ? 1 : 0,
+            transition: "opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+          }}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
+        >
+          {/* Top bar */}
+          <div className="flex items-center justify-between px-6 h-14 border-b border-neutral-100 dark:border-neutral-900 flex-shrink-0">
+            <Link
+              href="/"
+              className="font-display text-xl text-neutral-900 dark:text-neutral-100 tracking-tight"
+              onClick={closeMenu}
             >
-              Photography
-            </Button>
-            <Button
-              size="sm"
-              color="dark"
+              UV
+            </Link>
+            <button
+              onClick={closeMenu}
+              aria-label="Close menu"
+              className="text-xs font-mono text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors uppercase tracking-widest px-1 py-1.5"
+            >
+              Close
+            </button>
+          </div>
+
+          {/* Nav links — large, staggered */}
+          <div className="flex-1 flex flex-col justify-center px-8 gap-2">
+            {NAV_LINKS.map((link, i) => (
+              <div
+                key={link.href}
+                style={{
+                  opacity: isAnimating ? 1 : 0,
+                  transform: isAnimating ? "translateY(0)" : "translateY(24px)",
+                  transition: `opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1) ${60 + i * 60}ms, transform 0.45s cubic-bezier(0.4, 0, 0.2, 1) ${60 + i * 60}ms`,
+                }}
+              >
+                <Link
+                  href={link.href}
+                  onClick={closeMenu}
+                  className={cn(
+                    "font-display tracking-tight leading-none block py-3 border-b border-neutral-100 dark:border-neutral-900 transition-opacity",
+                    isActive(link.href)
+                      ? "text-neutral-900 dark:text-neutral-100"
+                      : "text-neutral-400 dark:text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100"
+                  )}
+                  style={{ fontSize: "clamp(2.5rem, 10vw, 3.5rem)" }}
+                >
+                  {link.label}
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom bar — contact + theme toggle */}
+          <div
+            className="px-8 py-8 flex items-center justify-between border-t border-neutral-100 dark:border-neutral-900 flex-shrink-0"
+            style={{
+              opacity: isAnimating ? 1 : 0,
+              transform: isAnimating ? "translateY(0)" : "translateY(12px)",
+              transition: "opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1) 300ms, transform 0.45s cubic-bezier(0.4, 0, 0.2, 1) 300ms",
+            }}
+          >
+            <a
               href="https://www.linkedin.com/in/vattiu/"
               target="_blank"
-              className={cn("  transition-all duration-300 ease-in-out px-4 py-1.5 rounded-full font-medium",
-                  !scrolled ?"bg-purple-300 text-purple-950 border border-purple-300 hover:border-purple-900":
-                  "text-purple-950 border border-purple-950 hover:bg-purple-200"
-              )}
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-neutral-900 dark:text-neutral-100 border-b border-neutral-300 dark:border-neutral-700 pb-0.5"
+              onClick={closeMenu}
             >
-              Get in touch
-            </Button>
+              Get in touch →
+            </a>
+            <ThemeToggle />
           </div>
-
-          {/* Mobile menu */}
-          <div
-            className={cn(
-              "fixed inset-x-0 top-[calc(100%+0.5rem)] sm:hidden",
-              !scrolled ? "mx-4" : "mx-0",
-              isMenuOpen
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 -translate-y-4 pointer-events-none"
-            )}
-          >
-            <div className="relative">
-              {/* Backdrop blur overlay */}
-              <div className="absolute inset-0 -z-10 bg-purple-300 rounded-3xl border border-purple-200 shadow-lg" />
-              <div
-                className="absolute inset-0 -z-10 backdrop-blur-xl rounded-3xl"
-                aria-hidden="true"
-              />
-
-              {/* Content */}
-              <div className="relative px-4 py-4">
-                <div className="flex flex-col gap-y-2">
-                  <Button
-                    size="sm"
-                    href="/about"
-                    className={cn(
-                      "transition-all duration-300 ease-in-out px-4 py-2 rounded-full font-medium w-full text-left",
-                      isActive("/about")
-                        ? "text-purple-800 bg-purple-100"
-                        : "text-purple-600 hover:text-purple-900 hover:bg-purple-100"
-                    )}
-                  >
-                    About
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="text"
-                    color="dark"
-                    href="/photography"
-                    className={cn(
-                      "transition-all duration-300 ease-in-out px-4 py-2 rounded-full font-medium w-full text-left",
-                      isActive("/photography")
-                        ? "text-purple-800 bg-purple-100"
-                        : "text-purple-600 hover:text-purple-900 hover:bg-purple-100"
-                    )}
-                  >
-                    Photography
-                  </Button>
-                  <Button
-                    size="sm"
-                    color="dark"
-                    href="https://www.linkedin.com/in/vattiu/"
-                    target="_blank"
-                    className="text-purple-900 hover:bg-purple-800 hover:text-purple-200 transition-all duration-300 ease-in-out px-4 py-2 rounded-full font-medium w-full text-left"
-                  >
-                    Get in touch
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </div>
+        </div>
+      )}
+    </>
   );
 };
 

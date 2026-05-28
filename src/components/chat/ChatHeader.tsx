@@ -7,7 +7,7 @@ type ChatHeaderProps = {
 };
 
 /**
- * Chat modal header with avatar, title, and action buttons
+ * Chat modal header
  */
 export const ChatHeader: React.FC<ChatHeaderProps> = ({
   hasMessages,
@@ -15,31 +15,29 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
   onClose,
 }) => {
   return (
-    <div className="flex items-center justify-between px-6 py-4 border-b border-purple-500/20">
+    <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-800">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center">
-          <span className="text-white font-semibold text-sm font-display">UV</span>
-        </div>
-        <div>
-          <h2 className="text-purple-100 font-semibold">Ask about Uday</h2>
-          <p className="text-purple-400 text-xs">AI-powered portfolio assistant</p>
-        </div>
+        <span className="font-display text-lg text-neutral-100 tracking-tight">UV</span>
+        <span className="text-neutral-600 text-xs font-mono">·</span>
+        <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest">Ask</span>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
         {hasMessages && (
           <button
             onClick={onClearHistory}
-            className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-red-500/20 transition-colors group"
+            className="text-neutral-600 hover:text-neutral-300 transition-colors"
             title="Clear chat history"
+            aria-label="Clear chat history"
           >
-            <TrashIcon className="w-4 h-4 text-purple-400 group-hover:text-red-400" />
+            <TrashIcon className="w-3.5 h-3.5" />
           </button>
         )}
         <button
           onClick={onClose}
-          className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-purple-500/20 transition-colors"
+          aria-label="Close"
+          className="text-neutral-600 hover:text-neutral-100 transition-colors"
         >
-          <XMarkIcon className="w-5 h-5 text-purple-300" />
+          <XMarkIcon className="w-4 h-4" />
         </button>
       </div>
     </div>

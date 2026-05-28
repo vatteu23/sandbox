@@ -3,13 +3,12 @@ import React, { ReactNode, useEffect, useState } from "react";
 import Header from "./Header";
 import { Major_Mono_Display, Doto } from "next/font/google";
 import AskUdayModal from "./AskUdayModal";
-import { SparklesIcon } from "@heroicons/react/24/outline";
+import Footer from "./Footer";
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 
 interface ContainerProps {
   children: ReactNode;
   className?: string;
-  bgColor?: string;
-  lightText?: boolean;
 }
 
 const majorMonoDisplay = Major_Mono_Display({
@@ -36,7 +35,14 @@ const Layout: React.FC<ContainerProps> = ({ children, className }) => {
   }, []);
 
   return (
-    <div className={cn(majorMonoDisplay.className, className, "relative")}>
+    <div
+      className={cn(
+        majorMonoDisplay.variable,
+        doto.variable,
+        className,
+        "relative",
+      )}
+    >
       <Header />
       {children}
 
@@ -44,16 +50,13 @@ const Layout: React.FC<ContainerProps> = ({ children, className }) => {
       {showAskMeAbout && (
         <button
           onClick={() => setIsModalOpen(true)}
-          className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-40 group"
+          aria-label="Ask me about Uday"
+          className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-40 flex items-center gap-2.5 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 px-4 py-2.5 text-xs font-mono uppercase tracking-widest hover:opacity-70 transition-opacity rounded-md"
         >
-          <div className="flex items-center gap-2 bg-purple-600 group hover:bg-purple-500 text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out hover:scale-105">
-            <SparklesIcon className="w-5 h-5 group-hover:animate-pulse" />
-            <span className="font-medium font-primary text-sm">Ask me about Uday</span>
-          </div>
+          Ask me...
         </button>
       )}
 
-      {/* Chat Modal */}
       <AskUdayModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

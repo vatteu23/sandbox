@@ -4,25 +4,27 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --font-primary: "IBM Plex Sans", system-ui, sans-serif;
+
+  /* Light mode shadows */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.07), 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 4px 16px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
+  --shadow-nav: 0 2px 16px rgba(0, 0, 0, 0.10), 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.40), 0 2px 8px rgba(0, 0, 0, 0.35);
+    --shadow-card-hover: 0 4px 20px rgba(0, 0, 0, 0.60), 0 2px 8px rgba(0, 0, 0, 0.50);
+    --shadow-nav: 0 2px 16px rgba(0, 0, 0, 0.50), 0 1px 4px rgba(0, 0, 0, 0.40);
   }
 }
 
 body {
   font-family: var(--font-primary), system-ui, sans-serif;
-  background-attachment: fixed;
 }
 
-/* Add subtle grain texture for elegance */
+/* Subtle grain texture */
 .elegant-grain::before {
   content: '';
   position: absolute;
@@ -30,7 +32,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0.03;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   pointer-events: none;
   border-radius: inherit;
@@ -40,7 +42,7 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-  
+
   .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -50,40 +52,19 @@ body {
   }
 }
 
-
-.grainy-background {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-color: #f0f0f0; /* Fallback color */
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%"><defs><pattern id="grainyPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="black"/><circle cx="10" cy="10" r="1" fill="black"/><circle cx="15" cy="15" r="1" fill="black"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grainyPattern)"/></svg>');
-  pointer-events: none;
-}
-
-/* Apply noise effect */
-.grainy-background::after {
-  opacity: 0.15; /* Adjust the opacity as needed */
-  mix-blend-mode: multiply;
-}
-
-
 .my-masonry-grid {
-  display: -webkit-box; /* Not needed if autoprefixing */
-  display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
-  margin-left: -30px; /* gutter size offset */
+  margin-left: -30px;
   width: auto;
 }
 .my-masonry-grid_column {
-  padding-left: 30px; /* gutter size */
+  padding-left: 30px;
   background-clip: padding-box;
 }
-
-/* Style your items */
-.my-masonry-grid_column > div { 
+.my-masonry-grid_column > div {
   margin-bottom: 30px;
 }
 
-.react-images__dialog  img{
-  margin:auto;
+.react-images__dialog img {
+  margin: auto;
 }

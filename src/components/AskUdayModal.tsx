@@ -165,9 +165,13 @@ const AskUdayModal: React.FC<AskUdayModalProps> = ({ isOpen, onClose }) => {
     <div
       className="fixed inset-0 bg-black/70 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 backdrop-blur-sm"
       onClick={onClose}
+      aria-hidden="true"
     >
       <div
-        className="bg-neutral-900 w-full sm:max-w-2xl h-[85vh] sm:h-[600px] sm:max-h-[80vh] shadow-2xl relative flex flex-col overflow-hidden rounded-t-2xl sm:rounded-2xl border border-purple-500/20 font-primary"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Ask me about Uday"
+        className="bg-neutral-950 w-full sm:max-w-xl h-[85vh] sm:h-[600px] sm:max-h-[80vh] shadow-2xl relative flex flex-col overflow-hidden rounded-t-xl sm:rounded-xl border border-neutral-800 font-primary"
         onClick={(e) => e.stopPropagation()}
       >
         <ChatHeader

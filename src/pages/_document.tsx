@@ -5,6 +5,12 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <body>
+        {/* FOUC prevention: set dark class before React hydrates */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark');}}catch(e){}})()`,
+          }}
+        />
         <Main />
         <NextScript />
 

@@ -9,30 +9,30 @@ type ChatEmptyStateProps = {
 };
 
 /**
- * Empty state shown when there are no messages
+ * Empty state — editorial, no emoji bubbles
  */
 export const ChatEmptyState: React.FC<ChatEmptyStateProps> = ({
   onSuggestionClick,
 }) => {
   return (
-    <div className="flex flex-col items-center justify-center h-full text-center">
-      <div className="w-16 h-16 rounded-full bg-purple-600/20 flex items-center justify-center mb-4">
-        <span className="text-3xl">👋</span>
+    <div className="flex flex-col justify-end h-full pb-2">
+      <div className="mb-8">
+        <span className="font-display text-5xl text-neutral-800 leading-none tracking-tight">UV</span>
+        <p className="text-xs font-mono text-neutral-600 uppercase tracking-widest mt-3">
+          Portfolio Assistant
+        </p>
       </div>
-      <h3 className="text-purple-200 font-semibold text-lg mb-2">
-        Hi! Ask me anything about Uday
-      </h3>
-      <p className="text-purple-400 text-sm max-w-sm">
-        I can tell you about his experience, skills, projects, and more.
+      <p className="text-neutral-400 text-sm mb-8 leading-relaxed max-w-xs">
+        Ask me anything about Uday's experience, projects, or skills.
       </p>
-      <div className="mt-6 flex flex-wrap gap-2 justify-center">
+      <div className="flex flex-col gap-2">
         {SUGGESTIONS.map((suggestion) => (
           <button
             key={suggestion}
             onClick={() => onSuggestionClick(suggestion)}
-            className="px-3 py-1.5 text-xs bg-purple-500/10 text-purple-300 rounded-full hover:bg-purple-500/20 transition-colors border border-purple-500/20"
+            className="text-left text-sm text-neutral-500 hover:text-neutral-200 transition-colors underline-offset-4 hover:underline font-mono"
           >
-            {suggestion}
+            {suggestion} →
           </button>
         ))}
       </div>
