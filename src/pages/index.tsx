@@ -63,7 +63,7 @@ export const Porjects: PorjectProps[] = [
     teamSize:
       "Cross-functional teams varying from 2–12 members (designers, engineers, PMs, marketing)",
     highlights: [
-      "Full-stack ownership of labelbox.com and alignerr.com",
+      "Full-stack ownership of <a href='https://labelbox.com' target='_blank' rel='noopener noreferrer' style='text-decoration:underline;text-underline-offset:3px;'>labelbox.com</a>, <a href='https://prism.labelbox.com' target='_blank' rel='noopener noreferrer' style='text-decoration:underline;text-underline-offset:3px;'>prism.labelbox.com</a> and <a href='https://alignerr.com' target='_blank' rel='noopener noreferrer' style='text-decoration:underline;text-underline-offset:3px;'>alignerr.com</a>",
       "Created data visualization tools for ML model performance comparison",
       "Led Figma-to-code design system workflow across product teams",
       "Established rapid prototyping workflow from concept to production deployment",
@@ -242,8 +242,9 @@ export default function Home() {
             >
               {renderLetters("Uday")} {renderLetters("Vatti")}
             </h1>
-            <p className="text-lg text-neutral-600 dark:text-neutral-300 max-w-md leading-relaxed mb-12">
-              Nine years designing and building for the web. Currently at{" "}
+            <p className="text-lg text-neutral-600 dark:text-neutral-300 max-w-xl leading-relaxed mb-12">
+              I build high-performance React and Next.js experiences for teams
+              that care about speed, design, SEO, and scale. Currently at{" "}
               <a
                 href="https://www.labelbox.com/"
                 target="_blank"

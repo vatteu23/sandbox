@@ -8,14 +8,14 @@ export const parseBoldText = (text: string, keyOffset: number): React.ReactNode[
   return parts.map((part, i) => {
     if (part.startsWith("**") && part.endsWith("**")) {
       return (
-        <strong key={`bold-${keyOffset}-${i}`} className="font-semibold text-neutral-100">
+        <strong key={`bold-${keyOffset}-${i}`} className="font-semibold text-neutral-900 dark:text-neutral-100">
           {part.slice(2, -2)}
         </strong>
       );
     }
     if (part.startsWith("__") && part.endsWith("__")) {
       return (
-        <strong key={`bold-${keyOffset}-${i}`} className="font-semibold text-neutral-100">
+        <strong key={`bold-${keyOffset}-${i}`} className="font-semibold text-neutral-900 dark:text-neutral-100">
           {part.slice(2, -2)}
         </strong>
       );
@@ -47,7 +47,7 @@ export const parseInlineElements = (text: string): React.ReactNode => {
         href={url}
         target={isExternal ? "_blank" : "_self"}
         rel={isExternal ? "noopener noreferrer" : undefined}
-        className="text-neutral-200 hover:text-white underline underline-offset-2 transition-colors"
+        className="text-neutral-900 dark:text-neutral-200 hover:text-neutral-600 dark:hover:text-white underline underline-offset-2 transition-colors"
       >
         {linkText}
       </a>

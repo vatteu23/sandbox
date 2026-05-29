@@ -26,7 +26,7 @@ const ProjectRow: React.FC<ProjectRowProps> = ({ project, index }) => (
         <span className="text-base md:text-lg font-medium text-neutral-900 dark:text-neutral-100 block leading-snug">
           {project.name}
         </span>
-        <span className="text-xs font-mono text-neutral-400 dark:text-neutral-500 mt-0.5 hidden sm:block">
+        <span className="text-xs font-mono text-neutral-400 dark:text-neutral-500 mt-0.5 block">
           {project.role}
         </span>
       </span>
