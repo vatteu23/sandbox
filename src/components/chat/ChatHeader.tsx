@@ -15,17 +15,17 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
   onClose,
 }) => {
   return (
-    <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-800">
+    <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-200 dark:border-neutral-800">
       <div className="flex items-center gap-3">
-        <span className="font-display text-lg text-neutral-100 tracking-tight">UV</span>
-        <span className="text-neutral-600 text-xs font-mono">·</span>
-        <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest">Ask</span>
+        <span className="font-display text-lg text-neutral-900 dark:text-neutral-100 tracking-tight">UV</span>
+        <span className="text-neutral-400 dark:text-neutral-600 text-xs font-mono">·</span>
+        <span className="text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">Ask</span>
       </div>
       <div className="flex items-center gap-3">
         {hasMessages && (
           <button
             onClick={onClearHistory}
-            className="text-neutral-600 hover:text-neutral-300 transition-colors"
+            className="text-neutral-400 dark:text-neutral-600 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors"
             title="Clear chat history"
             aria-label="Clear chat history"
           >
@@ -35,7 +35,7 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
         <button
           onClick={onClose}
           aria-label="Close"
-          className="text-neutral-600 hover:text-neutral-100 transition-colors"
+          className="text-neutral-400 dark:text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
         >
           <XMarkIcon className="w-4 h-4" />
         </button>

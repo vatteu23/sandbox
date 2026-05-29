@@ -24,7 +24,7 @@ export const ChatInput = forwardRef<HTMLTextAreaElement, ChatInputProps>(
     const canSend = value.trim() && !isLoading;
 
     return (
-      <div className="border-t border-neutral-800 px-6 py-4">
+      <div className="border-t border-neutral-200 dark:border-neutral-800 px-6 py-4">
         <div className="flex gap-3 items-end">
           <textarea
             ref={ref}
@@ -33,7 +33,7 @@ export const ChatInput = forwardRef<HTMLTextAreaElement, ChatInputProps>(
             onKeyDown={handleKeyDown}
             placeholder="Ask something about Uday..."
             rows={1}
-            className="flex-1 bg-transparent border-0 focus:outline-none focus:ring-0 text-neutral-200 placeholder-neutral-600 resize-none text-sm leading-relaxed py-1"
+            className="flex-1 bg-transparent border-0 focus:outline-none focus:ring-0 text-neutral-800 dark:text-neutral-200 placeholder-neutral-400 dark:placeholder-neutral-600 resize-none text-sm leading-relaxed py-1"
             style={{ minHeight: "28px", maxHeight: "120px" }}
           />
           <button
@@ -43,14 +43,14 @@ export const ChatInput = forwardRef<HTMLTextAreaElement, ChatInputProps>(
             className={cn(
               "flex-shrink-0 transition-colors duration-200",
               canSend
-                ? "text-neutral-300 hover:text-neutral-100"
-                : "text-neutral-700 cursor-not-allowed"
+                ? "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100"
+                : "text-neutral-300 dark:text-neutral-700 cursor-not-allowed"
             )}
           >
             <PaperAirplaneIcon className="w-4 h-4" />
           </button>
         </div>
-        <p className="text-neutral-700 text-xs mt-2 font-mono">
+        <p className="text-neutral-400 dark:text-neutral-700 text-xs mt-2 font-mono">
           Enter to send · Shift+Enter for new line
         </p>
       </div>
