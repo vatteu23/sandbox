@@ -68,12 +68,12 @@ const About = () => {
                   where I've lived ever since.
                 </p>
                 <p className="text-[1.0625rem] text-neutral-600 dark:text-neutral-300 leading-[1.8]">
-                  At Labelbox I own multiple systems end-to-end — labelbox.com,
-                  alignerr.com, a design system, an auth SDK, an ML evaluation
-                  product, and a handful of internal tools. I design in Figma,
-                  build in Next.js, ship to GCP, and care about how the final
-                  thing moves and feels just as much as whether the API is
-                  efficient.
+                  At Labelbox, I’ve grown into the person teams come to when a
+                  web surface needs both taste and systems thinking. I own
+                  public web properties, CMS architecture, design system
+                  implementation, internal tools, auth workflows, and Model
+                  evaluation interfaces — often taking projects from ambiguous
+                  idea to production system.
                 </p>
                 <p className="text-[1.0625rem] text-neutral-600 dark:text-neutral-300 leading-[1.8]">
                   What drives me is the belief that great products don't come

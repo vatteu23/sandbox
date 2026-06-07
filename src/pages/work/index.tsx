@@ -79,8 +79,9 @@ export default function WorkIndex() {
               Work
             </h1>
             <p className="text-lg text-neutral-600 dark:text-neutral-300 max-w-xl leading-relaxed">
-              Design engineering across marketing platforms, data visualization
-              products, e-commerce, and creative agency sites.
+              Design engineering for AI-company web platforms, brand systems,
+              CMS architecture, internal tools, and data-rich product
+              experiences.
             </p>
           </div>
         </Container>

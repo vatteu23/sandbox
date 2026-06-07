@@ -33,17 +33,17 @@ export const Porjects: PorjectProps[] = [
     year: "2021 – Present",
     metric: "End-to-end ownership · concept to launch",
     description:
-      "Led design and full-stack development across labelbox.com, alignerr.com, and internal evaluation tooling. Built the gap between Figma and production — from component libraries and motion systems to cloud data pipelines.",
+      "Led design and full-stack development across labelbox.com, alignerr.com, and internal tooling. Bridged the gap between Figma and production by architecting design system code, motion systems, and cloud data pipelines.",
     achievements: [
-      "Built Labelbox Evaluation Studio product with 2-person team, creating model performance visualization tools. Read about it in the <a href='https://labelbox.com/blog/introducing-labelbox-evaluation-studio-drive-agi-advancements-with-real-time-feedback-on-model-performance/' target='_blank' rel='noopener noreferrer' style='text-decoration: underline; font-weight: 500;'>product launch blog</a>",
-      "Led Storybook adoption for design system documentation, establishing shared component library across product teams",
-      "Migrated labelbox.com from Material UI to Tailwind CSS, defining token-based theming and reusable design primitives",
-      "Built centralized auth and authorization gateway published as private npm SDK, eliminating redundant auth across internal products",
-      "Developed alignerr.com from ground up using custom Sanity CMS — sole engineer from concept to production deployment",
-      "Implemented GSAP and Framer Motion animation systems across marketing and product pages",
-      "Engineered GCS auto-scan service for automated data discovery, establishing the standard production ingestion pattern",
-      "Built security issue tracker for DevOps/SecOps team from scratch",
-      "Maintained GTM implementation and ensured SEO optimization across all projects",
+      "Sole engineer on labelbox.com — owning the frontend architecture from Figma to production: implemented token-based design system code, optimized Core Web Vitals, and established a technical SEO strategy",
+      "Built alignerr.com from the ground up: designed scalable CMS architecture with robust content modeling and automated publishing workflows",
+      "Built Labelbox Evaluation Studio product with 2-person team, creating complex data visualization systems for model performance. Read about it in the <a href='https://labelbox.com/blog/introducing-labelbox-evaluation-studio-drive-agi-advancements-with-real-time-feedback-on-model-performance/' target='_blank' rel='noopener noreferrer' style='text-decoration: underline; font-weight: 500;'>product launch blog</a>",
+      "Led Storybook adoption for design system documentation, establishing a shared component library used across marketing and product teams",
+      "Built centralized auth and authorization gateway published as a private npm SDK, eliminating redundant auth logic across internal products",
+      "Implemented GSAP and Framer Motion animation systems across interactive marketing pages",
+      "Built an AI agent that automatically updates internal docs on every PR merge — eliminating documentation drift across teams. Use Claude and Cursor daily for scaffolding, prototyping, bug triage, and PR descriptions",
+      "Engineered GCS auto-scan service and localization infrastructure for automated data discovery and global content delivery",
+      "Maintained GTM implementation and drove technical SEO optimization across all marketing properties",
     ],
     technologies: [
       "React",
@@ -63,10 +63,10 @@ export const Porjects: PorjectProps[] = [
     teamSize:
       "Cross-functional teams varying from 2–12 members (designers, engineers, PMs, marketing)",
     highlights: [
-      "Full-stack ownership of <a href='https://labelbox.com' target='_blank' rel='noopener noreferrer' style='text-decoration:underline;text-underline-offset:3px;'>labelbox.com</a>, <a href='https://prism.labelbox.com' target='_blank' rel='noopener noreferrer' style='text-decoration:underline;text-underline-offset:3px;'>prism.labelbox.com</a> and <a href='https://alignerr.com' target='_blank' rel='noopener noreferrer' style='text-decoration:underline;text-underline-offset:3px;'>alignerr.com</a>",
+      "Sole engineer on <a href='https://labelbox.com' target='_blank' rel='noopener noreferrer' style='text-decoration:underline;text-underline-offset:3px;'>labelbox.com</a>, <a href='https://prism.labelbox.com' target='_blank' rel='noopener noreferrer' style='text-decoration:underline;text-underline-offset:3px;'>prism.labelbox.com</a>, and <a href='https://alignerr.com' target='_blank' rel='noopener noreferrer' style='text-decoration:underline;text-underline-offset:3px;'>alignerr.com</a> — large-scale enterprise brand & marketing sites — from brand identity and design system to SEO architecture and production deployment",
       "Created data visualization tools for ML model performance comparison",
-      "Led Figma-to-code design system workflow across product teams",
-      "Established rapid prototyping workflow from concept to production deployment",
+      "Led Figma-to-code design system workflow across marketing and product teams",
+      "Integrated Claude and Cursor into daily workflow for AI-assisted prototyping and delivery",
       "Built SEO-first architecture improving organic traffic and conversion",
     ],
   },
@@ -78,13 +78,13 @@ export const Porjects: PorjectProps[] = [
     role: "Full Stack Developer",
     year: "2017 – 2021",
     description:
-      "Led full-stack development and UI design for e-commerce platforms, migrating legacy systems to React with Tailwind CSS. Focused on performance optimization, SEO, and building tools that empowered the marketing team.",
+      "Led frontend architecture and UI design for e-commerce platforms, migrating legacy systems to React with Tailwind CSS. Focused on Core Web Vitals, technical SEO, and building tools that empowered the marketing team.",
     metric: "40% faster · 60% more organic traffic",
     achievements: [
       "Developed custom webstores and e-commerce UIs with a reusable component framework",
       "Improved website performance by 40% through optimization and caching strategies",
       "Enhanced SEO rankings resulting in 60% increase in organic traffic",
-      "Built a custom CMS enabling scheduled content releases and future feature deployments",
+      "Built a custom CMS with automated publishing workflows, enabling scheduled content releases and future feature deployments",
       "Created marketing materials and website assets using Corel Draw for brand consistency",
       "Created sales dashboard with real-time analytics and reporting features",
       "Implemented .NET Core APIs to support modern web architecture",
@@ -117,7 +117,7 @@ export const Porjects: PorjectProps[] = [
     role: "Web Developer",
     year: "2016 – 2017",
     description:
-      "Core developer for interactive data visualization tools, collaborating with researchers and policymakers to make complex educational metrics explorable and accessible.",
+      "Core developer for interactive data visualization systems, collaborating with researchers and policymakers to make complex educational metrics explorable and accessible.",
     achievements: [
       "Designed and built interactive visualization tools using D3.js and C# MVC architecture",
       "Built a responsive platform visualizing student graduation rates for the 60by25 initiative",
@@ -144,12 +144,12 @@ export const Freelance: PorjectProps[] = [
     role: "Design Engineer",
     year: "2018",
     description:
-      "Built a modern web presence for a creative agency specializing in brand identity and digital experiences for startups.",
+      "Built interactive marketing pages and a modern web presence for a creative agency specializing in brand identity and digital experiences.",
     metric: "200% more inquiries · 95+ Lighthouse",
     achievements: [
       "Delivered responsive portfolio site increasing inquiries by 200%",
-      "Implemented custom CMS for easy content management",
-      "Optimized performance achieving 95+ Lighthouse scores",
+      "Implemented custom CMS with robust content modeling for easy content management",
+      "Optimized performance achieving 95+ Lighthouse scores and excellent Core Web Vitals",
       "Designed custom animations and micro-interactions with GSAP",
     ],
     technologies: [
@@ -243,8 +243,10 @@ export default function Home() {
               {renderLetters("Uday")} {renderLetters("Vatti")}
             </h1>
             <p className="text-lg text-neutral-600 dark:text-neutral-300 max-w-xl leading-relaxed mb-12">
-              I build high-performance React and Next.js experiences for teams
-              that care about speed, design, SEO, and scale. Currently at{" "}
+              I design and engineer web platforms for AI companies — specializing in
+              frontend architecture, CMS architecture, interactive marketing pages,
+              and internal tooling. Currently exercising cross-functional technical
+              ownership over web and platform work at 
               <a
                 href="https://www.labelbox.com/"
                 target="_blank"
