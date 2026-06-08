@@ -246,7 +246,7 @@ export default function Home() {
               I design and engineer web platforms for AI companies — specializing in
               frontend architecture, CMS architecture, interactive marketing pages,
               and internal tooling. Currently exercising cross-functional technical
-              ownership over web and platform work at 
+              ownership over web and platform work at {" "}
               <a
                 href="https://www.labelbox.com/"
                 target="_blank"
