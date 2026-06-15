@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { parseMarkdown } from "@/functions/markdown";
 import type { GraphNode, GraphPath, GraphSearchItem } from "@/data/graph/types";
 
 type CommandMode = "find" | "ask";
@@ -29,12 +30,27 @@ export default function CommandCenter({
   onClose,
   onSelect,
 }: CommandCenterProps) {
+  const STORAGE_KEY = "cmd-chat-history";
   const [query, setQuery] = useState("");
   const [manualMode, setManualMode] = useState<CommandMode | null>(null);
-  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>(() => {
+    if (typeof window === "undefined") return [];
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  });
   const [isLoading, setIsLoading] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (chatMessages.length > 0) {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(chatMessages)); } catch {}
+    }
+  }, [chatMessages]);
 
   useEffect(() => {
     if (!open) {
@@ -257,8 +273,8 @@ export default function CommandCenter({
 
           {/* Ask mode: messages scroll, input pinned at bottom */}
           {mode === "ask" && (
-            <>
-              <div className="flex-1 overflow-y-auto px-4 py-4 min-h-0">
+            <div className="flex flex-col flex-1 min-h-0">
+              <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-4">
                 <div className="space-y-3">
                   {chatMessages.length === 0 && !isLoading && (
                     <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed py-8 text-center">
@@ -277,13 +293,13 @@ export default function CommandCenter({
                     >
                       <div
                         className={[
-                          "max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed",
+                          "max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed break-words",
                           msg.role === "user"
                             ? "bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900"
                             : "bg-neutral-100 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-200",
                         ].join(" ")}
                       >
-                        {msg.content}
+                        {msg.role === "assistant" ? parseMarkdown(msg.content) : msg.content}
                       </div>
                     </div>
                   ))}
@@ -303,8 +319,32 @@ export default function CommandCenter({
                   <div ref={chatEndRef} />
                 </div>
               </div>
-              {inputBar}
-            </>
+              <div className="flex-shrink-0 px-4 py-3 border-t border-neutral-100 dark:border-neutral-900 bg-white dark:bg-neutral-950 pb-[env(safe-area-inset-bottom,12px)]">
+                <div className="flex items-center gap-2">
+                  <input
+                    ref={inputRef}
+                    value={query}
+                    autoFocus
+                    onChange={(event) => setQuery(event.target.value)}
+                    onKeyDown={handleKeyDown}
+                    placeholder="Ask anything about Uday..."
+                    className="flex-1 bg-transparent text-sm text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-500 outline-none"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => void handleAskSend()}
+                    disabled={!query.trim() || isLoading}
+                    className="flex-shrink-0 h-8 w-8 rounded-full bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 flex items-center justify-center disabled:opacity-30 transition-opacity"
+                    aria-label="Send"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="m5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
           )}
         </div>
       </div>
@@ -420,7 +460,7 @@ export default function CommandCenter({
                         : "bg-neutral-100 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-200",
                     ].join(" ")}
                   >
-                    {msg.content}
+                    {msg.role === "assistant" ? parseMarkdown(msg.content) : msg.content}
                   </div>
                 </div>
               ))}

@@ -167,6 +167,114 @@ export const portfolioContext = {
   ],
   philosophy:
     "I believe great products are built where design and engineering share the same vocabulary. The best digital experiences come from a blend of curiosity and craft.",
+  knowledgeGraph: {
+    overview: "Uday's portfolio features an interactive knowledge graph on the homepage that maps how his thinking connects across domains. Each node represents a concept he actively works with, written in his own voice.",
+    domains: {
+      accessibility: {
+        summary: "I don't bolt accessibility on at the end. I build with semantic structure and keyboard models from the start — it's how I make sure the foundation is actually solid.",
+        perspective: "If the semantics are right and the interaction model is sound, everything else gets easier. Accessibility isn't extra work, it's better architecture.",
+        exploring: "Focus-order-first reviews — I run keyboard and focus audits before visual polish. Catches structural problems early instead of patching later.",
+      },
+      semanticHtml: {
+        summary: "I write markup that means something — not just divs with classes. It makes the interface legible for users, crawlers, and screen readers without extra effort.",
+        perspective: "The less custom logic I need to write, the more resilient the interface. Good semantics get me there.",
+      },
+      keyboardNavigation: {
+        summary: "If I can't tab through a workflow smoothly, the interaction model is wrong. I design for keyboard first because it forces the structure to be explicit.",
+        perspective: "When keyboard users move efficiently, it means the interaction hierarchy is actually working. Everyone benefits.",
+      },
+      designSystems: {
+        summary: "I build systems that encode decisions, not just styles. Tokens, components, patterns — all structured so teams ship faster without drifting apart.",
+        perspective: "A good design system makes the right thing the easy thing. I want teams to move fast and still end up consistent.",
+        exploring: "Token consolidation — migrating scattered one-off styles into tokenized primitives. Less decisions per component, more consistency across surfaces.",
+      },
+      frontendArchitecture: {
+        summary: "I care about how code is organized for the long term — component boundaries, data flow, rendering strategy. The goal is a codebase that can change without breaking.",
+        perspective: "I draw clear lines between content, UI state, and platform constraints. That's how I keep things maintainable as scope grows.",
+      },
+      developerExperience: {
+        summary: "I think a lot about how other engineers interact with what I build. Tooling, docs, defaults — if these are good, the whole team ships better work.",
+        perspective: "DX is leverage. Better defaults and clearer documentation reduce the coordination tax that slows teams down.",
+        exploring: "Storybook as alignment tool — I use component documentation to get teams on the same page before implementation diverges. Cheaper than fixing it after.",
+      },
+      aiSystems: {
+        summary: "I don't ship AI as a feature. I find the repetitive bottlenecks — docs drifting, scaffolding, triage — and put automation there. That's where it actually helps.",
+        perspective: "AI is operational infrastructure for me. Less about magic, more about removing the boring work that degrades quality over time.",
+        exploring: "Auto-updating docs agent — built an agent that regenerates internal documentation on every PR merge. No more stale wikis.",
+      },
+      performance: {
+        summary: "Fast interfaces aren't a nice-to-have for me — they're how users trust the product. I care about perceived speed, real latency, and interactions that feel instant.",
+        perspective: "Speed supports trust. Especially in data-heavy workflows, a slow interface erodes confidence in the tool itself.",
+      },
+      contentSystems: {
+        summary: "I design content models and publishing workflows that hold up as teams and channels multiply. The structure has to outlast any single redesign.",
+        perspective: "I want messaging, metadata, and presentation to stay connected over time — not just work for the first launch.",
+      },
+      interactionDesign: {
+        summary: "I design interactions to communicate where you are, what just happened, and what to do next. Patterns should reduce cognitive load, not add to it.",
+        perspective: "Motion and interaction should explain the system to the user, not decorate it.",
+      },
+      motion: {
+        summary: "I use motion to show where information came from and where it's going. It should teach the interface, not perform for the user.",
+        perspective: "If a transition doesn't help the user understand what changed, it shouldn't be there.",
+        exploring: "Context-preserving transitions — favoring transitions that show spatial relationships between states. Less fade-in/out, more movement that maps to where things actually live.",
+      },
+      photography: {
+        summary: "Photography is how I practice seeing. Composition, light, timing — it trains the same instincts I use when framing interfaces and content.",
+        perspective: "The discipline of noticing what matters in a frame carries over directly into product design. Both are about what to include and what to leave out.",
+        exploring: "Visual storytelling → product flows — studying how editorial photo sequences create pacing and applying that rhythm to multi-step interfaces.",
+      },
+      cars: {
+        summary: "Cars have been a thing for me since I was a kid. I'm drawn to machines where the engineering is felt, not explained — analog steering, mechanical grip, driver connection.",
+        perspective: "The best engineering disappears into the experience. You don't think about it, you just feel it working. That's what I chase in interfaces too.",
+        dreamCars: [
+          "Lexus LFA — The V10 that revs to 9,000 rpm and sounds like nothing else. Engineering as art.",
+          "BMW 1M — Short wheelbase, hydraulic steering, perfect weight. The last truly analog M car.",
+          "Porsche 911 Targa — Open-top 911 with the roll bar. Timeless shape, mechanical feel, no compromise on character.",
+          "Mitsubishi Evo 9 — Rally DNA for the street. Raw, mechanical, unfiltered. My childhood poster car.",
+        ],
+      },
+    },
+    conceptPaths: [
+      {
+        title: "Accessible defaults → scalable systems",
+        insight: "Semantic-first components carry accessibility forward at scale.",
+        flow: "Accessibility → Semantic HTML → Design Systems",
+        evidence: "Labelbox — Token-based component library across teams",
+      },
+      {
+        title: "System constraints → runtime quality",
+        insight: "When the system constrains what ships, the frontend stays lean.",
+        flow: "Design Systems → Architecture → Performance",
+        evidence: "Triple Crown Products — 40% faster loads; Them Design Studios — 95+ Lighthouse",
+      },
+      {
+        title: "Clear boundaries → useful automation",
+        insight: "AI helps most at repetitive operational bottlenecks, not as a feature.",
+        flow: "Architecture → Dev Experience → AI Systems",
+        evidence: "Labelbox — AI agent for auto-updating internal docs",
+      },
+      {
+        title: "Content structure → interaction quality",
+        insight: "Wrong content model means the interaction layer fights it forever.",
+        flow: "Content → Architecture → Interaction",
+        evidence: "Earthbound Adventures — Booking flow driven by content alignment",
+      },
+      {
+        title: "Motion that explains → without excluding",
+        insight: "Every transition has to stay predictable for all users.",
+        flow: "Motion → Interaction → Accessibility",
+        evidence: "Them Design Studios — GSAP system supporting narrative without disruption",
+      },
+      {
+        title: "Fast pages → content discipline",
+        insight: "Payload shape, caching, and hydration all start with content structure.",
+        flow: "Performance → Architecture → Content",
+        evidence: "Labelbox — CMS + frontend tuned for speed at scale; TCP — 60% organic traffic growth",
+      },
+    ],
+  },
+  selfDescription: "I sit between design and engineering — not in the middle, but across both. I think in systems, ship in code, and care about how things connect end-to-end. I want the intent behind a design to survive all the way to production. That means I have to own both sides.",
 };
 
 export type PortfolioContext = typeof portfolioContext;

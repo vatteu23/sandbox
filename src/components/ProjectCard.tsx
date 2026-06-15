@@ -46,7 +46,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, fluid }) => {
         onHoverEnd={() => setHovered(false)}
         transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
         className={cn(
-          "project-card relative aspect-[4/3] md:aspect-[5/7] rounded-[20px] overflow-hidden cursor-pointer",
+          "project-card relative aspect-[4/3] md:aspect-[5/4] rounded-[20px] overflow-hidden cursor-pointer",
           "border border-neutral-200/80 dark:border-neutral-800",
           "bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-950",
           "shadow-[0_1px_3px_rgba(0,0,0,0.03)] dark:shadow-none",
