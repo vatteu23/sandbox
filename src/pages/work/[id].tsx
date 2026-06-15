@@ -1,14 +1,26 @@
 import parse from "html-react-parser";
-import { Freelance, PorjectProps, Porjects } from "..";
+import { Freelance, PorjectProps, Porjects } from "@/data/projects";
 import Layout from "@/components/Layout";
 import Container from "@/components/Container";
 import HeadWithMetas from "@/components/HeadWithMetas";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { projectConceptNarratives } from "@/data/graph/projectConcepts";
 import {
   ArrowTopRightOnSquareIcon,
   ArrowLeftIcon,
 } from "@heroicons/react/24/outline";
+
+const allProjects = [...Porjects, ...Freelance];
+
+function getAdjacentProjects(currentId: string) {
+  const idx = allProjects.findIndex((p) => p.id === currentId);
+  if (idx === -1) return { prev: null, next: null };
+  return {
+    prev: idx > 0 ? allProjects[idx - 1] : null,
+    next: idx < allProjects.length - 1 ? allProjects[idx + 1] : null,
+  };
+}
 
 const Work = ({ work }: { work: PorjectProps | null }) => {
   if (!work) {
@@ -34,6 +46,10 @@ const Work = ({ work }: { work: PorjectProps | null }) => {
     );
   }
 
+  const { prev, next } = getAdjacentProjects(work.id);
+  const isCurrent = work.year?.includes("Present");
+  const narrative = projectConceptNarratives[work.id];
+
   return (
     <Layout className="bg-white dark:bg-neutral-950 min-h-screen">
       <HeadWithMetas
@@ -52,9 +68,25 @@ const Work = ({ work }: { work: PorjectProps | null }) => {
           All work
         </Link>
 
-        {/* Inline header */}
+        {/* Header */}
         <div className="flex items-start justify-between gap-6 pb-10 mb-16 border-b border-neutral-100 dark:border-neutral-800">
           <div>
+            <div className="flex items-center gap-3 mb-5">
+              {isCurrent && (
+                <span className="flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-neutral-400 dark:bg-neutral-500 opacity-75" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-neutral-500 dark:bg-neutral-300" />
+                  </span>
+                  Current
+                </span>
+              )}
+              {work.year && (
+                <span className="text-xs font-mono text-neutral-400 dark:text-neutral-500">
+                  {work.year}
+                </span>
+              )}
+            </div>
             <h1
               className="font-display leading-[0.92] tracking-tight text-neutral-900 dark:text-neutral-100 mb-3"
               style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
@@ -64,21 +96,22 @@ const Work = ({ work }: { work: PorjectProps | null }) => {
             <p className="text-sm font-mono text-neutral-400 dark:text-neutral-500">
               {work.role}
             </p>
+            {narrative && (
+              <p className="text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-[0.14em] mt-4">
+                Concept: {narrative.concept}
+              </p>
+            )}
           </div>
           <div className="flex flex-col items-end gap-3 flex-shrink-0 pt-1">
-            {work.year && (
-              <span className="text-xs font-mono text-neutral-400 dark:text-neutral-500">
-                {work.year}
-              </span>
-            )}
-            <Link
+            <a
               href={work.link}
               target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
             >
               Visit site
               <ArrowTopRightOnSquareIcon className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
+            </a>
           </div>
         </div>
 
@@ -86,15 +119,54 @@ const Work = ({ work }: { work: PorjectProps | null }) => {
         <div className="flex flex-col md:flex-row gap-y-16 md:gap-x-16 lg:gap-24">
           {/* Main content */}
           <div className="flex-1 min-w-0 space-y-16">
-            {/* Overview */}
-            <div>
-              <p className="text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-4">
-                Overview
-              </p>
-              <p className="text-neutral-700 dark:text-neutral-200 leading-relaxed text-[1.0625rem]">
-                {work.description}
-              </p>
-            </div>
+            {narrative ? (
+              <>
+                <div>
+                  <p className="text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-4">
+                    Concept
+                  </p>
+                  <p className="text-neutral-700 dark:text-neutral-200 leading-relaxed text-[1.0625rem]">
+                    {narrative.concept}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-4">
+                    Problem
+                  </p>
+                  <p className="text-neutral-700 dark:text-neutral-200 leading-relaxed text-[1.0625rem]">
+                    {narrative.problem}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-4">
+                    Approach
+                  </p>
+                  <p className="text-neutral-700 dark:text-neutral-200 leading-relaxed text-[1.0625rem]">
+                    {narrative.approach}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-4">
+                    Outcome
+                  </p>
+                  <p className="text-neutral-700 dark:text-neutral-200 leading-relaxed text-[1.0625rem]">
+                    {narrative.outcome}
+                  </p>
+                </div>
+              </>
+            ) : (
+              <div>
+                <p className="text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-4">
+                  Overview
+                </p>
+                <p className="text-neutral-700 dark:text-neutral-200 leading-relaxed text-[1.0625rem]">
+                  {work.description}
+                </p>
+              </div>
+            )}
 
             {/* Impact */}
             {work.highlights && (
@@ -127,7 +199,7 @@ const Work = ({ work }: { work: PorjectProps | null }) => {
             {work.achievements && (
               <div>
                 <p className="text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-6">
-                  What was built
+                  Supporting work
                 </p>
                 <ul className="space-y-4">
                   {work.achievements.map((achievement, index) => (
@@ -139,6 +211,17 @@ const Work = ({ work }: { work: PorjectProps | null }) => {
                     </li>
                   ))}
                 </ul>
+              </div>
+            )}
+
+            {narrative && (
+              <div>
+                <p className="text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-4">
+                  Supporting work context
+                </p>
+                <p className="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed">
+                  {narrative.supportingWork}
+                </p>
               </div>
             )}
           </div>
@@ -172,6 +255,50 @@ const Work = ({ work }: { work: PorjectProps | null }) => {
                   {work.teamSize}
                 </p>
               </div>
+            )}
+          </div>
+        </div>
+
+        {/* Project navigation */}
+        <div className="mt-20 pt-10 ">
+          <div className="flex items-center gap-4 mb-8">
+            <span className="text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-widest">
+              More work
+            </span>
+            <div className="flex-1 h-px bg-neutral-100 dark:bg-neutral-800" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {prev && (
+              <Link
+                href={`/work/${prev.id}`}
+                className="group py-6 px-3 -mx-3 rounded-sm hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors duration-150"
+              >
+                <p className="text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-3">
+                  ← Previous
+                </p>
+                <p className="text-lg font-medium text-neutral-900 dark:text-neutral-100 leading-snug group-hover:translate-x-[-2px] transition-transform duration-200">
+                  {prev.name}
+                </p>
+                <p className="text-xs font-mono text-neutral-400 dark:text-neutral-500 mt-1">
+                  {prev.role}
+                </p>
+              </Link>
+            )}
+            {next && (
+              <Link
+                href={`/work/${next.id}`}
+                className={`group py-6 px-3 -mx-3 rounded-sm hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors duration-150 text-right ${!prev ? "sm:col-start-2" : ""}`}
+              >
+                <p className="text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-3">
+                  Next →
+                </p>
+                <p className="text-lg font-medium text-neutral-900 dark:text-neutral-100 leading-snug group-hover:translate-x-[2px] transition-transform duration-200">
+                  {next.name}
+                </p>
+                <p className="text-xs font-mono text-neutral-400 dark:text-neutral-500 mt-1">
+                  {next.role}
+                </p>
+              </Link>
             )}
           </div>
         </div>

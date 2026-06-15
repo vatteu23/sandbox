@@ -65,7 +65,7 @@ export default async function handler(
   }
 
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     // Build conversation history for context
     const chatHistory = history.map((msg) => ({
