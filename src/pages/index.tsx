@@ -3,49 +3,35 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { Search } from "lucide-react";
 import Container from "@/components/Container";
 import Footer from "@/components/Footer";
 import CommandCenter from "@/components/graph/CommandCenter";
-import GraphCanvas from "@/components/graph/GraphCanvas";
-import GraphLegend from "@/components/graph/GraphLegend";
-import NodePanel from "@/components/graph/NodePanel";
+import ConceptExplorer from "@/components/graph/ConceptExplorer";
 import HeadWithMetas from "@/components/HeadWithMetas";
 import Layout from "@/components/Layout";
-import { graphEdges } from "@/data/graph/edges";
 import { graphNodeMap, graphNodes } from "@/data/graph/nodes";
 import { graphPaths } from "@/data/graph/paths";
 import { Freelance, Porjects } from "@/data/projects";
-import type { GraphNodeCategory, GraphSearchItem } from "@/data/graph/types";
+import type { GraphSearchItem } from "@/data/graph/types";
 
 export type { ImpactItem, PorjectProps } from "@/data/projects";
 export { Freelance, Porjects } from "@/data/projects";
 
-const categories: GraphNodeCategory[] = ["identity", "domain", "practice"];
+const ABOUT_TAB_ID = "about-me";
 
 export default function Home() {
   const router = useRouter();
-  const [selectedId, setSelectedId] = useState("uday-vatti");
+  const [selectedId, setSelectedId] = useState<string>(ABOUT_TAB_ID);
   const [commandOpen, setCommandOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [graphMode, setGraphMode] = useState<"guided" | "explore">("explore");
-  const [focusNodeId, setFocusNodeId] = useState("uday-vatti");
-  const [showPractices, setShowPractices] = useState(false);
-  const [showEvidence, setShowEvidence] = useState(false);
-  const [activePathId, setActivePathId] = useState<string | null>(null);
-  const [connectionReason, setConnectionReason] = useState<string | null>(null);
-
-  const selectedNode = graphNodeMap[selectedId] || null;
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
-    const applyMode = () => {
-      const mobile = mediaQuery.matches;
-      setIsMobile(mobile);
-      setGraphMode(mobile ? "guided" : "explore");
-    };
-    applyMode();
-    mediaQuery.addEventListener("change", applyMode);
-    return () => mediaQuery.removeEventListener("change", applyMode);
+    const apply = () => setIsMobile(mediaQuery.matches);
+    apply();
+    mediaQuery.addEventListener("change", apply);
+    return () => mediaQuery.removeEventListener("change", apply);
   }, []);
 
   useEffect(() => {
@@ -97,37 +83,21 @@ export default function Home() {
 
     if (item.type === "path") {
       const path = graphPaths.find((entry) => entry.id === item.id);
-      if (!path) {
-        return;
-      }
-      setActivePathId(path.id);
+      if (!path) return;
       setSelectedId(path.startNodeId);
-      setFocusNodeId(path.startNodeId);
-      if (isMobile) {
-        setGraphMode("guided");
-      }
       return;
     }
 
     if (graphNodeMap[item.id]) {
-      setSelectedId(item.id);
-      setFocusNodeId(item.id);
-      setActivePathId(null);
-      if (isMobile) {
-        setGraphMode("guided");
-      }
+      setSelectedId(item.id === "uday-vatti" ? ABOUT_TAB_ID : item.id);
       return;
     }
+
     const fromProject = graphNodes.find((node) =>
       node.examples.some((example) => example.projectId === item.id),
     );
     if (fromProject) {
       setSelectedId(fromProject.id);
-      setFocusNodeId(fromProject.id);
-      setActivePathId(null);
-      if (isMobile) {
-        setGraphMode("guided");
-      }
     }
   };
 
@@ -152,7 +122,8 @@ export default function Home() {
 
       <div className="pt-20 pb-16">
         <Container>
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-20">
+          {/* Hero */}
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-16 md:mb-20">
             <div className="max-w-3xl">
               <h1
                 className="font-sans leading-[1.02] tracking-tight text-neutral-900 dark:text-neutral-100 mb-4"
@@ -190,56 +161,13 @@ export default function Home() {
             </button>
           </div>
 
-          <div className="mb-6">
-            <GraphLegend categories={categories} />
-          </div>
-
-          <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_390px] gap-5">
-            <GraphCanvas
-              nodes={graphNodes}
-              edges={graphEdges}
-              selectedId={selectedId}
-              focusNodeId={focusNodeId}
-              mode={graphMode}
-              isMobile={isMobile}
-              showPractices={showPractices}
-              showEvidence={showEvidence}
-              onEnterExplore={() => setGraphMode("explore")}
-              onTogglePractices={() => setShowPractices((current) => !current)}
-              onToggleEvidence={() => setShowEvidence((current) => !current)}
-              onSelect={(id) => {
-                setSelectedId(id);
-                setActivePathId(null);
-              }}
-              onConnectionPreview={setConnectionReason}
-            />
-            <NodePanel
-              node={selectedNode}
-              connectionReason={connectionReason}
-              paths={graphPaths}
-              activePathId={activePathId}
-              onSelectNode={(id) => {
-                setSelectedId(id);
-                setFocusNodeId(id);
-                setActivePathId(null);
-              }}
-              onSelectPath={(pathId) => {
-                const path = graphPaths.find((entry) => entry.id === pathId);
-                if (!path) {
-                  return;
-                }
-                setActivePathId(path.id);
-                setSelectedId(path.startNodeId);
-                setFocusNodeId(path.startNodeId);
-              }}
-              onReset={() => {
-                setSelectedId("uday-vatti");
-                setFocusNodeId("uday-vatti");
-                setActivePathId(null);
-                setConnectionReason(null);
-              }}
-            />
-          </div>
+          {/* Concept Explorer — pills + expandable detail */}
+          <ConceptExplorer
+            nodes={graphNodes}
+            paths={graphPaths}
+            selectedId={selectedId}
+            onSelectNode={setSelectedId}
+          />
         </Container>
       </div>
 
@@ -249,7 +177,7 @@ export default function Home() {
         onClick={() => setCommandOpen(true)}
         className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-40 inline-flex h-11 items-center gap-2 rounded-full bg-neutral-900 dark:bg-neutral-100 px-5 text-xs font-mono uppercase tracking-[0.16em] text-white dark:text-neutral-900 shadow-lg shadow-neutral-900/20 dark:shadow-neutral-100/10 active:scale-95 transition-transform"
       >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <Search size={14} />
         Search
       </button>
 
