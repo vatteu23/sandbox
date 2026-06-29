@@ -102,7 +102,10 @@ export default function Home() {
   };
 
   return (
-    <Layout className="bg-white dark:bg-neutral-950 min-h-screen" showAssistant={false}>
+    <Layout
+      className="bg-white dark:bg-neutral-950 min-h-screen"
+      showAssistant={false}
+    >
       <HeadWithMetas
         title="Uday Vatti — Portfolio"
         description="I am a design engineer building product experiences across design systems, frontend architecture, and AI-enabled workflows."
@@ -129,10 +132,13 @@ export default function Home() {
                 className="font-sans leading-[1.02] tracking-tight text-neutral-900 dark:text-neutral-100 mb-4"
                 style={{ fontSize: "clamp(2rem, 4.4vw, 2.9rem)" }}
               >
-                I build the space between product design and production code.
+                I build and own web platforms that connect design and production
+                code.
               </h1>
               <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed max-w-2xl">
-                My work focuses on design systems, frontend architecture, CMS platforms, and AI-assisted delivery across teams and products.
+                My work spans design systems, frontend architecture, CMS-driven
+                marketing sites, and AI-assisted engineering workflows across
+                internal tools and customer-facing products.
               </p>
               <div className="flex items-center gap-6 mt-6">
                 <Link

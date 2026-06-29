@@ -148,8 +148,7 @@ export default function ConceptExplorer({
           id: "about-overview",
           eyebrow: "About me",
           title: "Design intent should survive production reality.",
-          body:
-            "I work across design systems, frontend architecture, and AI-assisted delivery so product decisions stay intact from concept to shipped experience.",
+          body: "I work across design systems, frontend architecture, and AI-assisted delivery to ensure product decisions translate cleanly from concept to shipped experience.",
           links: conceptNodes.slice(0, 4).map((entry) => ({
             label: entry.title,
             targetNodeId: entry.id,
@@ -160,8 +159,7 @@ export default function ConceptExplorer({
           id: "about-work",
           eyebrow: "Focus areas",
           title: "Systems, performance, and implementation quality.",
-          body:
-            "I care about interface clarity, durable architecture, and tooling that helps teams ship with less rework.",
+          body: "I care about interface clarity, durable frontend architecture, and building tooling that helps teams ship faster with fewer regressions and less rework.",
           links: [
             { label: "View selected work", href: "/work" },
             { label: "Read more about me", href: "/about" },

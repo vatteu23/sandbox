@@ -36,7 +36,7 @@ const About = () => {
               <p className="text-lg text-neutral-600 dark:text-neutral-300 max-w-xl leading-relaxed mb-8">
                 I build digital experiences during the week and study cars on
                 the weekends. Both are about understanding form, function, and
-                the details that make something memorable.
+                the details that make something feel intentional.
               </p>
               <div className="flex flex-wrap gap-6">
                 <a
@@ -61,26 +61,24 @@ const About = () => {
             <div className="py-20 md:py-24 max-w-2xl space-y-12">
               <div className="space-y-6">
                 <p className="text-[1.0625rem] text-neutral-700 dark:text-neutral-200 leading-[1.8]">
-                  I started out building things for the web — backends,
-                  databases, eventually UIs. At some point I got obsessed with
-                  the part that most engineers hand off: the last mile between a
-                  design file and what a real person actually uses. That gap is
-                  where I've lived ever since.
+                  I started out building for the web — backends, databases, and
+                  eventually UIs. Over time, I became more interested in the
+                  last mile between design and production: the part most systems
+                  treat as translation. That’s where I’ve focused ever since.
                 </p>
                 <p className="text-[1.0625rem] text-neutral-600 dark:text-neutral-300 leading-[1.8]">
-                  At Labelbox, I’ve grown into the person teams come to when a
-                  web surface needs both taste and systems thinking. I own
-                  public web properties, CMS architecture, design system
-                  implementation, internal tools, auth workflows, and Model
-                  evaluation interfaces — often taking projects from ambiguous
-                  idea to production system.
+                  At Labelbox, I work across public web platforms, CMS
+                  architecture, design systems, and internal tools. I often take
+                  projects from ambiguous ideas to production systems,
+                  partnering closely with design and marketing to shape both the
+                  implementation and the experience.
                 </p>
                 <p className="text-[1.0625rem] text-neutral-600 dark:text-neutral-300 leading-[1.8]">
-                  What drives me is the belief that great products don't come
+                  What drives me is the belief that strong products don’t come
                   from design and engineering working in sequence — they come
-                  from people who can hold both at the same time. I've built
-                  things that looked good but didn't work, and things that
-                  worked but felt wrong. The goal is always both.
+                  from people who can hold both at the same time. I’ve built
+                  things that looked good but didn’t work, and things that
+                  worked but felt off. The goal is always both.
                 </p>
               </div>
 
@@ -100,8 +98,7 @@ const About = () => {
                     the same question I ask about software.
                   </p>
                   <p className="text-[1.0625rem] text-neutral-600 dark:text-neutral-300 leading-relaxed">
-                    Photography is how I slow down. I shoot mostly in San
-                    Francisco — car meets, city light, whatever catches my eye.
+                    Photography is how I slow down. I shoot whatever catches my eye.
                     It's the same instinct as design: noticing what makes
                     something worth looking at.
                   </p>
