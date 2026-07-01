@@ -40,6 +40,12 @@ const Footer: React.FC = () => {
             >
               Photography
             </Link>
+            <Link
+              href="/tools"
+              className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+            >
+              Tools
+            </Link>
             <a
               href="/resume.pdf"
               target="_blank"

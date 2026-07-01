@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
   { href: "/photography", label: "Photography" },
+  { href: "/tools", label: "Tools" },
 ];
 
 const Header: React.FC = () => {

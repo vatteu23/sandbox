@@ -9,6 +9,14 @@ import { projectConceptNarratives } from "@/data/graph/projectConcepts";
 
 const stripHtml = (html: string) => html.replace(/<[^>]*>/g, "");
 
+const CONTENT_TRANSITION = {
+  duration: 0.38,
+  ease: [0.32, 0.72, 0, 1] as const,
+};
+
+const PANEL_HEIGHT = "h-[12rem] md:h-[13rem]";
+const PANEL_INNER = cn(PANEL_HEIGHT, "flex flex-col justify-end flex-shrink-0 p-6 md:p-7");
+
 interface ProjectCardProps {
   project: PorjectProps;
   index: number;
@@ -95,80 +103,70 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, fluid }) => {
           </div>
         </div>
 
-        {/* Default content — fades out on hover */}
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-7"
-          animate={{ opacity: hovered ? 0 : 1, y: hovered ? -8 : 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          {narrative?.concept ? (
-            <p className="text-[10px] font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-[0.16em] mb-2.5 md:mb-3 truncate">
-              {narrative.concept}
-            </p>
-          ) : (
-            project.metric && (
-              <p className="text-[10px] font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-[0.16em] mb-2.5 md:mb-3 truncate">
-                {project.metric}
-              </p>
-            )
-          )}
-          <h3 className="text-2xl md:text-3xl font-normal text-neutral-900 dark:text-neutral-100 leading-[1.05] tracking-tight mb-2.5">
-            {project.name}
-          </h3>
-          <p className="text-xs font-mono text-neutral-500 dark:text-neutral-400">
-            {project.role}
-            {project.year && (
-              <span className="text-neutral-400 dark:text-neutral-500"> · {project.year}</span>
-            )}
-          </p>
-        </motion.div>
-
-        {/* Narrative preview — slides up on hover */}
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-7"
-          animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 16 }}
-          transition={{ duration: 0.24, ease: "easeOut" }}
-        >
-          <h3 className="text-xl md:text-2xl font-normal text-neutral-900 dark:text-neutral-100 leading-[1.05] tracking-tight mb-3 md:mb-5">
-            {project.name}
-          </h3>
-          {narrative ? (
-            <div className="space-y-2.5">
-              <div className="text-[10px] font-mono uppercase tracking-[0.16em] text-neutral-400 dark:text-neutral-500">
-                {narrative.concept}
-              </div>
-              <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-snug line-clamp-2">
-                <span className="text-neutral-400 dark:text-neutral-500 mr-1">Problem:</span>
-                {narrative.problem}
-              </p>
-              <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-snug line-clamp-2">
-                <span className="text-neutral-400 dark:text-neutral-500 mr-1">Outcome:</span>
-                {narrative.outcome}
+        {/* Bottom content viewport — single track, one panel visible at a time */}
+        <div className={cn("absolute inset-x-0 bottom-0 z-10 overflow-hidden", PANEL_HEIGHT)}>
+          <motion.div
+            className="flex flex-col will-change-transform"
+            animate={{ y: hovered ? "-50%" : "0%" }}
+            transition={CONTENT_TRANSITION}
+          >
+            <div className={PANEL_INNER} aria-hidden={hovered}>
+              {narrative?.concept ? (
+                <p className="text-[10px] font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-[0.16em] mb-2.5 md:mb-3 truncate">
+                  {narrative.concept}
+                </p>
+              ) : (
+                project.metric && (
+                  <p className="text-[10px] font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-[0.16em] mb-2.5 md:mb-3 truncate">
+                    {project.metric}
+                  </p>
+                )
+              )}
+              <h3 className="text-2xl md:text-3xl font-normal text-neutral-900 dark:text-neutral-100 leading-[1.05] tracking-tight mb-2.5">
+                {project.name}
+              </h3>
+              <p className="text-xs font-mono text-neutral-500 dark:text-neutral-400">
+                {project.role}
+                {project.year && (
+                  <span className="text-neutral-400 dark:text-neutral-500"> · {project.year}</span>
+                )}
               </p>
             </div>
-          ) : (
-            <ul className="space-y-3 md:space-y-4">
-              {highlights.map((line, i) => (
-                <motion.li
-                  key={i}
-                  className="flex gap-2.5 md:gap-3 text-sm text-neutral-500 dark:text-neutral-400 leading-snug"
-                  animate={{
-                    opacity: hovered ? 1 : 0,
-                    x: hovered ? 0 : -8,
-                  }}
-                  transition={{
-                    duration: 0.22,
-                    delay: hovered ? 0.07 + i * 0.06 : 0,
-                    ease: "easeOut",
-                  }}
-                >
-                  <span className="text-neutral-400 dark:text-neutral-600 flex-shrink-0 mt-0.5">—</span>
-                  <span className="line-clamp-2">{line}</span>
-                </motion.li>
-              ))}
-            </ul>
-          )}
-        </motion.div>
+
+            <div className={PANEL_INNER} aria-hidden={!hovered}>
+              <h3 className="text-xl md:text-2xl font-normal text-neutral-900 dark:text-neutral-100 leading-[1.05] tracking-tight mb-3 md:mb-5">
+                {project.name}
+              </h3>
+              {narrative ? (
+                <div className="space-y-2.5">
+                  <div className="text-[10px] font-mono uppercase tracking-[0.16em] text-neutral-400 dark:text-neutral-500">
+                    {narrative.concept}
+                  </div>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-snug line-clamp-2">
+                    <span className="text-neutral-400 dark:text-neutral-500 mr-1">Problem:</span>
+                    {narrative.problem}
+                  </p>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-snug line-clamp-2">
+                    <span className="text-neutral-400 dark:text-neutral-500 mr-1">Outcome:</span>
+                    {narrative.outcome}
+                  </p>
+                </div>
+              ) : (
+                <ul className="space-y-3 md:space-y-4">
+                  {highlights.map((line, i) => (
+                    <li
+                      key={i}
+                      className="flex gap-2.5 md:gap-3 text-sm text-neutral-500 dark:text-neutral-400 leading-snug"
+                    >
+                      <span className="text-neutral-400 dark:text-neutral-600 flex-shrink-0 mt-0.5">—</span>
+                      <span className="line-clamp-2">{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </motion.div>
+        </div>
       </motion.div>
     </Link>
   );
