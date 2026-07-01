@@ -7,7 +7,7 @@ export const config = {
 };
 
 // Allow long-running SSE streams (Vercel Pro)
-export const maxDuration = 300;
+export const maxDuration = 60;
 
 // In-memory rate limiter: 5 crawls per IP per hour
 const crawlRequests = new Map<string, number[]>();
